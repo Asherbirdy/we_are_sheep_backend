@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { StatusCode } from '../enums'
+import { Role, StatusCode } from '../enums'
 import User from '../models/User'
 import Token from '../models/Token'
 import { createTokenUser, attachCookieToResponse } from '../utils'
@@ -16,7 +16,7 @@ export const AuthController = {
     }
 
     const isFirstAccount = (await User.countDocuments({})) === 0
-    const role = isFirstAccount ? 'admin' : 'user'
+    const role: Role = isFirstAccount ? Role.dev : Role.user
     const user = await User.create({ name, email, password, role })
     
     const tokenUser = createTokenUser(user)
