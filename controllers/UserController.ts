@@ -9,5 +9,10 @@ export const UserController = {
     res.status(StatusCode.OK).json({
       user: req.user
     })
+  },
+  updatePassword: async (req: Req, res: Response) => {
+    res.status(StatusCode.OK).json({
+      msg: 'UserController_updatePassword'
+    })
   }
 }

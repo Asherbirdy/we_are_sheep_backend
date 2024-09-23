@@ -10,4 +10,10 @@ router.get(
   UserController.showCurrentUser
 )
 
+router.patch(
+  '/updateUserPassword',
+  authenticateUser,
+  UserController.updatePassword
+)
+
 export default router
