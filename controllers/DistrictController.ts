@@ -1,6 +1,8 @@
 import { Req, Res } from '../types'
-import { StatusCodes } from '../enums'
+import { RoleList, StatusCodes } from '../enums'
 import { District } from '../models/District'
+import User from '../models/User'
+import { checkPersmission } from '../utils'
 export const DistrictController = {
   get: async (req: Req, res: Res) => {
     const districts = await District.find({})
@@ -55,7 +57,7 @@ export const DistrictController = {
     })
   },
   open: async (req: Req, res: Res) => {
-    const { districtId } = req.body
+    const { districtId, } = req.body
     if (!districtId) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         error: 'DELETE_ERROR',
@@ -71,5 +73,48 @@ export const DistrictController = {
       msg: 'DistrictController_OPEN',
       district
     })  
+  },
+  updateUserDistrict: async (req: Req, res: Res) => {
+    const { districtId, userId } = req.body
+
+    if (!districtId || !userId) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'District id and user id are required'
+      })
+      return
+    }
+    
+    if (!req.user) {
+      res.status(StatusCodes.UNAUTHORIZED).json({
+        msg: 'User not authenticated'
+      })
+      return
+    }
+
+    if(!(RoleList.districtLeaders).includes(req.user.role)) {
+      res.status(StatusCodes.FORBIDDEN).json({
+        msg: 'Only district leaders can update user district'
+      })
+      return
+    }
+
+    const user = await User.findOne({ _id: userId })
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        msg: 'User not found'
+      })
+      return
+    }
+    const district = await District.findById(districtId)
+    if (!district) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        msg: 'District not found'
+      })
+      return
+    }
+    
+    user.district = districtId
+    await user.save()
+    res.status(StatusCodes.OK).json({ msg: 'Success! User district updated to ' + district.name })
   }
 }

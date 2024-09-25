@@ -3,6 +3,7 @@ import { StatusCodes } from '../enums'
 import { Req } from '../types'
 import User from '../models/User'
 import config from '../config'
+import { District } from '../models/District'
 
 export const UserController = {
   // **
@@ -43,5 +44,5 @@ export const UserController = {
     user.password = newPassword
     await user.save()
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
-  }
+  },
 }
