@@ -1,8 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose'
-interface IDistrict extends Document {
-  name: string
-  active: boolean
-}
+import { IDistrict } from '../types'
 const DistrictSchema: Schema<IDistrict> = new mongoose.Schema({
   name: {
     type: String,

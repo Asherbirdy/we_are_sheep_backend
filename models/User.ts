@@ -2,6 +2,7 @@ import mongoose, { Schema } from 'mongoose'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import { IUser } from '../types'
+import { Role } from '../enums'
 
 const UserSchema: Schema<IUser> = new mongoose.Schema({
   name: {
@@ -26,8 +27,13 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user',
+    enum: Object.values(Role),
+    default: Role.user,
+  },
+  district: {
+    type: Schema.Types.ObjectId,
+    ref: 'District',
+    default: null,
   },
 })
 
