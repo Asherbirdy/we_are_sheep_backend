@@ -1,2 +1,2 @@
-export * from './StatusCode'
+export * from './StatusCodes'
 export * from './Role'

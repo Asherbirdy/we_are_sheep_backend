@@ -1,4 +1,4 @@
-import { StatusCode } from '../enums'
+import { StatusCodes } from '../enums'
 import { Request, Response, NextFunction } from 'express'
 
 interface CustomError extends Error {
@@ -18,7 +18,7 @@ export const errorHandlerMiddleware = (
   console.error(err) // 記錄錯誤以便調試
 
   const customError = {
-    statusCode: err.statusCode || StatusCode.INTERNAL_SERVER_ERROR,
+    statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || 'Something went wrong, please try again later',
   }
 
@@ -26,19 +26,19 @@ export const errorHandlerMiddleware = (
     customError.msg = Object.values(err.errors)
       .map((item) => item.message)
       .join(', ')
-    customError.statusCode = StatusCode.BAD_REQUEST
+    customError.statusCode = StatusCodes.BAD_REQUEST
   }
 
   if (err.code && err.code === 11000) {
     customError.msg = `Duplicate value entered for ${ Object.keys(
       err.keyValue || {}
     ).join(', ') } field(s), please choose another value`
-    customError.statusCode = StatusCode.BAD_REQUEST
+    customError.statusCode = StatusCodes.BAD_REQUEST
   }
 
   if (err.name === 'CastError' && err.value) {
     customError.msg = `No item found with id: ${ err.value }`
-    customError.statusCode = StatusCode.NOT_FOUND
+    customError.statusCode = StatusCodes.NOT_FOUND
   }
 
   return res.status(customError.statusCode).json({ 

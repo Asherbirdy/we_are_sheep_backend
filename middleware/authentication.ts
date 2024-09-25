@@ -1,5 +1,5 @@
 import { isTokenValid, attachCookieToResponse } from '../utils'
-import { StatusCode } from '../enums'
+import { StatusCodes } from '../enums'
 import Token from '../models/Token'
 import { Request, Response, NextFunction } from 'express'
 import { Req } from '../types'
@@ -37,7 +37,7 @@ export const authenticateUser = async (req: CustomRequest, res: Response, next: 
       refreshToken: payload.refreshToken,
     })
     if (!existingToken || !existingToken.isValid) {
-      res.status(StatusCode.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
+      res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
       return
     }
     attachCookieToResponse({
@@ -48,7 +48,7 @@ export const authenticateUser = async (req: CustomRequest, res: Response, next: 
     req.user = payload.user
     return next()
   } catch (error) {
-    res.status(StatusCode.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
     return
   }
 }
@@ -56,7 +56,7 @@ export const authenticateUser = async (req: CustomRequest, res: Response, next: 
 export const authorizePermission = (... roles: Role[]) => {
   return (req: Req, res: Response, next: NextFunction) => {
     if (!req.user || !roles.includes(req.user.role as Role)) {
-      res.status(StatusCode.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
+      res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
       return
     }
     next()

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Role, StatusCode } from '../enums'
+import { Role, StatusCodes } from '../enums'
 import User from '../models/User'
 import Token from '../models/Token'
 import { createTokenUser, attachCookieToResponse } from '../utils'
@@ -11,7 +11,7 @@ export const AuthController = {
     const { name, email, password } = req.body
     const emailAlreadyExist = await User.findOne({ email })
     if (emailAlreadyExist) {
-      res.status(StatusCode.BAD_REQUEST).json({ msg: `${ email } 已經被使用！` })
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: `${ email } 已經被使用！` })
       return
     }
 
@@ -22,27 +22,27 @@ export const AuthController = {
     const tokenUser = createTokenUser(user)
     
     attachCookieToResponse({ res, user: tokenUser })
-    res.status(StatusCode.CREATED).json({ user: tokenUser })
+    res.status(StatusCodes.CREATED).json({ user: tokenUser })
   },
 
   // ** login
   login: async (req: Request, res: Response) => {
     const { email, password } = req.body
     if (!email || !password) {
-      res.status(StatusCode.BAD_REQUEST).json({ msg: '請提供帳號和密碼！' })
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: '請提供帳號和密碼！' })
       return
     }
     const user = await User.findOne({ email })
 
     if (!user) {
-      res.status(StatusCode.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
       return
     }
 
     const isPasswordCorrect = await user.comparePassword(password)
 
     if (!isPasswordCorrect) {
-      res.status(StatusCode.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
       return
     }
 
@@ -52,13 +52,13 @@ export const AuthController = {
     if (existingToken) {
       const { isValid } = existingToken
       if (!isValid) {
-        res.status(StatusCode.BAD_REQUEST).json({ msg: 'Invalid Credentials' })
+        res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Invalid Credentials' })
         return
       }
 
       refreshToken = existingToken.refreshToken
       attachCookieToResponse({ res, user: tokenUser, refreshToken })
-      res.status(StatusCode.OK).json({ user: tokenUser })
+      res.status(StatusCodes.OK).json({ user: tokenUser })
       return
     }
     refreshToken = crypto.randomBytes(40).toString('hex')
@@ -69,13 +69,13 @@ export const AuthController = {
     await Token.create(userToken)
     attachCookieToResponse({ res, user: tokenUser, refreshToken })
 
-    res.status(StatusCode.OK).json({ user: tokenUser })
+    res.status(StatusCodes.OK).json({ user: tokenUser })
   },
 
   // ** logout
   logout: async (req: Req, res: Response) => {
     if (!req.user) {
-      return res.status(StatusCode.UNAUTHORIZED).json({ msg: 'User not authenticated' })
+      return res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'User not authenticated' })
     }
     
     await Token.findOneAndDelete({ user: req.user.userId })
@@ -90,6 +90,6 @@ export const AuthController = {
       expires: new Date(Date.now() + 1000),
     })
 
-    res.status(StatusCode.OK).json({ msg: 'user logged out!' })
+    res.status(StatusCodes.OK).json({ msg: 'user logged out!' })
   },
 }
