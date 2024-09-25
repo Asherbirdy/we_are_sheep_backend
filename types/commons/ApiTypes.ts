@@ -1,5 +1,5 @@
 
-import { Request } from 'express'
+import { Request, Response } from 'express'
 
 export interface Req extends Request {
   user?: {
@@ -7,3 +7,5 @@ export interface Req extends Request {
     role: string
   }
 }
+
+export type Res = Response
