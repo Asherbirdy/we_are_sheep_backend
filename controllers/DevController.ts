@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { StatusCode } from '../enums'
+import { StatusCodes } from '../enums'
 import config from '../config'
 
 export const DevController = {
@@ -7,7 +7,7 @@ export const DevController = {
   // ** 
   get: (req: Request, res: Response) => {
     console.log(config.environment)
-    res.status(StatusCode.OK).json( {
+    res.status(StatusCodes.OK).json( {
       msg: 'DevController_GET',
       envPort: config.environment
     } )
