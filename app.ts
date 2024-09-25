@@ -6,6 +6,7 @@ import config from './config'
 import DevRouter from './routes/DevRoutes'
 import AuthRoutes from './routes/AuthRoutes'
 import UserRoutes from './routes/UserRoutes'
+import DistrictRoutes from './routes/DistrictRoutes'
 
 import cors from 'cors'
 import morgan from 'morgan'
@@ -54,6 +55,7 @@ class Server {
     this.app.use('/api/v1/dev', DevRouter)
     this.app.use('/api/v1/auth', AuthRoutes)
     this.app.use('/api/v1/users', UserRoutes)
+    this.app.use('/api/v1/district', DistrictRoutes)
   }
 
   handleErrorAndSafety () {
