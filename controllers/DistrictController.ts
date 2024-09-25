@@ -2,7 +2,7 @@ import { Req, Res } from '../types'
 import { RoleList, StatusCodes } from '../enums'
 import { District } from '../models/District'
 import User from '../models/User'
-import { checkPersmission } from '../utils'
+import { checkPersmission, requestCheck, requestUtil } from '../utils'
 export const DistrictController = {
   get: async (req: Req, res: Res) => {
     const districts = await District.find({})
@@ -77,13 +77,8 @@ export const DistrictController = {
   updateUserDistrict: async (req: Req, res: Res) => {
     const { districtId, userId } = req.body
 
-    if (!districtId || !userId) {
-      res.status(StatusCodes.BAD_REQUEST).json({
-        msg: 'District id and user id are required'
-      })
-      return
-    }
-    
+    requestUtil.checkEmpty(res, [districtId, userId])
+  
     if (!req.user) {
       res.status(StatusCodes.UNAUTHORIZED).json({
         msg: 'User not authenticated'
