@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  churh_sass:  # 將 'app' 改為您想要的服務名稱
+    build: .
+    container_name: churh_sass  # 添加這行來指定容器名稱
+    ports:
+      - "2500:2500"
+    env_file:
+      - .env.dev
+
