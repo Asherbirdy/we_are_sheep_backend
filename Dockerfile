@@ -16,8 +16,11 @@ COPY . .
 # Compile TypeScript to JavaScript
 RUN tsc
 
-# Expose the port defined in .env.dev
-EXPOSE 2500
+# 從 .env.dev 文件中讀取 PORT 變數並設置為環境變數
+RUN export $(grep PORT .env.dev | xargs) && echo "PORT=$PORT" >> /etc/environment
 
-# Use ts-node to run the TypeScript file directly
+# 使用環境變數來設置 EXPOSE
+EXPOSE $PORT
+
+# 使用 ts-node 直接運行 TypeScript 文件
 CMD ["sh", "-c", "source .env.dev && ts-node ./app.ts"]
