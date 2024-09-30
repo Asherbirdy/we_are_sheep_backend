@@ -33,9 +33,16 @@ export const DistrictController = {
         msg: 'District name and districtId is required'
       })
     }
-    await District.findByIdAndUpdate(districtId, { name: newName })
+    const district = await District.findByIdAndUpdate(districtId, { name: newName }, { new: true })
+    if (!district) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        error: 'EDIT_ERROR',
+        msg: 'District not found'
+      })
+    }
     res.status(StatusCodes.OK).json({
-      msg: 'DistrictController_EDIT Success'
+      msg: 'DistrictController_EDIT Success',
+      district
     })
   },
   close: async (req: Req, res: Res) => {
@@ -74,42 +81,35 @@ export const DistrictController = {
       district
     })  
   },
-  updateUserDistrict: async (req: Req, res: Res) => {
-    const { districtId, userId } = req.body
+  // updateUserDistrict: async (req: Req, res: Res) => {
+  //   const { districtId, userId } = req.body
 
-    requestUtil.checkEmpty(res, [districtId, userId])
+  //   requestUtil.checkEmpty(res, [districtId, userId])
   
-    if (!req.user) {
-      res.status(StatusCodes.UNAUTHORIZED).json({
-        msg: 'User not authenticated'
-      })
-      return
-    }
+  //   if (!req.user) {
+  //     res.status(StatusCodes.UNAUTHORIZED).json({
+  //       msg: 'User not authenticated'
+  //     })
+  //     return
+  //   }
 
-    if(!(RoleList.districtLeaders).includes(req.user.role)) {
-      res.status(StatusCodes.FORBIDDEN).json({
-        msg: 'Only district leaders can update user district'
-      })
-      return
-    }
-
-    const user = await User.findOne({ _id: userId })
-    if (!user) {
-      res.status(StatusCodes.NOT_FOUND).json({
-        msg: 'User not found'
-      })
-      return
-    }
-    const district = await District.findById(districtId)
-    if (!district) {
-      res.status(StatusCodes.NOT_FOUND).json({
-        msg: 'District not found'
-      })
-      return
-    }
+  //   const user = await User.findOne({ _id: userId })
+  //   if (!user) {
+  //     res.status(StatusCodes.NOT_FOUND).json({
+  //       msg: 'User not found'
+  //     })
+  //     return
+  //   }
+  //   const district = await District.findById(districtId)
+  //   if (!district) {
+  //     res.status(StatusCodes.NOT_FOUND).json({
+  //       msg: 'District not found'
+  //     })
+  //     return
+  //   }
     
-    user.district = districtId
-    await user.save()
-    res.status(StatusCodes.OK).json({ msg: 'Success! User district updated to ' + district.name })
-  }
+  //   user.district = districtId
+  //   await user.save()
+  //   res.status(StatusCodes.OK).json({ msg: 'Success! User district updated to ' + district.name })
+  // }
 }
