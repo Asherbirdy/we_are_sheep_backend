@@ -7,5 +7,7 @@ export const MemberController = {
       msg: 'MemberController_GET Success',
     })
   }
+  // create member 
+  // bind member to user
 }
 
