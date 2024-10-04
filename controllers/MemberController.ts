@@ -79,7 +79,7 @@ export const MemberController = {
     })
   },
   // 通過 member
-  approveMemberApply: async (req: Req, res: Res) => {
+  approveMemberToActive: async (req: Req, res: Res) => {
     const { memberId } = req.body
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_APPROVE Success',

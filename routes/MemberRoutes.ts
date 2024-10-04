@@ -24,11 +24,11 @@ router.post(
   MemberController.bind 
 )
 
-router.post( 
-  '/approveMemberApply',
+router.patch( 
+  '/approveMemberToActive',
   authenticateUser, 
   authorizePermission(... RoleList.admins), 
-  MemberController.approveMemberApply 
+  MemberController.approveMemberToActive 
 )
 
 router.patch( 
