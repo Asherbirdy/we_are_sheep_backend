@@ -46,43 +46,51 @@ export const MemberController = {
       member
     })
   },
-  bind: async (req: Req, res: Res) => {
-    const { memberId, userId } = req.body
-    if (!userId || !memberId) {
-      res.status(StatusCodes.BAD_REQUEST).json({
-        msg: 'Please provide memberId and userId',
-      })
-      return
-    }
-    // check user exist
-    const user = await User.findOne({ _id: userId })
-    if (!user) {
-      res.status(StatusCodes.NOT_FOUND).json({
-        msg: 'User not found',
-      })
-      return
-    }
-    // 如果 user 已經有 member 了
-    if (user.member) {
-      res.status(StatusCodes.BAD_REQUEST).json({
-        msg: 'User already has a member',
-      })
-      return
-    }
+  // bind: async (req: Req, res: Res) => {
+  //   const { memberId, userId } = req.body
+  //   if (!userId || !memberId) {
+  //     res.status(StatusCodes.BAD_REQUEST).json({
+  //       msg: 'Please provide memberId and userId',
+  //     })
+  //     return
+  //   }
+  //   // check user exist
+  //   const user = await User.findOne({ _id: userId })
+  //   if (!user) {
+  //     res.status(StatusCodes.NOT_FOUND).json({
+  //       msg: 'User not found',
+  //     })
+  //     return
+  //   }
+  //   // 如果 user 已經有 member 了
+  //   if (user.member) {
+  //     res.status(StatusCodes.BAD_REQUEST).json({
+  //       msg: 'User already has a member',
+  //     })
+  //     return
+  //   }
 
-    // save memberId to user  
-    user.member = memberId
-    await user.save()
+  //   // save memberId to user  
+  //   user.member = memberId
+  //   await user.save()
 
-    res.status(StatusCodes.OK).json({
-      msg: 'MemberController_BIND Success',
-    })
-  },
+  //   res.status(StatusCodes.OK).json({
+  //     msg: 'MemberController_BIND Success',
+  //   })
+  // },
   // 通過 member
   approveMemberToActive: async (req: Req, res: Res) => {
     const { memberId } = req.body
+    if (!memberId) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'Please provide memberId',
+      })
+      return
+    }
+    const member = await Member.findByIdAndUpdate(memberId, { active: true }, { new: true })
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_APPROVE Success',
+      member
     })
   },
   // edit member

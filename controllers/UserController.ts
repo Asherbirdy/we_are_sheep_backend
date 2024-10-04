@@ -46,7 +46,7 @@ export const UserController = {
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
   },
   showNonBindMember: async (req: Req, res: Res) => {
-    const users = await User.find({ member: { $exists: false } })
+    const users = await User.find({ member: { $exists: false } }).select('-password')
     res.status(StatusCodes.OK).json({
       member: 'showBindMember',
       count: users.length,

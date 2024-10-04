@@ -17,12 +17,6 @@ router.post(
   authorizePermission(... RoleList.shepherds), 
   MemberController.create 
 )
-router.post( 
-  '/bindAccountToUser',
-  authenticateUser, 
-  authorizePermission(... RoleList.admins), 
-  MemberController.bind 
-)
 
 router.patch( 
   '/approveMemberToActive',
