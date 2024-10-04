@@ -1,6 +1,6 @@
 import { Response } from 'express'
 import { StatusCodes } from '../enums'
-import { Req } from '../types'
+import { Req, Res } from '../types'
 import User from '../models/User'
 import config from '../config'
 import { District } from '../models/District'
@@ -45,4 +45,12 @@ export const UserController = {
     await user.save()
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
   },
+  showNonBindMember: async (req: Req, res: Res) => {
+    const users = await User.find({ member: { $exists: false } })
+    res.status(StatusCodes.OK).json({
+      member: 'showBindMember',
+      count: users.length,
+      users
+    })
+  }
 }

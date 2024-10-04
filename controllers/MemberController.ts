@@ -1,6 +1,7 @@
 import { StatusCodes } from '../enums'
 import { Req, Res } from '../types'
 import { Member } from '../models/Member'
+import User from '../models/User'
 
 export const MemberController = {
   // get all members
@@ -47,6 +48,32 @@ export const MemberController = {
   },
   bind: async (req: Req, res: Res) => {
     const { memberId, userId } = req.body
+    if (!userId || !memberId) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'Please provide memberId and userId',
+      })
+      return
+    }
+    // check user exist
+    const user = await User.findOne({ _id: userId })
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        msg: 'User not found',
+      })
+      return
+    }
+    // 如果 user 已經有 member 了
+    if (user.member) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'User already has a member',
+      })
+      return
+    }
+
+    // save memberId to user  
+    user.member = memberId
+    await user.save()
+
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_BIND Success',
     })
