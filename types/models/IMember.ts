@@ -6,4 +6,5 @@ export interface IMember extends Document {
   name: string
   district: IDistrict
   identity: Identity
+  active: boolean
 }

@@ -29,6 +29,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     type: String,
     enum: Object.values(Role),
     default: Role.user,
+  },
+  member: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Member',
   }
 })
 

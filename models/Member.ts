@@ -17,6 +17,12 @@ const MemberSchema: Schema<IMember> = new mongoose.Schema({
     enum: Identity,
     required: true
   },
-}, { timestamps: true })
+  active: {
+    type: Boolean,
+    default: false
+  }
+}, 
+{ timestamps: true }
+)
 
 export const Member = mongoose.model<IMember>('Member', MemberSchema)
