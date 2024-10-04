@@ -2,7 +2,7 @@ import { Req, Res } from '../types'
 import { RoleList, StatusCodes } from '../enums'
 import { District } from '../models/District'
 import User from '../models/User'
-import { checkPersmission, requestUtil } from '../utils'
+import { checkPersmission, request } from '../utils'
 export const DistrictController = {
   get: async (req: Req, res: Res) => {
     const districts = await District.find({})

@@ -1,18 +1,41 @@
 import { StatusCodes } from '../enums'
 import { Req, Res } from '../types'
+import { Member } from '../models/Member'
 
 export const MemberController = {
+  // get all members
   get: async (req: Req, res: Res) => {
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_GET Success',
     })
   },
+  // create member
   create: async (req: Req, res: Res) => {
-    res.status(StatusCodes.OK).json({
+    const { name, district, identity } = req.body
+    if (!name || !district || !identity) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'Please provide name, district, identity',
+      })
+      return
+    }
+    // check member name exist
+    const checkMemberNameExist = await Member.findOne({ name })
+    if (checkMemberNameExist) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: `Member name ${ name } already exists`,
+      })
+      return 
+    }
+
+    const member = await Member.create({ name, district, identity })
+
+    res.status(StatusCodes.CREATED).json({
       msg: 'MemberController_CREATE Success',
+      member
     })
   },
   bind: async (req: Req, res: Res) => {
+    const { memberId, userId } = req.body
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_BIND Success',
     })
