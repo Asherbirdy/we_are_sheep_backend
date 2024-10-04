@@ -29,12 +29,7 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     type: String,
     enum: Object.values(Role),
     default: Role.user,
-  },
-  district: {
-    type: Schema.Types.ObjectId,
-    ref: 'District',
-    default: null,
-  },
+  }
 })
 
 UserSchema.pre<IUser>('save', async function (next) {
