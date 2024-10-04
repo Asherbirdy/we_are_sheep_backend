@@ -14,7 +14,7 @@ export const MemberController = {
       })
       return
     } 
-    const members = await Member.find({ active })
+    const members = await Member.find({ active }).populate('createdBy', 'name')
 
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_GET Success',
@@ -39,7 +39,12 @@ export const MemberController = {
       return 
     }
 
-    const member = await Member.create({ name, district, identity })
+    const member = await Member.create({
+      name,
+      district,
+      identity,
+      createdBy: req.user?.userId
+    })
 
     res.status(StatusCodes.CREATED).json({
       msg: 'MemberController_CREATE Success',

@@ -20,6 +20,11 @@ const MemberSchema: Schema<IMember> = new mongoose.Schema({
   active: {
     type: Boolean,
     default: false
+  },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, 
 { timestamps: true }
