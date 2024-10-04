@@ -24,4 +24,18 @@ router.post(
   MemberController.bind 
 )
 
+router.post( 
+  '/approveMemberApply',
+  authenticateUser, 
+  authorizePermission(... RoleList.admins), 
+  MemberController.approveMemberApply 
+)
+
+router.patch( 
+  '/editMemberInfo',
+  authenticateUser, 
+  authorizePermission(... RoleList.admins), 
+  MemberController.editMember 
+)
+
 export default router

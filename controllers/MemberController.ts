@@ -52,6 +52,18 @@ export const MemberController = {
     })
   },
   // 通過 member
+  approveMemberApply: async (req: Req, res: Res) => {
+    const { memberId } = req.body
+    res.status(StatusCodes.OK).json({
+      msg: 'MemberController_APPROVE Success',
+    })
+  },
   // edit member
+  editMember: async (req: Req, res: Res) => {
+    const { memberId, name, district, identity } = req.body
+    res.status(StatusCodes.OK).json({
+      msg: 'MemberController_EDIT Success',
+    })
+  },
 }
 
