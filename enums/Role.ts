@@ -14,3 +14,11 @@ export const RoleList = {
   "shepherds": [Role.dev, Role.admin, Role.districtLeader, Role.shepherd],
   "users": [Role.dev, Role.admin, Role.districtLeader, Role.shepherd, Role.user],
 }
+
+
+export enum Identity {
+  "Male" = 'M',
+  "Female" = 'F',
+  "Brother" = 'B',
+  "Sister" = 'S'
+}
