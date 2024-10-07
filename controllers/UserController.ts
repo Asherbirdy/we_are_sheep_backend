@@ -52,5 +52,10 @@ export const UserController = {
       count: users.length,
       users
     })
+  },
+  bindAccountToUser: async (req: Req, res: Res) => {
+    res.status(StatusCodes.OK).json({
+      msg: 'UserController_BIND_ACCOUNT_TO_USER Success'
+    })
   }
 }

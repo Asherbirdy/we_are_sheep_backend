@@ -23,4 +23,11 @@ router.get(
   UserController.showNonBindMember
 )
 
+router.put(
+  '/bindAccountToUser',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  UserController.bindAccountToUser
+)
+
 export default router
