@@ -1,9 +1,12 @@
 
-import { Request } from 'express'
+import { Request, Response } from 'express'
+import { Role } from '../../enums'
 
 export interface Req extends Request {
   user?: {
     userId: string
-    role: string
+    role: Role
   }
 }
+
+export type Res = Response

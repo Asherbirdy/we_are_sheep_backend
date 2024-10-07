@@ -1,8 +1,9 @@
 import { Response } from 'express'
-import { StatusCodes } from '../enums'
-import { Req } from '../types'
+import { Role, StatusCodes } from '../enums'
+import { Req, Res } from '../types'
 import User from '../models/User'
 import config from '../config'
+import { District } from '../models/District'
 
 export const UserController = {
   // **
@@ -43,5 +44,21 @@ export const UserController = {
     user.password = newPassword
     await user.save()
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
+  },
+  showNonBindUser: async (req: Req, res: Res) => {
+    const users = await User.find({ member: { $exists: false } }).select('-password')
+    res.status(StatusCodes.OK).json({
+      member: 'show non bind user',
+      count: users.length,
+      users
+    })
+  },
+  bindMemberToUser: async (req: Req, res: Res) => {
+    const { userId, memberId } = req.body
+    const user = await User.findByIdAndUpdate(userId, { member: memberId }, { new: true }).select('-password')  
+    res.status(StatusCodes.OK).json({
+      msg: 'UserController_BIND_ACCOUNT_TO_USER Success',
+      user
+    })
   }
 }
