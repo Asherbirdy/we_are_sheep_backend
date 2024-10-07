@@ -1,5 +1,5 @@
 import { Response } from 'express'
-import { StatusCodes } from '../enums'
+import { Role, StatusCodes } from '../enums'
 import { Req, Res } from '../types'
 import User from '../models/User'
 import config from '../config'
@@ -45,17 +45,20 @@ export const UserController = {
     await user.save()
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
   },
-  showNonBindMember: async (req: Req, res: Res) => {
+  showNonBindUser: async (req: Req, res: Res) => {
     const users = await User.find({ member: { $exists: false } }).select('-password')
     res.status(StatusCodes.OK).json({
-      member: 'showBindMember',
+      member: 'show non bind user',
       count: users.length,
       users
     })
   },
-  bindAccountToUser: async (req: Req, res: Res) => {
+  bindMemberToUser: async (req: Req, res: Res) => {
+    const { userId, memberId } = req.body
+    const user = await User.findByIdAndUpdate(userId, { member: memberId }, { new: true }).select('-password')  
     res.status(StatusCodes.OK).json({
-      msg: 'UserController_BIND_ACCOUNT_TO_USER Success'
+      msg: 'UserController_BIND_ACCOUNT_TO_USER Success',
+      user
     })
   }
 }

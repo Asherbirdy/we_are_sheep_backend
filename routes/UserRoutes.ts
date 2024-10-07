@@ -17,17 +17,17 @@ router.patch(
 )
 
 router.get(
-  '/showNonBindMember',
+  '/showNonBindUser',
   authenticateUser,
   authorizePermission(... RoleList.fullTime),
-  UserController.showNonBindMember
+  UserController.showNonBindUser
 )
 
 router.put(
-  '/bindAccountToUser',
+  '/bindMemberToUser',
   authenticateUser,
   authorizePermission(... RoleList.admins),
-  UserController.bindAccountToUser
+  UserController.bindMemberToUser
 )
 
 export default router

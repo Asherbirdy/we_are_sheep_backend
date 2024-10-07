@@ -107,7 +107,7 @@ export const MemberController = {
       })
       return
     }
-    const member = await Member.findByIdAndUpdate(memberId, { name, district, identity }, { new: true })  
+    const member = await Member.findByIdAndUpdate(memberId, { name, district, identity }, { new: true })
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_EDIT Success',
       member
