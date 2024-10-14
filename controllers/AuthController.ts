@@ -57,8 +57,8 @@ export const AuthController = {
       }
 
       refreshToken = existingToken.refreshToken
-      attachCookieToResponse({ res, user: tokenUser, refreshToken })
-      res.status(StatusCodes.OK).json({ user: tokenUser })
+      const token = attachCookieToResponse({ res, user: tokenUser, refreshToken })
+      res.status(StatusCodes.OK).json({ user: tokenUser, token })
       return
     }
     refreshToken = crypto.randomBytes(40).toString('hex')
@@ -67,9 +67,9 @@ export const AuthController = {
     const userToken = { refreshToken, ip, userAgent, user: user._id }
 
     await Token.create(userToken)
-    attachCookieToResponse({ res, user: tokenUser, refreshToken })
+    const token = attachCookieToResponse({ res, user: tokenUser, refreshToken })
 
-    res.status(StatusCodes.OK).json({ user: tokenUser })
+    res.status(StatusCodes.OK).json({ user: tokenUser, token })
   },
 
   // ** logout
