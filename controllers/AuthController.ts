@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { Role, StatusCodes } from '../enums'
 import User from '../models/User'
 import Token from '../models/Token'
-import { createTokenUser, attachCookieToResponse } from '../utils'
+import { createTokenUser, attachCookieToResponse, isTokenValid } from '../utils'
 import crypto from 'crypto'
 import { Req } from '../types'
 export const AuthController = {
@@ -92,4 +92,35 @@ export const AuthController = {
 
     res.status(StatusCodes.OK).json({ msg: 'user logged out!' })
   },
+  // ** refreshToken
+  refreshToken: async (req: Req, res: Response) => {
+    let jwtrefreshToken = null
+    const authHeader = req.headers[ 'authorization' ]
+    if (authHeader) {
+      jwtrefreshToken = authHeader.split(' ')[ 1 ]
+    }
+    interface UserPayload {
+      user: {
+        name: string;
+        userId: string;
+        role: string;
+      };
+      refreshToken?: string;
+    }
+    const payload = isTokenValid(jwtrefreshToken) as UserPayload
+    const existingToken = await Token.findOne({
+      user: payload.user.userId,
+      refreshToken: payload.refreshToken,
+    })
+    const token = attachCookieToResponse({
+      res,
+      user: payload.user,
+      refreshToken: existingToken?.refreshToken,
+    })
+  
+    res.status(StatusCodes.OK).json({
+      msg: 'refreshToken',
+      jwtAccessToken: token,
+    })
+  }
 }
