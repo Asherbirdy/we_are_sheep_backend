@@ -7,5 +7,6 @@ export default {
   environment: process.env.ENVIRONMENT as 'DEV' | 'PROD',
   mongodb_url: process.env.MONGO_URL,
   mongodb_db_name: process.env.MONGO_DB_NAME,
-  jwt_secret: process.env.JWT_SECRET
+  jwt_secret: process.env.JWT_SECRET,
+  auth_token: process.env.AUTH_TOKEN as 'HEADER' | 'COOKIES'
 }

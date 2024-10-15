@@ -4,6 +4,8 @@ import Token from '../models/Token'
 import { Request, Response, NextFunction } from 'express'
 import { Req } from '../types'
 import { Role } from '../enums'
+import config from '../config'
+
 interface UserPayload {
   user: {
     name: string;
@@ -22,15 +24,33 @@ interface CustomRequest extends Request {
 }
 
 export const authenticateUser = async (req: CustomRequest, res: Response, next: NextFunction) => {
-  const { refreshToken, accessToken } = req.signedCookies
+  let jwtAccessToken = null
+  let jwtrefreshToken = null
+  
+  if (config.auth_token === 'HEADER') {
+    const authHeader = req.headers[ 'authorization' ]
+    if (authHeader) {
+      jwtAccessToken = authHeader.split(' ')[ 1 ]
+    }
+  }
+
+  if (config.auth_token === 'COOKIES') {
+    const { refreshToken, accessToken } = req.signedCookies
+    if (accessToken) {
+      jwtAccessToken = accessToken
+      jwtrefreshToken = refreshToken
+    }
+  }
+
+  // const { refreshToken, accessToken } = req.signedCookies
 
   try {
-    if (accessToken) {
-      const payload = isTokenValid(accessToken) as UserPayload
+    if (jwtAccessToken) {
+      const payload = isTokenValid(jwtAccessToken) as UserPayload
       req.user = payload.user
       return next()
     }
-    const payload = isTokenValid(refreshToken) as UserPayload
+    const payload = isTokenValid(jwtrefreshToken) as UserPayload
 
     const existingToken = await Token.findOne({
       user: payload.user.userId,
