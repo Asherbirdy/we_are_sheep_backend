@@ -20,7 +20,6 @@ const UserSerialNumberSchema: Schema<IUserSerialNumber> = new mongoose.Schema({
   bindMember: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Member',
-    required: true
   },
   createByUser: {
     type: mongoose.Schema.Types.ObjectId,
