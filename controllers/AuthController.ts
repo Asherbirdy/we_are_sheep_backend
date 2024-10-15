@@ -5,6 +5,7 @@ import Token from '../models/Token'
 import { createTokenUser, attachCookieToResponse, isTokenValid } from '../utils'
 import crypto from 'crypto'
 import { Req, Res } from '../types'
+import { UserSerialNumber } from '../models/UserSerialNumber'
 export const AuthController = {
   // ** register
   register: async (req: Request, res: Response) => {
@@ -24,10 +25,53 @@ export const AuthController = {
     attachCookieToResponse({ res, user: tokenUser })
     res.status(StatusCodes.CREATED).json({ user: tokenUser })
   },
+  // ** userRegister
   userRegister: async (req: Req, res: Res) => {
-    res.status(StatusCodes.CREATED).json({
-      msg: 'User register successfully',
-    })
+    const { name, email, password, serialNumber } = req.body
+
+    if(!name || !email || !password || !serialNumber) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: '請提供完整資訊！ name, email, password, serialNumber '
+      })
+      return
+    }
+
+    const userSerialNumber = await UserSerialNumber.findOne({ serialNumber })
+    if(!userSerialNumber) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        errorCode: 'USER_SERIAL_NUMBER_NOT_FOUND',
+        msg: 'User serial number not found'
+      })
+      return
+    }
+
+    if(userSerialNumber.isUsed) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        errorCode: 'USER_SERIAL_NUMBER_ALREADY_USED',
+        msg: 'User serial number is already used'
+      })
+      return
+    }
+
+    const emailAlreadyExist = await User.findOne({ email })
+
+    if (emailAlreadyExist) {
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: `${ email } 已經被使用！` })
+      return
+    }
+
+    const isFirstAccount = (await User.countDocuments({})) === 0
+    const role: Role = isFirstAccount ? Role.dev : Role.user
+    const user = await User.create({ name, email, password, role })
+    
+    const tokenUser = createTokenUser(user)
+    
+    attachCookieToResponse({ res, user: tokenUser })
+
+    userSerialNumber.isUsed = true
+    await userSerialNumber.save()
+
+    res.status(StatusCodes.CREATED).json({ user: tokenUser })
   },
   // ** login
   login: async (req: Request, res: Response) => {
