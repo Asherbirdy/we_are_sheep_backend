@@ -30,10 +30,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     enum: Object.values(Role),
     default: Role.user,
   },
-  member: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Member',
-  }
+  // member: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Member',
+  // }
 })
 
 UserSchema.pre<IUser>('save', async function (next) {

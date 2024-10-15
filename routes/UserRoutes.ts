@@ -16,18 +16,18 @@ router.patch(
   UserController.updatePassword
 )
 
-router.get(
-  '/showNonBindUser',
-  authenticateUser,
-  authorizePermission(... RoleList.fullTime),
-  UserController.showNonBindUser
-)
+// router.get(
+//   '/showNonBindUser',
+//   authenticateUser,
+//   authorizePermission(... RoleList.fullTime),
+//   UserController.showNonBindUser
+// )
 
-router.put(
-  '/bindMemberToUser',
-  authenticateUser,
-  authorizePermission(... RoleList.admins),
-  UserController.bindMemberToUser
-)
+// router.put(
+//   '/bindMemberToUser',
+//   authenticateUser,
+//   authorizePermission(... RoleList.admins),
+//   UserController.bindMemberToUser
+// )
 
 export default router
