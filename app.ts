@@ -8,6 +8,9 @@ import AuthRoutes from './routes/AuthRoutes'
 import UserRoutes from './routes/UserRoutes'
 import DistrictRoutes from './routes/DistrictRoutes'
 import MemberRoutes from './routes/MemberRoutes'
+import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
+
+// Plugins
 import cors from 'cors'
 import morgan from 'morgan'
 import { rateLimit } from 'express-rate-limit'
@@ -57,6 +60,7 @@ class Server {
     this.app.use('/api/v1/users', UserRoutes)
     this.app.use('/api/v1/district', DistrictRoutes)
     this.app.use('/api/v1/member', MemberRoutes)
+    this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
   }
 
   handleErrorAndSafety () {
