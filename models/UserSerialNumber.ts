@@ -1,12 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
-import { IUser, IMember } from '../types'
-
-interface IUserSerialNumber {
-  serialNumber: string
-  isUsed: boolean
-  bindMember: IMember
-  createByUser: IUser
-}
+import { Role } from '../enums'
+import { IUserSerialNumber } from '../types'
 
 const UserSerialNumberSchema: Schema<IUserSerialNumber> = new mongoose.Schema({
   serialNumber: {
@@ -17,14 +11,24 @@ const UserSerialNumberSchema: Schema<IUserSerialNumber> = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  bindMember: {
+  role: {
+    type: String,
+    enum: Object.values(Role),
+    required: true
+  },
+  districtid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Member',
+    ref: 'District',
+    required: true
   },
   createByUser: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  note: {
+    type: String,
+    default: ''
   }
 }, { timestamps: true })
 
