@@ -2,7 +2,6 @@ import { StatusCodes } from '../enums'
 import { Req, Res } from '../types'
 import { v4 as uuidv4 } from 'uuid'
 import { UserSerialNumber } from '../models/UserSerialNumber'
-import { Member } from '../models/Member'
 
 export const UserSerialNumberController = {
   create: async (req: Req, res: Res) => {

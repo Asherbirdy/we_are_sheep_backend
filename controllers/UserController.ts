@@ -1,13 +1,11 @@
 import { Response } from 'express'
-import { Role, StatusCodes } from '../enums'
+import { StatusCodes } from '../enums'
 import { Req, Res } from '../types'
 import User from '../models/User'
-import config from '../config'
-import { District } from '../models/District'
 
 export const UserController = {
   // **
-  showCurrentUser: async (req: Req, res: Response) => {
+  showCurrentUser: async (req: Req, res: Res) => {
     res.status(StatusCodes.OK).json({
       user: req.user
     })
