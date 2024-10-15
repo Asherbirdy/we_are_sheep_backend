@@ -18,11 +18,11 @@ router.get(
   UserSerialNumberController.getAll
 )
 
-router.post(
-  '/adminBindMemberToSerialNumber',
-  authenticateUser,
-  authorizePermission(... RoleList.admins),
-  UserSerialNumberController.adminBindMemberToSerialNumber
-)
+// router.post(
+//   '/adminBindMemberToSerialNumber',
+//   authenticateUser,
+//   authorizePermission(... RoleList.admins),
+//   UserSerialNumberController.adminBindMemberToSerialNumber
+// )
 
 export default router
