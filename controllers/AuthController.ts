@@ -4,7 +4,7 @@ import User from '../models/User'
 import Token from '../models/Token'
 import { createTokenUser, attachCookieToResponse, isTokenValid } from '../utils'
 import crypto from 'crypto'
-import { Req } from '../types'
+import { Req, Res } from '../types'
 export const AuthController = {
   // ** register
   register: async (req: Request, res: Response) => {
@@ -24,7 +24,11 @@ export const AuthController = {
     attachCookieToResponse({ res, user: tokenUser })
     res.status(StatusCodes.CREATED).json({ user: tokenUser })
   },
-
+  userRegister: async (req: Req, res: Res) => {
+    res.status(StatusCodes.CREATED).json({
+      msg: 'User register successfully',
+    })
+  },
   // ** login
   login: async (req: Request, res: Response) => {
     const { email, password } = req.body
