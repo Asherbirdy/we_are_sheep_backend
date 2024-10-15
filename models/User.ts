@@ -30,6 +30,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     enum: Object.values(Role),
     default: Role.user,
   },
+  district: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'District',
+  }
   // member: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Member',

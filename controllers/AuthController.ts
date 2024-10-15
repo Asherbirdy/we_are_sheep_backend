@@ -10,6 +10,7 @@ export const AuthController = {
   // ** register
   register: async (req: Request, res: Response) => {
     const { name, email, password } = req.body
+  
     const emailAlreadyExist = await User.findOne({ email })
     if (emailAlreadyExist) {
       res.status(StatusCodes.BAD_REQUEST).json({ msg: `${ email } 已經被使用！` })
@@ -17,6 +18,10 @@ export const AuthController = {
     }
 
     const isFirstAccount = (await User.countDocuments({})) === 0
+    if(!isFirstAccount) {
+      res.status(StatusCodes.BAD_REQUEST).json({ msg: '已經有開發者帳號！' })
+      return
+    }
     const role: Role = isFirstAccount ? Role.dev : Role.user
     const user = await User.create({ name, email, password, role })
     
@@ -27,11 +32,11 @@ export const AuthController = {
   },
   // ** userRegister
   userRegister: async (req: Req, res: Res) => {
-    const { name, email, password, serialNumber } = req.body
+    const { name, email, password, districtId, serialNumber } = req.body
 
-    if(!name || !email || !password || !serialNumber) {
+    if(!name || !email || !password || !districtId || !serialNumber) {
       res.status(StatusCodes.BAD_REQUEST).json({
-        msg: '請提供完整資訊！ name, email, password, serialNumber '
+        msg: '請提供完整資訊！ name, email, password, districtId, serialNumber '
       })
       return
     }
@@ -62,7 +67,7 @@ export const AuthController = {
 
     const isFirstAccount = (await User.countDocuments({})) === 0
     const role: Role = isFirstAccount ? Role.dev : Role.user
-    const user = await User.create({ name, email, password, role })
+    const user = await User.create({ name, email, password, role, district: districtId })
     
     const tokenUser = createTokenUser(user)
     
