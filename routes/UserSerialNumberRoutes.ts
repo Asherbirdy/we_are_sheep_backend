@@ -4,11 +4,18 @@ import { RoleList } from '../enums'
 import { UserSerialNumberController } from '../controllers'
 const router = Router()
 
-router.get(
+router.post(
   '/create',
   authenticateUser,
   authorizePermission(... RoleList.admins),
   UserSerialNumberController.create
+)
+
+router.put(
+  '/edit',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  UserSerialNumberController.edit
 )
 
 router.get(
@@ -18,11 +25,11 @@ router.get(
   UserSerialNumberController.getAll
 )
 
-// router.post(
-//   '/adminBindMemberToSerialNumber',
-//   authenticateUser,
-//   authorizePermission(... RoleList.admins),
-//   UserSerialNumberController.adminBindMemberToSerialNumber
-// )
+router.delete(
+  '/delete/:id',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  UserSerialNumberController.delete
+)
 
 export default router
