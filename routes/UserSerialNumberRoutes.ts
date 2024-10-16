@@ -11,6 +11,13 @@ router.post(
   UserSerialNumberController.create
 )
 
+router.put(
+  '/edit',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  UserSerialNumberController.edit
+)
+
 router.get(
   '/getAll',
   authenticateUser,

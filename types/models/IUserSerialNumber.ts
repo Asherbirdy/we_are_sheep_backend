@@ -8,5 +8,5 @@ export interface IUserSerialNumber {
   role: Role
   districtId: IDistrict
   createByUser: IUser
-  note: string
+  notes: string
 }

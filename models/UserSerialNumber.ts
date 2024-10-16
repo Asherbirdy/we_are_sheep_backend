@@ -26,7 +26,7 @@ const UserSerialNumberSchema: Schema<IUserSerialNumber> = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  note: {
+  notes: {
     type: String,
     default: ''
   }
