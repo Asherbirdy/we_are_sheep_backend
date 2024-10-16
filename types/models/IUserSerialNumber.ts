@@ -6,7 +6,7 @@ export interface IUserSerialNumber {
   serialNumber: string
   isUsed: boolean
   role: Role
-  districtid: IDistrict
+  districtId: IDistrict
   createByUser: IUser
   note: string
 }

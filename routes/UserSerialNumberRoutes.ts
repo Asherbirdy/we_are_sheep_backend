@@ -4,7 +4,7 @@ import { RoleList } from '../enums'
 import { UserSerialNumberController } from '../controllers'
 const router = Router()
 
-router.get(
+router.post(
   '/create',
   authenticateUser,
   authorizePermission(... RoleList.admins),

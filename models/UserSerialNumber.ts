@@ -16,7 +16,7 @@ const UserSerialNumberSchema: Schema<IUserSerialNumber> = new mongoose.Schema({
     enum: Object.values(Role),
     required: true
   },
-  districtid: {
+  districtId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'District',
     required: true
