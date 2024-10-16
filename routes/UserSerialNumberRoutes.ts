@@ -18,4 +18,11 @@ router.get(
   UserSerialNumberController.getAll
 )
 
+router.delete(
+  '/delete/:id',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  UserSerialNumberController.delete
+)
+
 export default router

@@ -45,4 +45,11 @@ export const UserSerialNumberController = {
       userSerialNumber
     })
   },
+  delete: async (req: Req, res: Res) => {
+    const { id } = req.params
+    await UserSerialNumber.findByIdAndDelete(id)
+    res.status(StatusCodes.OK).json({
+      msg: 'User serial number deleted successfully'
+    })
+  }
 }
