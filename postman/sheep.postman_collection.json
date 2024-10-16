@@ -10,33 +10,6 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "User Register",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"test\",\n    \"email\":\"test@gmail.com\",\n    \"password\":\"password\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/auth/register",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "User Login",
 					"request": {
 						"method": "POST",
@@ -64,6 +37,60 @@
 					"response": []
 				},
 				{
+					"name": "Dev Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test\",\n    \"email\":\"teassssdasdast@gmail.com\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test1\",\n    \"email\":\"test5@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"40d1d3e6-a3e3-4c58-bf6f-f26be43521b4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/userRegister",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"userRegister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "User Logout",
 					"request": {
 						"method": "DELETE",
@@ -82,20 +109,6 @@
 					"response": []
 				},
 				{
-					"name": "Get Current Token in Console",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}",
-							"host": [
-								"{{URL}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "refreshToken",
 					"request": {
 						"method": "GET",
@@ -108,65 +121,6 @@
 							"path": [
 								"auth",
 								"refreshToken"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "checkAuth",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/auth/checkAuth",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"auth",
-								"checkAuth"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "dev",
-			"item": [
-				{
-					"name": "CLEAR_ALL_DATA",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/dev/CLEAR_ALL_DATA",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"dev",
-								"CLEAR_ALL_DATA"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DB",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/dev/DB",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"dev",
-								"DB"
 							]
 						}
 					},
@@ -318,33 +272,23 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "User Serial Number",
+			"item": [
 				{
-					"name": "Show Non Bind Member",
+					"name": "Get All Serial Number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{URL}}/users/showNonBindUser",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"users",
-								"showNonBindUser"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Bind A Member To User",
-					"request": {
-						"method": "PUT",
-						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userId\":\"6703829525abdd3449f9dde9\",\n    \"memberId\":\"66ffb8ad685c45ac335d86ef\"\n}",
+							"raw": "{\n    \"memberId\":\"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -352,13 +296,136 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/users/bindMemberToUser",
+							"raw": "{{URL}}/userSerialNumber/getAll",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"users",
-								"bindMemberToUser"
+								"userSerialNumber",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Serial Number",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"fullTime\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/userSerialNumber/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userSerialNumber",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Serial Number",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serialNumberId\":\"670e2576fee77438efc12beb\",\n    \"role\": \"fullTime\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"hiasdasasdss\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/userSerialNumber/edit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userSerialNumber",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Serial Number",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"fullTime\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/userSerialNumber/delete/asdsad",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"userSerialNumber",
+								"delete",
+								"asdsad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "CLEAR_ALL_DATA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/dev/CLEAR_ALL_DATA",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								"CLEAR_ALL_DATA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/dev/DB",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								"DB"
 							]
 						}
 					},
@@ -393,7 +460,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"一區\"\n}",
+							"raw": "{\n    \"namssse\":\"二區\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -419,7 +486,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"66f3cce637649a4df364f79b\"\n}",
+							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"66ffad1dd24651e2ea742703\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
