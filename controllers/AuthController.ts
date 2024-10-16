@@ -6,6 +6,7 @@ import { createTokenUser, attachCookieToResponse, isTokenValid } from '../utils'
 import crypto from 'crypto'
 import { Req, Res } from '../types'
 import { UserSerialNumber } from '../models/UserSerialNumber'
+import { District } from '../models/District'
 export const AuthController = {
   // ** register
   register: async (req: Request, res: Response) => {
@@ -32,16 +33,17 @@ export const AuthController = {
   },
   // ** userRegister
   userRegister: async (req: Req, res: Res) => {
-    const { name, email, password, districtId, serialNumber } = req.body
+    const { name, email, password, serialNumber } = req.body
 
-    if(!name || !email || !password || !districtId || !serialNumber) {
+    if(!name || !email || !password || !serialNumber) {
       res.status(StatusCodes.BAD_REQUEST).json({
-        msg: '請提供完整資訊！ name, email, password, districtId, serialNumber '
+        msg: '請提供完整資訊！ name, email, password, serialNumber '
       })
       return
     }
 
     const userSerialNumber = await UserSerialNumber.findOne({ serialNumber })
+
     if(!userSerialNumber) {
       res.status(StatusCodes.NOT_FOUND).json({
         errorCode: 'USER_SERIAL_NUMBER_NOT_FOUND',
@@ -65,9 +67,16 @@ export const AuthController = {
       return
     }
 
-    const isFirstAccount = (await User.countDocuments({})) === 0
-    const role: Role = isFirstAccount ? Role.dev : Role.user
-    const user = await User.create({ name, email, password, role, district: districtId })
+    const user = await (await User.create({
+      name,
+      email,
+      password,
+      role: userSerialNumber.role,
+      district: userSerialNumber.districtId
+    })).populate({
+      path: 'district',
+      model: District,
+    })
     
     const tokenUser = createTokenUser(user)
     
@@ -76,7 +85,7 @@ export const AuthController = {
     userSerialNumber.isUsed = true
     await userSerialNumber.save()
 
-    res.status(StatusCodes.CREATED).json({ user: tokenUser })
+    res.status(StatusCodes.CREATED).json({ user })
   },
   // ** login
   login: async (req: Request, res: Response) => {
