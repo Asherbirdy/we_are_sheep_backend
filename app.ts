@@ -74,7 +74,10 @@ class Server {
     this.app.listen(config.port, async () => {
       
       if(config.mongodb_url && config.mongodb_db_name) {
-        await connectDB(config.mongodb_url, config.mongodb_db_name)
+        await connectDB(
+          config.mongodb_url,
+          config.mongodb_db_name
+        )
       }
       // eslint-disable-next-line no-console
       console.log(`Server up and running at port: ${ config.port }`)
