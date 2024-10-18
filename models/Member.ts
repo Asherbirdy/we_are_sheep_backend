@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import { IMember } from '../types'
-import { Identity } from '../enums'
+import { Identity, MeetingStatus } from '../enums'
 
 const MemberSchema: Schema<IMember> = new mongoose.Schema({
   name: {
@@ -16,6 +16,11 @@ const MemberSchema: Schema<IMember> = new mongoose.Schema({
     type: String,
     enum: Identity,
     required: true
+  },
+  meetingStatus: {
+    type: String,
+    enum: MeetingStatus,
+    default: MeetingStatus.D_member
   },
   active: {
     type: Boolean,
