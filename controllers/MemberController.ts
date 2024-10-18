@@ -113,5 +113,15 @@ export const MemberController = {
       member
     })
   },
+  getAllDistrictMember: async (req: Req, res: Res) => {
+    res.status(StatusCodes.OK).json({
+      msg: 'MemberController_GET_ALL_DISTRICT_MEMBER Success',
+    })
+  },
+  editMemberMeetingStatus: async (req: Req, res: Res) => {
+    res.status(StatusCodes.OK).json({
+      msg: 'MemberController_EDIT_MEMBER_STATUS Success',
+    })
+  }
 }
 

@@ -32,4 +32,18 @@ router.patch(
   MemberController.editMember 
 )
 
+router.get( 
+  '/getAllDistrictMember',
+  authenticateUser, 
+  authorizePermission(... RoleList.districtLeaders), 
+  MemberController.getAllDistrictMember 
+)
+
+router.patch( 
+  '/editMemberMeetingStatus',
+  authenticateUser, 
+  authorizePermission(... RoleList.districtLeaders), 
+  MemberController.editMemberMeetingStatus 
+)
+
 export default router
