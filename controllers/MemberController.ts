@@ -1,8 +1,10 @@
-import { StatusCodes } from '../enums'
-import { Req, Res } from '../types'
-import { Member } from '../models/Member'
 import { 
-  GetAllMemberModule, CreateMemberModule, ApproveMemberToActiveModule, EditMemberModule ,GetAllDistrictMemberFromUserModule, EditMemberMeetingStatusModule
+  GetAllMemberModule,
+  CreateMemberModule,
+  ApproveMemberToActiveModule,
+  EditMemberModule ,
+  GetAllDistrictMemberFromUserModule,
+  EditMemberMeetingStatusModule
 } from '../modules'
 
 export const MemberController = {
@@ -14,7 +16,9 @@ export const MemberController = {
   approveMemberToActive: ApproveMemberToActiveModule,
   // edit member
   editMember: EditMemberModule,
+  // 取得此user的district member
   getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserModule,
+  // 編輯member meeting status
   editMemberMeetingStatus: EditMemberMeetingStatusModule
 }
 
