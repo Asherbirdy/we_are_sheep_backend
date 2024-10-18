@@ -33,10 +33,10 @@ router.patch(
 )
 
 router.get( 
-  '/getAllDistrictMember',
+  '/getAllDistrictMemberFromUser',
   authenticateUser, 
   authorizePermission(... RoleList.districtLeaders), 
-  MemberController.getAllDistrictMember 
+  MemberController.getAllDistrictMemberFromUser 
 )
 
 router.patch( 

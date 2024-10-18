@@ -113,7 +113,16 @@ export const MemberController = {
       member
     })
   },
-  getAllDistrictMember: async (req: Req, res: Res) => {
+  getAllDistrictMemberFromUser: async (req: Req, res: Res) => {
+
+    const { districtId } = req.body
+    if (!districtId) {
+      res.status(StatusCodes.BAD_REQUEST).json({
+        msg: 'Please provide districtId',
+      })
+      return
+    }
+
     res.status(StatusCodes.OK).json({
       msg: 'MemberController_GET_ALL_DISTRICT_MEMBER Success',
     })
