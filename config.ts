@@ -7,6 +7,7 @@ export default {
   environment: process.env.ENVIRONMENT as 'DEV' | 'PROD',
   mongodb_url: process.env.MONGO_URL,
   mongodb_db_name: process.env.MONGO_DB_NAME,
+  mongodb_db_position: process.env.MONGO_DB_POSITION as 'GCP' | 'DOCKER',
   jwt_secret: process.env.JWT_SECRET,
   auth_token: process.env.AUTH_TOKEN as 'HEADER' | 'COOKIES'
 }

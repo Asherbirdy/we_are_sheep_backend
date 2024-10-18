@@ -4,11 +4,15 @@ mongoose.set('strictQuery', false)
 
 export const connectDB = (url: string, dbName: string) => {
   if(config.environment === 'DEV') {
-    const connectionUrl = `${ url }/${ dbName }?authSource=admin`
-
+    if(config.mongodb_db_position === 'GCP') {
+      const connectionUrl = `${ url }/${ dbName }?authSource=admin`
+      return mongoose.connect(connectionUrl)
+    }
     // DOCKER測試連結 不要刪掉
-    // const connectionUrl = `${ url }/${ dbName }?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.0`
-    return mongoose.connect(connectionUrl)
+    if(config.mongodb_db_position === 'DOCKER') {
+      const connectionUrl = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.0'
+      return mongoose.connect(connectionUrl)
+    }
   }
 
   if(config.environment === 'PROD') {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import 'express-async-errors'
 import express, { Application } from 'express'
 import config from './config'
@@ -73,10 +74,16 @@ class Server {
   listen () {
     this.app.listen(config.port, async () => {
       
-      if(config.mongodb_url && config.mongodb_db_name) {
-        await connectDB(config.mongodb_url, config.mongodb_db_name)
+      if(config.environment === 'DEV') {
+        console.table(config)
       }
-      // eslint-disable-next-line no-console
+
+      if(config.mongodb_url && config.mongodb_db_name) {
+        await connectDB(
+          config.mongodb_url,
+          config.mongodb_db_name
+        )
+      }
       console.log(`Server up and running at port: ${ config.port }`)
     })
   }
