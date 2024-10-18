@@ -114,7 +114,7 @@ export const MemberController = {
     })
   },
   getAllDistrictMemberFromUser: async (req: Req, res: Res) => {
-
+    console.log(req.user?.districtId)
     const { districtId } = req.body
     if (!districtId) {
       res.status(StatusCodes.BAD_REQUEST).json({

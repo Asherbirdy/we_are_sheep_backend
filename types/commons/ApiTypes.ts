@@ -6,6 +6,7 @@ export interface Req extends Request {
   user?: {
     userId: string
     role: Role
+    districtId: string
   }
 }
 
