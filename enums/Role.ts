@@ -22,3 +22,11 @@ export enum Identity {
   "Brother" = 'B',
   "Sister" = 'S'
 }
+
+export enum MeetingStatus {
+  "A_member" = 'A',
+  "B_member" = 'B',
+  "C_member" = 'C',
+  "D_member" = 'D',
+  "E_member" = 'E'
+}
