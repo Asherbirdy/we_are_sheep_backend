@@ -67,15 +67,12 @@ export const AuthController = {
       return
     }
 
-    const user = await (await User.create({
+    const user = await User.create({
       name,
       email,
       password,
       role: userSerialNumber.role,
       district: userSerialNumber.districtId
-    })).populate({
-      path: 'district',
-      model: District,
     })
     
     const tokenUser = createTokenUser(user)
@@ -85,7 +82,7 @@ export const AuthController = {
     userSerialNumber.isUsed = true
     await userSerialNumber.save()
 
-    res.status(StatusCodes.CREATED).json({ user })
+    res.status(StatusCodes.CREATED).json({ tokenUser })
   },
   // ** login
   login: async (req: Request, res: Response) => {
