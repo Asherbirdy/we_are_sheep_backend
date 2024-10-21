@@ -4,7 +4,7 @@ import { Req, Res } from '../../types'
 import { v4 as uuidv4 } from 'uuid'
 import { UserSerialNumber } from '../../models/UserSerialNumber'
 
-export const CreateSerialNumberModule = async (req: Req, res: Res) => {
+export const CreateSerialNumberController = async (req: Req, res: Res) => {
   const { role, districtId, notes } = req.body
   if (!role || !districtId) {
     res.status(StatusCodes.BAD_REQUEST).json({
