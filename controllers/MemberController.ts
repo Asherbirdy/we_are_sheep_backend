@@ -1,24 +1,24 @@
-import { 
-  GetAllMemberModule,
-  CreateMemberModule,
-  ApproveMemberToActiveModule,
-  EditMemberModule ,
-  GetAllDistrictMemberFromUserModule,
-  EditMemberMeetingStatusModule
-} from '../modules'
+import {
+  GetAllMemberController,
+  CreateMemberController,
+  ApproveMemberToActiveController,
+  EditMemberController,
+  GetAllDistrictMemberFromUserController,
+  EditMemberMeetingStatusController
+} from './MemberController/index'
 
 export const MemberController = {
   // get all members
-  get: GetAllMemberModule,
+  get: GetAllMemberController,
   // create member
-  create: CreateMemberModule,
+  create: CreateMemberController,
   // 通過 member
-  approveMemberToActive: ApproveMemberToActiveModule,
+  approveMemberToActive: ApproveMemberToActiveController,
   // edit member
-  editMember: EditMemberModule,
+  editMember: EditMemberController,
   // 取得此user的district member
-  getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserModule,
+  getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserController,
   // 編輯member meeting status
-  editMemberMeetingStatus: EditMemberMeetingStatusModule
+  editMemberMeetingStatus: EditMemberMeetingStatusController
 }
 

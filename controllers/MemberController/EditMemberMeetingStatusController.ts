@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
-export const EditMemberMeetingStatusModule = async (req: Req, res: Res) => {
+export const EditMemberMeetingStatusController = async (req: Req, res: Res) => {
   const { memberId, meetingStatus } = req.body
   if (!memberId || !meetingStatus) {
     res.status(StatusCodes.BAD_REQUEST).json({

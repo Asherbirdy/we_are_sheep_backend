@@ -1,10 +1,13 @@
-import { 
-  CreateSerialNumberModule, GetAllSerialNumberModule, EditSerialNumberModule,DeleteSerialNumberModule
-} from '../modules'
+import {
+  CreateSerialNumberController,
+  GetAllSerialNumberController,
+  EditSerialNumberController,
+  DeleteSerialNumberController
+} from './UserSerialNumberController/index'
 
 export const UserSerialNumberController = {
-  create: CreateSerialNumberModule,
-  getAll: GetAllSerialNumberModule,
-  edit: EditSerialNumberModule,
-  delete: DeleteSerialNumberModule
+  create: CreateSerialNumberController,
+  getAll: GetAllSerialNumberController,
+  edit: EditSerialNumberController,
+  delete: DeleteSerialNumberController
 }

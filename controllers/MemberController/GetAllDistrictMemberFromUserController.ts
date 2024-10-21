@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
-export const GetAllDistrictMemberFromUserModule =async (req: Req, res: Res) => {
+export const GetAllDistrictMemberFromUserController =async (req: Req, res: Res) => {
   if (!req.user?.districtId) {
     res.status(StatusCodes.BAD_REQUEST).json({
       msg: 'Please provide districtId',

@@ -3,7 +3,7 @@ import { District } from '../../models/District'
 import { UserSerialNumber } from '../../models/UserSerialNumber'
 import { Req, Res } from '../../types'
 
-export const EditSerialNumberModule = async (req: Req, res: Res) => {
+export const EditSerialNumberController = async (req: Req, res: Res) => {
   const {serialNumberId, role, districtId, notes} = req.body
   if(!serialNumberId || !role || !districtId ) {
     res.status(StatusCodes.BAD_REQUEST).json({

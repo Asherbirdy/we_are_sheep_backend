@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
-export const CreateMemberModule = async (req: Req, res: Res) => {
+export const CreateMemberController = async (req: Req, res: Res) => {
   const { name, district, identity } = req.body
   if (!name || !district || !identity) {
     res.status(StatusCodes.BAD_REQUEST).json({

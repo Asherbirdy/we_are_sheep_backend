@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
-export const GetAllMemberModule = async (req: Req, res: Res) => {
+export const GetAllMemberController = async (req: Req, res: Res) => {
   const { active } = req.query
 
   if (active !== 'true' && active !== 'false') {
