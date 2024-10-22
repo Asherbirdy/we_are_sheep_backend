@@ -3,7 +3,7 @@ import {
   GetAllSerialNumberController,
   EditSerialNumberController,
   DeleteSerialNumberController
-} from './UserSerialNumberController/index'
+} from './UserSerialNumber/index'
 
 export const UserSerialNumberController = {
   create: CreateSerialNumberController,
