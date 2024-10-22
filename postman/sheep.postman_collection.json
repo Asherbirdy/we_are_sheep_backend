@@ -11,6 +11,29 @@
 			"item": [
 				{
 					"name": "User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// 解析回應的 JSON 數據",
+									"var data = pm.response.json();",
+									"",
+									"// 檢查回應中是否包含 accessTokenJWT",
+									"if (data.token && data.token.accessTokenJWT) {",
+									"    // 將 accessTokenJWT 保存到環境變數中",
+									"    pm.environment.set(\"accessTokenJWT\", data.token.accessTokenJWT);",
+									"    console.log(\"accessTokenJWT saved to environment:\", data.token.accessTokenJWT);",
+									"} else {",
+									"    console.log(\"No accessTokenJWT found in response\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -43,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"test\",\n    \"email\":\"teassssdasdast@gmail.com\",\n    \"password\":\"password\"\n}",
+							"raw": "{\n    \"name\":\"dev\",\n    \"email\":\"dev@gmail.com\",\n    \"password\":\"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"test1\",\n    \"email\":\"test5@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"40d1d3e6-a3e3-4c58-bf6f-f26be43521b4\"\n}",
+							"raw": "{\n    \"name\":\"test1\",\n    \"email\":\"birdym.tw@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"8c0dbe5d-e711-4d01-8b57-38d97df16022\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,6 +134,16 @@
 				{
 					"name": "refreshToken",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -121,6 +154,145 @@
 							"path": [
 								"auth",
 								"refreshToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send OTP To Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/auth/sendOTP",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sendOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bind OTP To Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"OTP\":\"897e35\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/bindOTPEmail",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"bindOTPEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password Email OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"OTP\":\"897e35\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/forgetPasswordEmailOTP",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"forgetPasswordEmailOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password With OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"birdym.tw@gmail.com\",\n    \"OTP\":\"897e35\",\n    \"newPassword\":\"password2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/changePasswordWithOTP",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"changePasswordWithOTP"
 							]
 						}
 					},
@@ -284,6 +456,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -311,11 +493,21 @@
 				{
 					"name": "Create Serial Number",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"role\": \"fullTime\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"\"\n}",
+							"raw": "{\n    \"role\": \"admin\",\n    \"districtId\": \"67123009c2557403f3a151a6\",\n    \"notes\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -338,11 +530,21 @@
 				{
 					"name": "Edit Serial Number",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"serialNumberId\":\"670e2576fee77438efc12beb\",\n    \"role\": \"fullTime\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"hiasdasasdss\"\n}",
+							"raw": "{\n    \"serialNumberId\":\"6712136573bfae51518245e5\",\n    \"role\": \"admin\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"hiasdasasdss\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -365,6 +567,16 @@
 				{
 					"name": "Delete Serial Number",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -438,7 +650,42 @@
 			"item": [
 				{
 					"name": "Get All District",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// 從 cookie 中獲取名為 accessTokenJWT 的 token",
+									"const accessToken = pm.cookies.get(\"accessToken\");",
+									"",
+									"if (accessToken) {",
+									"    // 將 accessTokenJWT 添加到 Authorization Header 中",
+									"    pm.request.headers.add({",
+									"        key: \"Authorization\",",
+									"        value: `Bearer ${accessToken}`",
+									"    });",
+									"    console.log(\"Authorization header set with token:\", accessToken);",
+									"} else {",
+									"    console.log(\"No accessTokenJWT found in cookies\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -456,11 +703,21 @@
 				{
 					"name": "Create District",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"namssse\":\"二區\"\n}",
+							"raw": "{\n    \"name\":\"四區\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -482,11 +739,21 @@
 				{
 					"name": "Edit District",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"66ffad1dd24651e2ea742703\"\n}",
+							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"67123009c2557403f3a151a6\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -508,6 +775,16 @@
 				{
 					"name": "Close District",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -535,6 +812,16 @@
 				{
 					"name": "Open District",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -567,6 +854,16 @@
 				{
 					"name": "Get All Member",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -590,11 +887,21 @@
 				{
 					"name": "Create Member",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"連亞設5d\",\n    \"district\":\"66ffad1dd24651e2ea742703\",\n    \"identity\":\"Bsdasdad\"\n}",
+							"raw": "{\n    \"name\":\"a連ss三sss\",\n    \"district\":\"67123009c2557403f3a151a6\",\n    \"identity\":\"B\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -616,6 +923,16 @@
 				{
 					"name": "Approve Member Apply",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -643,6 +960,16 @@
 				{
 					"name": "Edit Member Info",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -662,6 +989,71 @@
 							"path": [
 								"member",
 								"editMemberInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All District Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/getAllDistrictMemberFromUser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"getAllDistrictMemberFromUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Member Meeting Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\": \"67122d711df41d553d98e68f\",\n    \"meetingStatus\": \"A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/member/editMemberMeetingStatus",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"editMemberMeetingStatus"
 							]
 						}
 					},
@@ -695,7 +1087,7 @@
 	"variable": [
 		{
 			"key": "URL",
-			"value": "http://localhost:2500/api/v1",
+			"value": "https://sheep-backend-dist.onrender.com/api/v1",
 			"type": "string"
 		}
 	]

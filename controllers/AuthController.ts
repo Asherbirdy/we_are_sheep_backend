@@ -5,7 +5,9 @@ import {
   LogoutController,
   RefreshTokenController,
   SendOTPController,
-  bindOTPEmailController
+  bindOTPEmailController,
+  ForgetPasswordEmailOTPController,
+  ChangePasswordWithOTPController
 } from './Auth'
 
 export const AuthController = {
@@ -24,5 +26,14 @@ export const AuthController = {
   /*
     * Bind OTP Email
   */
-  bindOTPEmail: bindOTPEmailController
+  bindOTPEmail: bindOTPEmailController,
+  // TODO Add OTP to phone number
+  /*
+    * Forget Password Email OTP
+  */
+  forgetPasswordEmailOTP: ForgetPasswordEmailOTPController,
+  /*
+    * Change Password With OTP
+  */
+  changePasswordWithOTP: ChangePasswordWithOTPController
 }
