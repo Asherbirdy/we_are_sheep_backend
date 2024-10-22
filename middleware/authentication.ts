@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from 'express'
 import { Req } from '../types'
 import { Role } from '../enums'
 import config from '../config'
+import User from '../models/User'
 
 interface UserPayload {
   user: {
@@ -83,3 +84,11 @@ export const authorizePermission = (... roles: Role[]) => {
   }
 }
 
+export const checkVerifiedEmail = async (req: Req, res: Response, next: NextFunction) => {
+  const user = await User.findById(req.user?.userId)
+  if (!user?.emailVerified) {
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Email not verified' })
+    return
+  }
+  next()
+}
