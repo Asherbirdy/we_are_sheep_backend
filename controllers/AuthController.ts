@@ -181,5 +181,11 @@ export const AuthController = {
       msg: 'refreshToken',
       jwtAccessToken: token,
     })
+  },
+  sendOTP: async (req: Req, res: Res) => {
+    res.status(StatusCodes.OK).json({ msg: 'sendOTP' })
+  },
+  bindOTPEmail: async (req: Req, res: Res) => {
+    res.status(StatusCodes.OK).json({ msg: 'bindOTPEmail' })
   }
 }
