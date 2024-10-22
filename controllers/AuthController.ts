@@ -7,7 +7,6 @@ import {
   SendOTPController,
   bindOTPEmailController,
   ForgetPasswordEmailOTPController,
-  CheckChangePasswordOTPisValidController,
   ChangePasswordWithOTPController
 } from './Auth'
 
@@ -33,10 +32,6 @@ export const AuthController = {
     * Forget Password Email OTP
   */
   forgetPasswordEmailOTP: ForgetPasswordEmailOTPController,
-  /*
-    * Check Change Password OTP is Valid
-  */
-  checkChangePasswordOTPisValid: CheckChangePasswordOTPisValidController,
   /*
     * Change Password With OTP
   */
