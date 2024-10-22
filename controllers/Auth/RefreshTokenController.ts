@@ -1,6 +1,5 @@
-import { Role, StatusCodes } from '../../enums'
+import { StatusCodes } from '../../enums'
 import Token from '../../models/Token'
-import User from '../../models/User'
 import { Req, Res } from '../../types'
 import { attachCookieToResponse, isTokenValid } from '../../utils'
 

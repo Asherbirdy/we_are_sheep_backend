@@ -1,7 +1,7 @@
-import { Role, StatusCodes } from '../../enums'
+import { StatusCodes } from '../../enums'
 import User from '../../models/User'
 import { Req, Res } from '../../types'
-import { attachCookieToResponse, createTokenUser, generateOTP, sendOTP } from '../../utils'
+import { generateOTP, sendOTP } from '../../utils'
 
 export const SendOTPController = async (req: Req, res: Res) => {
 

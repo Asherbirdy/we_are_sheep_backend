@@ -1,7 +1,6 @@
-import { Role, StatusCodes } from '../../enums'
+import { StatusCodes } from '../../enums'
 import User from '../../models/User'
 import { Req, Res } from '../../types'
-import { attachCookieToResponse, createTokenUser } from '../../utils'
 
 export const bindOTPEmailController = async (req: Req, res: Res) => {
   const OTP = req.body.OTP
