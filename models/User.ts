@@ -20,6 +20,27 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     },
     unique: true,
   },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  OTP: {
+    type: String || undefined,
+  },
+  OTPCreatedTime: {
+    type: Date || undefined,
+  },
+  OTPAttempts: {
+    type: Number,
+    default: 0,
+  },
+  isBlocked: {
+    type: Boolean,
+    default: false,
+  },
+  blockUntil: {
+    type: Date,
+  },  
   password: {
     type: String,
     required: [true, 'Please provide password'],

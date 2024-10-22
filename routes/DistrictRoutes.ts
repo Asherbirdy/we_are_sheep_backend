@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { DistrictController } from '../controllers'
-import { authenticateUser, authorizePermission } from '../middleware'
+import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 import { Role, RoleList } from '../enums'
 const router = Router()
 
@@ -8,6 +8,7 @@ router.get(
   '/',
   authenticateUser,
   authorizePermission(... RoleList.users),
+  checkVerifiedEmail,
   DistrictController.get
 )
 

@@ -8,4 +8,6 @@ router.post('/userRegister', AuthController.userRegister)
 router.post('/login', AuthController.login)
 router.delete('/logout', authenticateUser, AuthController.logout)
 router.get('/refreshToken', authenticateUser, AuthController.refreshToken)
+router.get('/sendOTP', authenticateUser, AuthController.sendOTP)
+router.post('/bindOTPEmail',authenticateUser, AuthController.bindOTPEmail)
 export default router
