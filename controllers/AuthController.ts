@@ -9,16 +9,20 @@ import {
 } from './Auth'
 
 export const AuthController = {
-  // ** register
   register: RegisterController,
-  // ** userRegister
+  /*
+    * User Register
+  */
   userRegister: UserRegisterController,
-  // ** login
   login: LoginController,
-  // ** logout
   logout: LogoutController,
-  // ** refreshToken
   refreshToken: RefreshTokenController,
+  /*
+    * Send OTP
+  */  
   sendOTP: SendOTPController,
+  /*
+    * Bind OTP Email
+  */
   bindOTPEmail: bindOTPEmailController
 }
