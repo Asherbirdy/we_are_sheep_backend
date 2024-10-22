@@ -25,10 +25,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     default: false,
   },
   OTP: {
-    type: String,
+    type: String || undefined,
   },
   OTPCreatedTime: {
-    type: Date,
+    type: Date || undefined,
   },
   OTPAttempts: {
     type: Number,

@@ -6,8 +6,8 @@ export interface IUser extends Document {
   name: string
   email: string
   emailVerified: boolean
-  OTP: string
-  OTPCreatedTime: Date
+  OTP: string | undefined
+  OTPCreatedTime: Date | undefined
   OTPAttempts: number
   isBlocked: boolean
   blockUntil: Date

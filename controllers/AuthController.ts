@@ -6,7 +6,9 @@ import { createTokenUser, attachCookieToResponse, isTokenValid } from '../utils'
 import crypto from 'crypto'
 import { Req, Res } from '../types'
 import { UserSerialNumber } from '../models/UserSerialNumber'
-import { District } from '../models/District'
+import { generateOTP, sendOTP } from '../utils/emailService'
+import jwt from 'jsonwebtoken'
+import config from '../config'
 export const AuthController = {
   // ** register
   register: async (req: Request, res: Response) => {
@@ -183,9 +185,113 @@ export const AuthController = {
     })
   },
   sendOTP: async (req: Req, res: Res) => {
+
+    try {
+      const user = await User.findById(req.user?.userId)
+
+      if (!user) {
+        res.status(StatusCodes.NOT_FOUND).json({ msg: 'User not found' })
+        return
+      }
+
+      // If user is blocked, return an error
+      if (user.isBlocked) {
+        const currentTime = new Date()
+        if (currentTime < user.blockUntil) {
+          return res.status(403).send('Account blocked. Try after some time.')
+        } else {
+          user.isBlocked = false
+          user.OTPAttempts = 0
+        }
+      }
+  
+      // Check for minimum 1-minute gap between OTP requests
+      const lastOTPTime = user.OTPCreatedTime
+      const currentTime = new Date()
+  
+      if (lastOTPTime && currentTime.getTime() - lastOTPTime.getTime() < 60000) {
+        return res.status(StatusCodes.BAD_REQUEST).send('Minimum 1-minute gap required between OTP requests')
+      }
+  
+      const OTP = generateOTP()
+      user.OTP = OTP
+      user.OTPCreatedTime = currentTime
+  
+      await user.save()
+  
+      sendOTP(user.email, OTP)
+  
+      res.status(StatusCodes.OK).send('OTP sent successfully')
+    } catch (err) {
+      res.status(500).send('Server error')
+    }
     res.status(StatusCodes.OK).json({ msg: 'sendOTP' })
   },
   bindOTPEmail: async (req: Req, res: Res) => {
-    res.status(StatusCodes.OK).json({ msg: 'bindOTPEmail' })
+    const email = req.body.email
+    const OTP = req.body.OTP
+    try {
+      const user = await User.findOne({ email: email })
+  
+      if (!user) {
+        return res.status(404).send('User not found')
+      }
+  
+      // Check if user account is blocked
+      if (user.isBlocked) {
+        const currentTime = new Date()
+        if (currentTime < user.blockUntil) {
+          return res.status(403).send('Account blocked. Try after some time.')
+        } else {
+          user.isBlocked = false
+          user.OTPAttempts = 0
+        }
+      }
+  
+      // Check OTP
+      if (user.OTP !== OTP) {
+        user.OTPAttempts++
+  
+        // If OTP attempts >= 5, block user for 1 hour
+        if (user.OTPAttempts >= 5) {
+          user.isBlocked = true
+          const blockUntil = new Date()
+          blockUntil.setHours(blockUntil.getHours() + 1)
+          user.blockUntil = blockUntil
+        }
+  
+        await user.save()
+  
+        return res.status(403).send('Invalid OTP')
+      }
+  
+      // Check if OTP is within 5 minutes
+      const OTPCreatedTime = user.OTPCreatedTime
+      if (!OTPCreatedTime) {
+        return res.status(403).send('OTP not found or expired')
+      }
+      const currentTime = new Date()
+      const timeDifference = currentTime.getTime() - OTPCreatedTime.getTime()
+  
+      if (timeDifference > 5 * 60 * 1000) {
+        return res.status(403).send('OTP expired')
+      }
+  
+      // Generate JWT
+      const token = jwt.sign({ email: user.email }, config.jwt_secret as string, {
+        expiresIn: '1h',
+      })
+  
+      // Clear OTP
+      user.OTP = undefined
+      user.OTPCreatedTime = undefined
+      user.OTPAttempts = 0
+      user.emailVerified = true
+  
+      await user.save()
+      res.status(StatusCodes.OK).json({ msg: 'bindOTPEmail', token })
+    } catch (err) {
+      res.status(500).send('Server error')
+    }
   }
 }
