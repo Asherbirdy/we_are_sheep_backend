@@ -5,7 +5,10 @@ import {
   LogoutController,
   RefreshTokenController,
   SendOTPController,
-  bindOTPEmailController
+  bindOTPEmailController,
+  ForgetPasswordEmailOTPController,
+  CheckChangePasswordOTPisValidController,
+  ChangePasswordWithOTPController
 } from './Auth'
 
 export const AuthController = {
@@ -24,5 +27,17 @@ export const AuthController = {
   /*
     * Bind OTP Email
   */
-  bindOTPEmail: bindOTPEmailController
+  bindOTPEmail: bindOTPEmailController,
+  /*
+    * Forget Password Email OTP
+  */
+  forgetPasswordEmailOTP: ForgetPasswordEmailOTPController,
+  /*
+    * Check Change Password OTP is Valid
+  */
+  checkChangePasswordOTPisValid: CheckChangePasswordOTPisValidController,
+  /*
+    * Change Password With OTP
+  */
+  changePasswordWithOTP: ChangePasswordWithOTPController
 }
