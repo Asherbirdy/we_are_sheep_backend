@@ -28,6 +28,7 @@ export const AuthController = {
     * Bind OTP Email
   */
   bindOTPEmail: bindOTPEmailController,
+  // TODO Add OTP to phone number
   /*
     * Forget Password Email OTP
   */
