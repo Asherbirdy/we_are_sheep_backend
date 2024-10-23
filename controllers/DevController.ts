@@ -1,8 +1,9 @@
-import { GetDevEnvController } from './Dev/GetDevEnvController'
+import { EditUserDistrictAndRoleController, GetDevEnvController } from './Dev/index'
 
 export const DevController = {
 
   // ** 
-  get: GetDevEnvController
-
+  get: GetDevEnvController,
+  // ** 
+  editUserDistrictAndRole: EditUserDistrictAndRoleController
 }
