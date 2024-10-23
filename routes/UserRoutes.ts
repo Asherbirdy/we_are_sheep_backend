@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { UserController } from '../controllers'
-import { authenticateUser, checkVerifiedEmail } from '../middleware'
+import { Role } from '../enums'
+import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
 router.get(
@@ -14,6 +15,13 @@ router.patch(
   authenticateUser,
   checkVerifiedEmail,
   UserController.updatePassword
+)
+
+router.get(
+  '/getAllUsers',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  UserController.getAllUsers
 )
 
 // router.get(
