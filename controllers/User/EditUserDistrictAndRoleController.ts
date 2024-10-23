@@ -1,4 +1,4 @@
-import { StatusCodes } from '../../enums'
+import { Role, StatusCodes } from '../../enums'
 import { Req, Res } from '../../types'
 import User from '../../models/User'
 
