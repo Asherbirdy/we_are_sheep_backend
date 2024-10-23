@@ -25,7 +25,7 @@ router.patch(
   authenticateUser, 
   authorizePermission(... RoleList.admins), 
   checkVerifiedEmail,
-  MemberController.editMember 
+  MemberController.editMemberInfo 
 )
 
 router.get( 

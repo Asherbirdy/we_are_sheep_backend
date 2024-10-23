@@ -1,7 +1,7 @@
 import {
   GetAllMemberController,
   CreateMemberController,
-  EditMemberController,
+  EditMemberInfoController,
   GetAllDistrictMemberFromUserController,
   EditMemberMeetingStatusController
 } from './Member/index'
@@ -12,7 +12,7 @@ export const MemberController = {
   // create member
   create: CreateMemberController,
   // edit member
-  editMember: EditMemberController,
+  editMemberInfo: EditMemberInfoController,
   // 取得此user的district member
   getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserController,
   // 編輯member meeting status
