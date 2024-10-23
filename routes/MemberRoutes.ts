@@ -44,4 +44,12 @@ router.patch(
   MemberController.editMemberMeetingStatus 
 )
 
+router.delete( 
+  '/deleteMemberById',
+  authenticateUser, 
+  authorizePermission(... RoleList.districtLeaders), 
+  checkVerifiedEmail,
+  MemberController.deleteMemberById 
+)
+
 export default router
