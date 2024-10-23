@@ -20,6 +20,14 @@ export const EditUserDistrictAndRoleController = async (req: Req, res: Res) => {
     return
   }
 
+  if(role === Role.dev) {
+    res.status(StatusCodes.FORBIDDEN).json({
+      msg: 'You are not allowed to edit dev role',
+      error: 'CANT_EDIT_DEV_ROLE'
+    })
+    return
+  }
+
   const user = await User.findByIdAndUpdate(userId, {
     district: districtId,
     role

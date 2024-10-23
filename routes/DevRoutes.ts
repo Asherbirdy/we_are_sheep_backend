@@ -14,4 +14,11 @@ router.put(
   DevController.editUserDistrictAndRole
 )
 
+router.post(
+  '/setDevDistrict',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  DevController.setDevDistrict
+)
+
 export default router
