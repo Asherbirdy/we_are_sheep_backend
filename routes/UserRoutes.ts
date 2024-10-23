@@ -24,18 +24,11 @@ router.get(
   UserController.getAllUsers
 )
 
-// router.get(
-//   '/showNonBindUser',
-//   authenticateUser,
-//   authorizePermission(... RoleList.fullTime),
-//   UserController.showNonBindUser
-// )
-
-// router.put(
-//   '/bindMemberToUser',
-//   authenticateUser,
-//   authorizePermission(... RoleList.admins),
-//   UserController.bindMemberToUser
-// )
+router.put(
+  '/editUserInfo',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  UserController.editUserInfo
+)
 
 export default router
