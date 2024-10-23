@@ -15,6 +15,7 @@ router.get(
 router.post(
   '/',
   authenticateUser,
+  checkVerifiedEmail,
   authorizePermission(Role.dev),
   DistrictController.create
 )
@@ -22,22 +23,9 @@ router.post(
 router.put(
   '/',
   authenticateUser,
+  checkVerifiedEmail,
   authorizePermission(Role.dev),
   DistrictController.edit
-)
-
-router.put(
-  '/close',
-  authenticateUser,
-  authorizePermission(Role.dev),
-  DistrictController.close
-)
-
-router.put(
-  '/open',
-  authenticateUser,
-  authorizePermission(Role.dev),
-  DistrictController.open
 )
 
 export default router
