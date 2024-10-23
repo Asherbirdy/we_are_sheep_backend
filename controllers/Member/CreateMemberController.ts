@@ -13,7 +13,7 @@ export const CreateMemberController = async (req: Req, res: Res) => {
   }
   
   // check user permission
-  if(req.user?.role !== Role.admin || req.user.userId !== Role.dev) {
+  if(req.user?.role !== Role.admin && req.user?.role !== Role.dev) {
     // check user district permission
     if(req.user?.districtId !== district) {
       res.status(StatusCodes.BAD_REQUEST).json({
