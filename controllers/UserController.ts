@@ -43,20 +43,8 @@ export const UserController = {
     await user.save()
     res.status(StatusCodes.OK).json({ msg: 'Sucess! Password Updated' })
   },
-  // showNonBindUser: async (req: Req, res: Res) => {
-  //   const users = await User.find({ member: { $exists: false } }).select('-password')
-  //   res.status(StatusCodes.OK).json({
-  //     member: 'show non bind user',
-  //     count: users.length,
-  //     users
-  //   })
-  // },
-  // bindMemberToUser: async (req: Req, res: Res) => {
-  //   const { userId, memberId } = req.body
-  //   const user = await User.findByIdAndUpdate(userId, { member: memberId }, { new: true }).select('-password')  
-  //   res.status(StatusCodes.OK).json({
-  //     msg: 'UserController_BIND_ACCOUNT_TO_USER Success',
-  //     user
-  //   })
-  // }
+  getAllUsers: async (req: Req, res: Res) => {
+    const users = await User.find({}).select('-password')
+    res.status(StatusCodes.OK).json({ users })
+  }
 }
