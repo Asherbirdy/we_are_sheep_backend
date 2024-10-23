@@ -7,7 +7,7 @@ export interface IMember extends Document {
   name: string
   district: IDistrict
   identity: Identity
-  active: boolean
   meetingStatus: MeetingStatus
   createdBy: IUser
+  notes: string[]
 }

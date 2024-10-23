@@ -4,10 +4,10 @@ import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
 export const CreateMemberController = async (req: Req, res: Res) => {
-  const { name, district, identity } = req.body
-  if (!name || !district || !identity) {
+  const { name, district, identity, meetingStatus } = req.body
+  if (!name || !district || !identity || !meetingStatus) {
     res.status(StatusCodes.BAD_REQUEST).json({
-      msg: 'Please provide name, district, identity',
+      msg: 'Please provide name, district, identity, meetingStatus',
     })
     return
   }
@@ -32,6 +32,7 @@ export const CreateMemberController = async (req: Req, res: Res) => {
     name,
     district,
     identity,
+    meetingStatus,
     createdBy: req.user?.userId
   })
 
