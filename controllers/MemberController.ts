@@ -1,10 +1,10 @@
 import {
   GetAllMemberController,
   CreateMemberController,
-  ApproveMemberToActiveController,
-  EditMemberController,
+  EditMemberInfoController,
   GetAllDistrictMemberFromUserController,
-  EditMemberMeetingStatusController
+  EditMemberMeetingStatusController,
+  DeleteMemberByIdController
 } from './Member/index'
 
 export const MemberController = {
@@ -12,13 +12,13 @@ export const MemberController = {
   get: GetAllMemberController,
   // create member
   create: CreateMemberController,
-  // 通過 member
-  approveMemberToActive: ApproveMemberToActiveController,
   // edit member
-  editMember: EditMemberController,
+  editMemberInfo: EditMemberInfoController,
   // 取得此user的district member
   getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserController,
   // 編輯member meeting status
-  editMemberMeetingStatus: EditMemberMeetingStatusController
+  editMemberMeetingStatus: EditMemberMeetingStatusController,
+  // delete member by id
+  deleteMemberById: DeleteMemberByIdController
 }
 

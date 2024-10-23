@@ -7,7 +7,7 @@ const router = Router()
 router.get( 
   '/',
   authenticateUser, 
-  authorizePermission(... RoleList.shepherds), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.get 
 )
@@ -15,25 +15,17 @@ router.get(
 router.post( 
   '/',
   authenticateUser, 
-  authorizePermission(... RoleList.shepherds), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.create 
 )
 
 router.patch( 
-  '/approveMemberToActive',
-  authenticateUser, 
-  authorizePermission(... RoleList.admins), 
-  checkVerifiedEmail,
-  MemberController.approveMemberToActive 
-)
-
-router.patch( 
   '/editMemberInfo',
   authenticateUser, 
-  authorizePermission(... RoleList.admins), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
-  MemberController.editMember 
+  MemberController.editMemberInfo 
 )
 
 router.get( 
@@ -50,6 +42,14 @@ router.patch(
   authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.editMemberMeetingStatus 
+)
+
+router.delete( 
+  '/deleteMemberById',
+  authenticateUser, 
+  authorizePermission(... RoleList.districtLeaders), 
+  checkVerifiedEmail,
+  MemberController.deleteMemberById 
 )
 
 export default router
