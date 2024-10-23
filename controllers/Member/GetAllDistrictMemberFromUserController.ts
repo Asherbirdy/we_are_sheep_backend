@@ -5,7 +5,7 @@ import { Req, Res } from '../../types'
 export const GetAllDistrictMemberFromUserController =async (req: Req, res: Res) => {
   if (!req.user?.districtId) {
     res.status(StatusCodes.BAD_REQUEST).json({
-      msg: 'Please provide districtId',
+      msg: 'Please provide districtId,if you are developer, please provide districtId',
     })
     return
   }

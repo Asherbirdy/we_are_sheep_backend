@@ -7,7 +7,7 @@ const router = Router()
 router.get( 
   '/',
   authenticateUser, 
-  authorizePermission(... RoleList.shepherds), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.get 
 )
@@ -15,7 +15,7 @@ router.get(
 router.post( 
   '/',
   authenticateUser, 
-  authorizePermission(... RoleList.shepherds), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.create 
 )
@@ -23,7 +23,7 @@ router.post(
 router.patch( 
   '/editMemberInfo',
   authenticateUser, 
-  authorizePermission(... RoleList.admins), 
+  authorizePermission(... RoleList.districtLeaders), 
   checkVerifiedEmail,
   MemberController.editMemberInfo 
 )
