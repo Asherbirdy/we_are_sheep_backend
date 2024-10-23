@@ -1,18 +1,18 @@
 import { Router } from 'express'
 import { UserController } from '../controllers'
-import { authenticateUser, authorizePermission } from '../middleware'
-import { Role, RoleList } from '../enums'
+import { authenticateUser, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
 router.get(
   '/showMe',
-  authenticateUser, authorizePermission(Role.user),
+  authenticateUser,
   UserController.showCurrentUser
 )
 
 router.patch(
   '/updateUserPassword',
   authenticateUser,
+  checkVerifiedEmail,
   UserController.updatePassword
 )
 
