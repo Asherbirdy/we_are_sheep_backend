@@ -1,4 +1,4 @@
-export * from './ApproveMemberToActiveController'
+
 export * from './CreateMemberController'
 export * from './EditMemberController'
 export * from './EditMemberMeetingStatusController'

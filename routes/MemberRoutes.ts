@@ -21,14 +21,6 @@ router.post(
 )
 
 router.patch( 
-  '/approveMemberToActive',
-  authenticateUser, 
-  authorizePermission(... RoleList.admins), 
-  checkVerifiedEmail,
-  MemberController.approveMemberToActive 
-)
-
-router.patch( 
   '/editMemberInfo',
   authenticateUser, 
   authorizePermission(... RoleList.admins), 

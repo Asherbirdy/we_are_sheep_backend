@@ -1,4 +1,5 @@
 import { StatusCodes } from '../../enums'
+import { District } from '../../models/District'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
@@ -17,6 +18,14 @@ export const CreateMemberController = async (req: Req, res: Res) => {
       msg: `Member name ${ name } already exists`,
     })
     return 
+  }
+
+  const findDistrict = await District.findOne({ _id: district })
+  if (!findDistrict) {
+    res.status(StatusCodes.BAD_REQUEST).json({
+      msg: 'District not found'
+    })
+    return
   }
 
   const member = await Member.create({
