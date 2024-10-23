@@ -7,13 +7,6 @@ const router = Router()
 
 router.get( '/', DevController.get )
 
-router.put( 
-  '/editUser',
-  authenticateUser,
-  authorizePermission(Role.dev),
-  DevController.editUserDistrictAndRole
-)
-
 router.post(
   '/setDevDistrict',
   authenticateUser,
