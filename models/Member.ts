@@ -22,10 +22,10 @@ const MemberSchema: Schema<IMember> = new mongoose.Schema({
     enum: MeetingStatus,
     default: MeetingStatus.D_member
   },
-  active: {
-    type: Boolean,
-    default: false
-  },
+  // active: {
+  //   type: Boolean,
+  //   default: false
+  // },
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',
