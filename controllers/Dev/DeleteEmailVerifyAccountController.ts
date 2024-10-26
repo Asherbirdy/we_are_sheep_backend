@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import User from '../../models/User'
 import { Req, Res } from '../../types'
 
-export const DeleteEmailVerifyAccountController = async ( req: Req, res: Res ) => {
+export const DeleteNonVerifiedEmailAccountController = async ( req: Req, res: Res ) => {
   const { userId } = req.body
 
   if(!userId) {
@@ -16,7 +16,7 @@ export const DeleteEmailVerifyAccountController = async ( req: Req, res: Res ) =
     _id: userId,
     emailVerified: false 
   })
-  
+
   if(!notVerifiedUser) {
     res.status(StatusCodes.BAD_REQUEST).json(({
       msg: 'User not found or already verified'

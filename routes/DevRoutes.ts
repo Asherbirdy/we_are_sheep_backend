@@ -15,10 +15,10 @@ router.post(
 )
 
 router.delete(
-  '/deleteEmailVerifyAccount',
+  '/deleteNonVerifiedEmailAccount',
   authenticateUser,
   authorizePermission(Role.dev),
-  DevController.deleteEmailVerifyAccount
+  DevController.deleteNonVerifiedEmailAccount
 )
 
 export default router
