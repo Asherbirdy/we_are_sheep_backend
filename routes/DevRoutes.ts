@@ -14,4 +14,11 @@ router.post(
   DevController.setDevDistrict
 )
 
+router.delete(
+  '/deleteEmailVerifyAccount',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  DevController.deleteEmailVerifyAccount
+)
+
 export default router
