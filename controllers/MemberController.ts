@@ -23,6 +23,9 @@ export const MemberController = {
   editMemberMeetingStatus: EditMemberMeetingStatusController,
   // delete member by id
   deleteMemberById: DeleteMemberByIdController,
+  /*
+   member note
+  */ 
   // create member note
   createMemberNote: MemberNoteCreateController,
   // edit member note
