@@ -1,6 +1,6 @@
 import {
   GetAllMemberController,
-  CreateMemberController,
+  CreateMemberToDistrictController,
   EditMemberInfoController,
   GetAllDistrictMemberFromUserController,
   EditMemberMeetingStatusController,
@@ -11,7 +11,7 @@ export const MemberController = {
   // get all members
   get: GetAllMemberController,
   // create member
-  create: CreateMemberController,
+  create: CreateMemberToDistrictController,
   // edit member
   editMemberInfo: EditMemberInfoController,
   // 取得此user的district member
