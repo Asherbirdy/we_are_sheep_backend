@@ -1,13 +1,17 @@
 import mongoose, { Schema } from 'mongoose'
-import { IUser } from '../types'
-
-interface IMemberNote {
-  createdBy: IUser
-  content: string
-  createdAt: Date
-}
+import { IMemberNote } from '../types'
 
 const MemberNoteSchema: Schema<IMemberNote> = new mongoose.Schema({
+  districtId: {
+    type: Schema.Types.ObjectId,
+    ref: 'District',
+    required: true
+  },
+  memberId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Member',
+    required: true
+  },
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',

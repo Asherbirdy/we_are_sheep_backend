@@ -1,7 +1,13 @@
-import { MemberNoteCreateController, MemberNoteEditController, MemberNoteDeleteController } from './MemberNote'
+import {
+  MemberNoteCreateController,
+  MemberNoteEditController,
+  MemberNoteDeleteController,
+  GetMemberNoteByIdController
+} from './MemberNote'
 
 export const MemberNoteController = {
   create: MemberNoteCreateController,
   edit: MemberNoteEditController,
-  delete: MemberNoteDeleteController
+  delete: MemberNoteDeleteController,
+  getById: GetMemberNoteByIdController
 }

@@ -1,5 +1,6 @@
 import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
+import { MemberNote } from '../../models/MemberNotes'
 import { Req, Res } from '../../types'
 
 export const MemberNoteCreateController = async (req: Req, res: Res) => {
@@ -11,22 +12,41 @@ export const MemberNoteCreateController = async (req: Req, res: Res) => {
     return
   }
 
-  // 一個req.user.userId 只能create 一個member note
-  const member = await Member.findOne({
-    _id: memberId,
-    district: req.user?.districtId
+  // 一個userID只能在一個memberID下新增一筆數據
+  const findMemberNote = await MemberNote.findOne({
+    createdBy: req.user?.userId,
+    memberId
   })
-  if (!member) {
-    res.status(StatusCodes.NOT_FOUND).json({
-      msg: 'MemberNoteCreateController_NOT_FOUND'
+
+  if (findMemberNote) {
+    res.status(StatusCodes.BAD_REQUEST).json({
+      errorCode: 'ALREADY_CREATED',
+      msg: 'You have already created a note for this member'
     })
     return
   }
 
-  member.notes.push(note)
-  await member.save()
+  const memberData = await Member.findOne({
+    _id: memberId,
+  })
+
+  if (!memberData) {
+    res.status(StatusCodes.NOT_FOUND).json({
+      errorCode: 'NOT_FOUND',
+      msg: 'Member not found'
+    })
+    return
+  }
+
+  const createMemberNote = await MemberNote.create({
+    districtId: req.user?.districtId,
+    createdBy: req.user?.userId,
+    content: note,
+    memberId
+  })
 
   res.status(StatusCodes.OK).json({
-    msg: 'MemberNoteCreateController_CREATE'
+    msg: 'MemberNoteCreateController_CREATE',
+    createMemberNote
   })
 }

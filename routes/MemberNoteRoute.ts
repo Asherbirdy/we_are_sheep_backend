@@ -28,4 +28,11 @@ router.delete(
   MemberNoteController.delete 
 )
 
+router.get(
+  '/getMemberNoteById',
+  authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
+  checkVerifiedEmail,
+  MemberNoteController.getById
+)
 export default router
