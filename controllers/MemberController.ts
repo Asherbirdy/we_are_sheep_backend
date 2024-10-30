@@ -4,10 +4,7 @@ import {
   EditMemberInfoController,
   GetAllDistrictMemberFromUserController,
   EditMemberMeetingStatusController,
-  DeleteMemberByIdController,
-  MemberNoteCreateController,
-  MemberNoteEditController,
-  MemberNoteDeleteController
+  DeleteMemberByIdController
 } from './Member'
 
 export const MemberController = {
@@ -22,15 +19,6 @@ export const MemberController = {
   // 編輯member meeting status
   editMemberMeetingStatus: EditMemberMeetingStatusController,
   // delete member by id
-  deleteMemberById: DeleteMemberByIdController,
-  /*
-   member note
-  */ 
-  // create member note
-  createMemberNote: MemberNoteCreateController,
-  // edit member note
-  editMemberNote: MemberNoteEditController,
-  // delete member note
-  deleteMemberNote: MemberNoteDeleteController
+  deleteMemberById: DeleteMemberByIdController
 }
 

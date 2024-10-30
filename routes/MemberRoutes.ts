@@ -52,28 +52,4 @@ router.delete(
   MemberController.deleteMemberById 
 )
 
-router.post( 
-  '/createMemberNote',
-  authenticateUser, 
-  authorizePermission(... RoleList.districtLeaders), 
-  checkVerifiedEmail,
-  MemberController.createMemberNote 
-)
-
-router.patch( 
-  '/editMemberNote',
-  authenticateUser, 
-  authorizePermission(... RoleList.districtLeaders), 
-  checkVerifiedEmail,
-  MemberController.editMemberNote 
-)
-
-router.delete( 
-  '/deleteMemberNote',
-  authenticateUser, 
-  authorizePermission(... RoleList.districtLeaders), 
-  checkVerifiedEmail,
-  MemberController.deleteMemberNote 
-)
-
 export default router
