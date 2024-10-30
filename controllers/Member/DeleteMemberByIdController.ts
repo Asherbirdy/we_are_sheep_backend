@@ -1,4 +1,4 @@
-import { Role, StatusCodes } from '../../enums'
+import { StatusCodes } from '../../enums'
 import { Member } from '../../models/Member'
 import { Req, Res } from '../../types'
 
@@ -19,13 +19,11 @@ export const DeleteMemberByIdController = async (req: Req, res: Res) => {
     return
   }
 
-  if (req.user?.role !== Role.admin && req.user?.role !== Role.dev) {
-    if (req.user?.districtId !== member.district.toString()) {
-      res.status(StatusCodes.FORBIDDEN).json({
-        msg: 'You are not allowed to delete this member',
-      })
-      return
-    }
+  if (req.user?.districtId !== member.district.toString()) {
+    res.status(StatusCodes.FORBIDDEN).json({
+      msg: 'You are not allowed to delete this member',
+    })
+    return
   }
 
   await Member.findByIdAndDelete(memberId)

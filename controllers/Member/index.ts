@@ -1,5 +1,5 @@
 
-export * from './CreateMemberController'
+export * from './CreateMemberToDistrictController'
 export * from './EditMemberInfoController'
 export * from './EditMemberMeetingStatusController'
 export * from './GetAllDistrictMemberFromUserController'

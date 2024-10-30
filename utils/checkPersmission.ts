@@ -12,3 +12,12 @@ export const checkPersmission = (requestUser : any, resourceUserId: any) => {
   )
 }
 
+export const checkPermissionForDistrict = (
+  requestDistrictId: string,
+  resourceDistrictId: string
+) => {
+  if (requestDistrictId === resourceDistrictId) return
+  throw new Error(
+    'Not authorized to access this route'
+  )
+}
