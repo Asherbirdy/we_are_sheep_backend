@@ -1,7 +1,5 @@
-version: '3'
-
 services:
-  we_are_sheep:  
+  we_are_sheep_prod:  
     build:
       context: .
       args:
