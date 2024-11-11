@@ -5,7 +5,7 @@ import {
   GetAllDistrictMemberFromUserController,
   EditMemberMeetingStatusController,
   DeleteMemberByIdController
-} from './Member/index'
+} from './Member'
 
 export const MemberController = {
   // get all members
