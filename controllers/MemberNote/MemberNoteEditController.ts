@@ -20,6 +20,7 @@ export const MemberNoteEditController = async (req: Req, res: Res) => {
   await memberNote.save()
 
   res.status(StatusCodes.OK).json({
-    msg: 'MemberNoteEditController_EDIT'
+    msg: 'MemberNoteEditController_EDIT',
+    memberNote
   })
 }
