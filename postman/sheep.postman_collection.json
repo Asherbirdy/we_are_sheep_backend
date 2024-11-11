@@ -7,6 +7,93 @@
 	},
 	"item": [
 		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "DB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/dev/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Dev District",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"districtId\":\"671cada80b54fcd8c78a0803\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/dev/setDevDistrict",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								"setDevDistrict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email Verify Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"67223f793682faa2f4496d30\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/dev/deleteNonVerifiedEmailAccount",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								"deleteNonVerifiedEmailAccount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Auth",
 			"item": [
 				{
@@ -39,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"dev@gmail.com\",\n    \"password\":\"password\"\n}",
+							"raw": "{\n    \"email\":\"asherbirder@gmail.com\",\n    \"password\":\"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,7 +153,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"dev\",\n    \"email\":\"dev@gmail.com\",\n    \"password\":\"password\"\n}",
+							"raw": "{\n    \"name\":\"asherbirder\",\n    \"email\":\"asherbirder@gmail.com\",\n    \"password\":\"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,7 +180,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"test1\",\n    \"email\":\"birdym.tw@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"8c0dbe5d-e711-4d01-8b57-38d97df16022\"\n}",
+							"raw": "{\n    \"name\":\"birdym\",\n    \"email\":\"notComfirm@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"98768350-256f-4e43-97b0-c44c2c8499ec\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +291,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"OTP\":\"897e35\"\n}",
+							"raw": "{\n    \"OTP\":\"ab812c\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -241,7 +328,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"OTP\":\"897e35\"\n}",
+							"raw": "{\n    \"email\":\"asherbirder@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -278,7 +365,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"birdym.tw@gmail.com\",\n    \"OTP\":\"897e35\",\n    \"newPassword\":\"password2\"\n}",
+							"raw": "{\n    \"email\":\"birdym.tw@gmail.com\",\n    \"OTP\":\"2baaa4\",\n    \"newPassword\":\"password2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -304,43 +391,18 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "Get All User",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/users",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Single User",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/users/64bfba240ffd84470911f732",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"users",
-								"64bfba240ffd84470911f732"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Show Current User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -357,13 +419,51 @@
 					"response": []
 				},
 				{
-					"name": "Update User",
+					"name": "Get All Users",
 					"request": {
-						"method": "PATCH",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/getAllUsers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"krista\",\n    \"email\":\"krista@gmail.com\"\n}",
+							"raw": "{\n    \"userId\":\"\",\n    \"districtId\":\"\",\n    \"role\":\"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -371,13 +471,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/users/updateUser",
+							"raw": "{{URL}}/users/editUserInfo",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"updateUser"
+								"editUserInfo"
 							]
 						}
 					},
@@ -386,6 +486,16 @@
 				{
 					"name": "Update User Password",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -409,41 +519,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "updateUserPicture",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "images",
-									"type": "file",
-									"src": "NK3U97AT20PM.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{URL}}/users/updateUserPicture",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"users",
-								"updateUserPicture"
-							],
-							"query": [
-								{
-									"key": "images",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -452,9 +527,6 @@
 			"item": [
 				{
 					"name": "Get All Serial Number",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -468,15 +540,6 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"memberId\":\"\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{URL}}/userSerialNumber/getAll",
 							"host": [
@@ -507,7 +570,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"role\": \"admin\",\n    \"districtId\": \"67123009c2557403f3a151a6\",\n    \"notes\": \"test\"\n}",
+							"raw": "{\n    \"role\": \"user\",\n    \"districtId\": \"6718601443a655505783c426\",\n    \"notes\": \"test\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -522,43 +585,6 @@
 							"path": [
 								"userSerialNumber",
 								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Serial Number",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessTokenJWT}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"serialNumberId\":\"6712136573bfae51518245e5\",\n    \"role\": \"admin\",\n    \"districtId\": \"670a49aed19af1ea00b7e86c\",\n    \"notes\": \"hiasdasasdss\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/userSerialNumber/edit",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"userSerialNumber",
-								"edit"
 							]
 						}
 					},
@@ -597,47 +623,6 @@
 								"userSerialNumber",
 								"delete",
 								"asdsad"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "dev",
-			"item": [
-				{
-					"name": "CLEAR_ALL_DATA",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/dev/CLEAR_ALL_DATA",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"dev",
-								"CLEAR_ALL_DATA"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DB",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/dev/DB",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"dev",
-								"DB"
 							]
 						}
 					},
@@ -717,7 +702,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"四區\"\n}",
+							"raw": "{\n    \"name\":\"一區\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -753,7 +738,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"67123009c2557403f3a151a6\"\n}",
+							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"6718601443a655505783c426\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -767,80 +752,6 @@
 							],
 							"path": [
 								"district"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Close District",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessTokenJWT}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"districtId\":\"66f3cce637649a4df364f79b\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/district/close",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"district",
-								"close"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Open District",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessTokenJWT}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"districtId\":\"66f3cce637649a4df364f79b\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/district/open",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"district",
-								"open"
 							]
 						}
 					},
@@ -867,7 +778,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/member?active=false",
+							"raw": "{{URL}}/member",
 							"host": [
 								"{{URL}}"
 							],
@@ -877,7 +788,8 @@
 							"query": [
 								{
 									"key": "active",
-									"value": "false"
+									"value": "false",
+									"disabled": true
 								}
 							]
 						}
@@ -885,7 +797,35 @@
 					"response": []
 				},
 				{
-					"name": "Create Member",
+					"name": "Get Your District Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/getAllDistrictMemberFromUser",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"getAllDistrictMemberFromUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Your District Member",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -901,7 +841,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"a連ss三sss\",\n    \"district\":\"67123009c2557403f3a151a6\",\n    \"identity\":\"B\"\n}",
+							"raw": "{\n    \"name\":\"連宏碁russdSSSsdw\",\n    \"identity\":\"M\",\n    \"meetingStatus\":\"E\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -915,43 +855,6 @@
 							],
 							"path": [
 								"member"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Approve Member Apply",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessTokenJWT}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"memberId\":\"66ffad2ad24651e2ea742706\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/member/approveMemberToActive",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"member",
-								"approveMemberToActive"
 							]
 						}
 					},
@@ -974,7 +877,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"memberId\": \"\",\n    \"name\": \"\",\n    \"district\": \"\",\n    \"identity\": \"\"\n}",
+							"raw": "{\n    \"memberId\": \"6718a0e2b0946981356de1bf\",\n    \"name\": \"連宏基\",\n    \"identity\": \"B\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -989,34 +892,6 @@
 							"path": [
 								"member",
 								"editMemberInfo"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get All District Member",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessTokenJWT}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/member/getAllDistrictMemberFromUser",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"member",
-								"getAllDistrictMemberFromUser"
 							]
 						}
 					},
@@ -1054,6 +929,253 @@
 							"path": [
 								"member",
 								"editMemberMeetingStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Member By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\": \"67189e21ea7a25bb4c6d10ae\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/member/deleteMemberById",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"deleteMemberById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Member Note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/createMemberNote",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"createMemberNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Member Note",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/editMemberNote",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"editMemberNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Member Note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/deleteMemberNote",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"deleteMemberNote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Member Note",
+			"item": [
+				{
+					"name": "Get All Member Note By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\":\"6718a0e2b0946981356de1bf\",\n    \"note\":\"asdasda\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/memberNote/getMemberNoteById?memberId=6718a0e2b0946981356de1bf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"memberNote",
+								"getMemberNoteById"
+							],
+							"query": [
+								{
+									"key": "memberId",
+									"value": "6718a0e2b0946981356de1bf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a Member Notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\":\"6718a0e2b0946981356de1bf\",\n    \"note\":\"test1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/memberNote",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"memberNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Member Note by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/memberNote?memberId=23122312",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"memberNote"
+							],
+							"query": [
+								{
+									"key": "memberId",
+									"value": "23122312"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Member Note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberNoteId\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/memberNote",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"memberNote"
 							]
 						}
 					},
