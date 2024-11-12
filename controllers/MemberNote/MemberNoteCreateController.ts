@@ -9,7 +9,6 @@ export const MemberNoteCreateController = async (req: Req, res: Res) => {
     res.status(StatusCodes.BAD_REQUEST).json({
       msg: 'MemberNoteCreateController_BAD_REQUEST'
     })
-    console.log('test')
     return
   }
 
