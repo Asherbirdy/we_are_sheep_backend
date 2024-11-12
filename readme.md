@@ -1,5 +1,5 @@
 本機開發：
-複製環境變數範例
+複製環境變數
 ```
 cp .env.sample .env
 ```
@@ -31,10 +31,6 @@ pnpm build
 ```
 ###### 將dist檔案副上，並在平台上設定.env
 ------------
-
-
-其他
-
 
 Install MongoDB Community Edition
 `https://www.mongodb.com/zh-cn/docs/manual/tutorial/install-mongodb-community-with-docker/```
