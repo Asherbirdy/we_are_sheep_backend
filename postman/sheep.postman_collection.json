@@ -291,7 +291,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"OTP\":\"ab812c\"\n}",
+							"raw": "{\n    \"OTP\":\"cdca08\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -702,7 +702,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"一區\"\n}",
+							"raw": "{\n    \"name\":\"二區\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1050,7 +1050,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"memberId\":\"6718a0e2b0946981356de1bf\",\n    \"note\":\"asdasda\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1058,7 +1058,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/memberNote/getMemberNoteById?memberId=6718a0e2b0946981356de1bf",
+							"raw": "{{URL}}/memberNote/getMemberNoteById?memberId=67189a740c8c8de5c0b77d03&",
 							"host": [
 								"{{URL}}"
 							],
@@ -1069,7 +1069,11 @@
 							"query": [
 								{
 									"key": "memberId",
-									"value": "6718a0e2b0946981356de1bf"
+									"value": "67189a740c8c8de5c0b77d03"
+								},
+								{
+									"key": null,
+									"value": null
 								}
 							]
 						}
@@ -1093,7 +1097,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"memberId\":\"6718a0e2b0946981356de1bf\",\n    \"note\":\"test1\"\n}",
+							"raw": "{\n    \"memberId\":\"67189a740c8c8de5c0b77d03\",\n    \"note\":\"11/12測二\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1127,8 +1131,17 @@
 						},
 						"method": "PATCH",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberNoteId\":\"6732f2a4064d190da5fd3dba\",\n    \"content\":\"11/12測二asdasdasdasdasdasdasdasdass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/memberNote?memberId=23122312",
+							"raw": "{{URL}}/memberNote",
 							"host": [
 								"{{URL}}"
 							],
@@ -1138,7 +1151,8 @@
 							"query": [
 								{
 									"key": "memberId",
-									"value": "23122312"
+									"value": "6732c3d8064d190da5fd3da8",
+									"disabled": true
 								}
 							]
 						}
@@ -1162,7 +1176,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"memberNoteId\":\"\"\n}",
+							"raw": "{\n    \"memberNoteId\":\"6732c3d8064d190da5fd3da8\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1176,6 +1190,155 @@
 							],
 							"path": [
 								"memberNote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activity",
+			"item": [
+				{
+					"name": "Get Activty by Month",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/activity?year=2024&month=12",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"activity"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2024"
+								},
+								{
+									"key": "month",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Activity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"year\":2024,\n    \"month\":12,\n    \"day\":12,\n    \"time\":\"22:30\",\n    \"title\":\"測試一\",\n    \"content\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/activity/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"activity",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Activity By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activityId\":\"6734573f12ff790357655f40\",\n    \"title\":\"test\",\n    \"content\":\"adasdasdaasdaasads\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/activity/edit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"activity",
+								"edit"
+							],
+							"query": [
+								{
+									"key": " activityId",
+									"value": "aasdassasa",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Activity By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessTokenJWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/activity/delete/asd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"activity",
+								"delete",
+								"asd"
+							],
+							"query": [
+								{
+									"key": "activityId",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
