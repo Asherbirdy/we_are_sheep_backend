@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "tsc-watch --onsuccess \"node -r dotenv/config dist/app.js dotenv_config_path=.env.prod\"",
-    "dev": "tsc-watch --onsuccess \"node -r dotenv/config dist/app.js dotenv_config_path=.env\"",
+    "dev": "tsc-watch --onsuccess \"node -r dotenv/config dist/app.js dotenv_config_path=.env.dev\"",
     "copy-package": "copyfiles package.json pnpm-lock.yaml Dockerfile docker-compose.yml .dockerignore dist",
     "build": "tsc && npm run copy-package",
     "start": "node dist/app.js"
