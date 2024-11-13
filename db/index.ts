@@ -10,7 +10,7 @@ export const connectDB = (url: string, dbName: string) => {
     }
     // DOCKER測試連結 不要刪掉
     if(config.mongodb_db_position === 'DOCKER') {
-      const connectionUrl = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.0'
+      const connectionUrl = `mongodb://127.0.0.1:27017/${ dbName }?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.0`
       return mongoose.connect(connectionUrl)
     }
   }
