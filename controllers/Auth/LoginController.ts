@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import User from '../../models/User'
 import { Req, Res } from '../../types'
 import { attachCookieToResponse, createTokenUser } from '../../utils'
+import { Log } from '../../models/Log'
 
 export const LoginController = async (req: Req, res: Res) => {
   const { email, password } = req.body
@@ -48,5 +49,14 @@ export const LoginController = async (req: Req, res: Res) => {
   await Token.create(userToken)
   const token = attachCookieToResponse({ res, user: tokenUser, refreshToken })
 
+  await Log.create({
+    date: new Date(),
+    controller: 'LoginController',
+    document: 'Auth',
+    action: 'login',
+    success: true,
+    userId: tokenUser.userId
+  })
+  
   res.status(StatusCodes.OK).json({ user: tokenUser, token })
 }
