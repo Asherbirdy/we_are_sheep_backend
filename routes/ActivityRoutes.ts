@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/', ActivityController.getbyYearMonth)
 router.post('/create', authenticateUser, ActivityController.create)
-router.put('/edit/:activityId', authenticateUser, ActivityController.editById)
+router.put('/edit', authenticateUser, ActivityController.editById)
 router.delete('/delete/:activityId', authenticateUser, ActivityController.deleteById)
 
 export default router

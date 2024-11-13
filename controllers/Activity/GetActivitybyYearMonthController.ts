@@ -23,7 +23,7 @@ export const GetActivitybyYearMonthController = async ( req: Req, res: Res ) => 
   const activities = await Activity.find({
     year: Number(year),
     month: Number(month)
-  }).select('date title content')
+  })
 
   res.status(StatusCodes.OK).json({
     msg: 'Activity by month',
