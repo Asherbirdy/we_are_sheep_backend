@@ -6,15 +6,7 @@ import { Req } from '../types'
 import { Role } from '../enums'
 import config from '../config'
 import User from '../models/User'
-
-interface UserPayload {
-  user: {
-    name: string;
-    userId: string;
-    role: string;
-  };
-  refreshToken?: string;
-}
+import { UserPayload } from '../types'
 
 interface CustomRequest extends Request {
   user?: UserPayload['user'];
