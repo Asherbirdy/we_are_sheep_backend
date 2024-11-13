@@ -5,7 +5,9 @@ interface IActivity {
   date: Date
   year: number
   month: number
+  day: number
   title: string
+  time: string
   content: string
   createdBy: IUser
   lastUpdatedBy: IUser

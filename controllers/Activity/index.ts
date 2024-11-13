@@ -1,2 +1,2 @@
 export * from './GetActivitybyMonthController'
-export * from './CreateActivityControlller'
+export * from './CreateActivityController'
