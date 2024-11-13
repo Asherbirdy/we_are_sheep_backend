@@ -3,9 +3,9 @@ import { ActivityController } from '../controllers'
 import { authenticateUser } from '../middleware'
 const router = Router()
 
-router.get('/month', ActivityController.getbyMonth)
+router.get('/', ActivityController.getbyYearMonth)
 router.post('/create', authenticateUser, ActivityController.create)
-router.put('/edit/:id', authenticateUser, ActivityController.editById)
-router.delete('/delete/:id', authenticateUser, ActivityController.deleteById)
+router.put('/edit/:activityId', authenticateUser, ActivityController.editById)
+router.delete('/delete/:activityId', authenticateUser, ActivityController.deleteById)
 
 export default router
