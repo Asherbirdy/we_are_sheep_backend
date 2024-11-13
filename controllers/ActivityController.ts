@@ -1,5 +1,6 @@
-import { GetActivitybyMonthController } from './Activity'
+import { CreateActivityController, GetActivitybyMonthController } from './Activity'
 
 export const ActivityController = {
+  create: CreateActivityController,
   getbyMonth: GetActivitybyMonthController
 }
