@@ -11,6 +11,7 @@ import DistrictRoutes from './routes/DistrictRoutes'
 import MemberRoutes from './routes/MemberRoutes'
 import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
 import MemberNoteRoutes from './routes/MemberNoteRoute'
+import ActivityRoutes from './routes/ActivityRoutes'
 
 // Plugins
 import cors from 'cors'
@@ -64,6 +65,7 @@ class Server {
     this.app.use('/api/v1/member', MemberRoutes)
     this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
     this.app.use('/api/v1/memberNote', MemberNoteRoutes)
+    this.app.use('/api/v1/activity', ActivityRoutes)
   }
 
   handleErrorAndSafety () {
