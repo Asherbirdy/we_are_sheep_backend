@@ -5,7 +5,8 @@ export const createTokenUser = (user: IUser) => {
     name: user.name,
     userId: user._id,
     role: user.role,
-    districtId: user.district
+    districtId: user.district,
+    emailVerified: user.emailVerified
   }
 }
 
