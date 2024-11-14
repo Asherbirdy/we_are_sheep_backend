@@ -1,11 +1,37 @@
 import { Router } from 'express'
 import { ActivityController } from '../controllers'
-import { authenticateUser } from '../middleware'
+import { RoleList } from '../enums'
+import {
+  authenticateUser,
+  authorizePermission,
+  checkVerifiedEmail
+} from '../middleware'
+
 const router = Router()
 
 router.get('/', ActivityController.getbyYearMonth)
-router.post('/create', authenticateUser, ActivityController.create)
-router.put('/edit', authenticateUser, ActivityController.editById)
-router.delete('/delete/:activityId', authenticateUser, ActivityController.deleteById)
+
+router.post(
+  '/create',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
+  ActivityController.create
+)
+router.put(
+  '/edit',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
+  ActivityController.editById
+)
+
+router.delete(
+  '/delete/:activityId',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
+  ActivityController.deleteById
+)
 
 export default router
