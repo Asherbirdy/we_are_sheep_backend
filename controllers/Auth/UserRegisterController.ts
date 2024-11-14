@@ -49,10 +49,10 @@ export const UserRegisterController = async (req: Req, res: Res) => {
   
   const tokenUser = createTokenUser(user)
   
-  attachCookieToResponse({ res, user: tokenUser })
+  const token = attachCookieToResponse({ res, user: tokenUser })
 
   userSerialNumber.isUsed = true
   await userSerialNumber.save()
 
-  res.status(StatusCodes.CREATED).json({ tokenUser })
+  res.status(StatusCodes.CREATED).json({ user: tokenUser,token })
 }
