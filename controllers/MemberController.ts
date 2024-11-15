@@ -4,21 +4,17 @@ import {
   EditMemberInfoController,
   GetAllDistrictMemberFromUserController,
   EditMemberMeetingStatusController,
-  DeleteMemberByIdController
+  DeleteMemberByIdController,
+  EditDistrictMemberGroupController
 } from './Member'
 
 export const MemberController = {
-  // get all members
   get: GetAllMemberController,
-  // create member
   create: CreateMemberToDistrictController,
-  // edit member
   editMemberInfo: EditMemberInfoController,
-  // 取得此user的district member
+  editDistrictMemberGroup: EditDistrictMemberGroupController,
   getAllDistrictMemberFromUser: GetAllDistrictMemberFromUserController,
-  // 編輯member meeting status
   editMemberMeetingStatus: EditMemberMeetingStatusController,
-  // delete member by id
   deleteMemberById: DeleteMemberByIdController
 }
 

@@ -28,6 +28,14 @@ router.patch(
   MemberController.editMemberInfo 
 )
 
+router.patch( 
+  '/editDistrictMemberGroup',
+  authenticateUser, 
+  authorizePermission(... RoleList.districtLeaders), 
+  checkVerifiedEmail,
+  MemberController.editDistrictMemberGroup 
+)
+
 router.get( 
   '/getAllDistrictMemberFromUser',
   authenticateUser, 
