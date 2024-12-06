@@ -39,12 +39,15 @@ class Server {
     this.app.use(express.json())
     this.app.use(cookieParser(config.jwt_secret))
     this.app.use(express.static('public'))
+    this.app.use(
+      morgan((tokens, req, res) => [
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res),
+        `${ new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }) }`,
+        'payload:', JSON.stringify(req.body),
+      ].join(' ')))
 
-    if (config.environment === 'DEV') {
-      this.app.use(
-        morgan('tiny')
-      )
-    }
     this.app.set('trust proxy', 1) 
     this.app.use(
       rateLimit({
