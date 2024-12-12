@@ -3,13 +3,13 @@ import {
   DeleteActivityByIdController, 
   EditActiivityByIdController, 
   GetActivitybyYearMonthController,
-  GetRecentlyActivityController
+  GetYearActivityController
 } from './Activity'
 
 export const ActivityController = {
   create: CreateActivityController,
   getbyYearMonth: GetActivitybyYearMonthController,
-  getRecently: GetRecentlyActivityController,
+  getYear: GetYearActivityController,
   editById: EditActiivityByIdController,
   deleteById: DeleteActivityByIdController
 }
