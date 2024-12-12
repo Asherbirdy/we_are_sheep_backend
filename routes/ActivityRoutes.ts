@@ -10,7 +10,7 @@ import {
 const router = Router()
 
 router.get('/', ActivityController.getbyYearMonth)
-
+router.get('/recently', ActivityController.getRecently)
 router.post(
   '/create',
   authenticateUser,
