@@ -42,14 +42,14 @@ export const CreateActivityController = async ( req: Req, res: Res ) => {
     return
   }
 
-  const checkExist = await Activity.findOne({ date })
-  if(checkExist) {
-    res.status(StatusCodes.BAD_REQUEST).json({
-      errorCode: 'TIME_DUPLICATE',
-      msg: '時間重複'
-    })
-    return
-  }
+  // const checkExist = await Activity.findOne({ date })
+  // if(checkExist) {
+  //   res.status(StatusCodes.BAD_REQUEST).json({
+  //     errorCode: 'TIME_DUPLICATE',
+  //     msg: '時間重複'
+  //   })
+  //   return
+  // }
 
   const activity = await Activity.create({
     date,

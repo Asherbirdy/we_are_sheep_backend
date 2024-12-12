@@ -1,4 +1,5 @@
 export * from './GetActivitybyYearMonthController'
+export * from './GetYearActivityController'
 export * from './CreateActivityController'
 export * from './EditActiivityByIdController'
 export * from './DeleteActivityByIdContrioller'
