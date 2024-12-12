@@ -13,6 +13,15 @@ export const DeleteActivityByIdController = async ( req: Req, res: Res ) => {
     return
   }
 
+  const activity = await Activity.findById(activityId)
+  if(!activity) {
+    res.status(StatusCodes.NOT_FOUND).json({
+      errorCode: 'ACTIVITY_NOT_FOUND',
+      msg: 'Activity not found'
+    })
+    return
+  }
+
   await Activity.findByIdAndDelete(activityId)
   res.status(StatusCodes.OK).json({
     message: `Delete Activity by ${ activityId }`
