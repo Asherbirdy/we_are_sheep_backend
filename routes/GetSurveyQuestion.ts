@@ -3,11 +3,18 @@ import { SurveyQuestionController } from '../controllers'
 import { authenticateUser, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
-router.get(
-  '/getQuestion',
+router.post(
+  '/getAll',
   authenticateUser,
   checkVerifiedEmail,
   SurveyQuestionController.getSurveyQuestion
+)
+
+router.post(
+  '/create',
+  authenticateUser,
+  checkVerifiedEmail,
+  SurveyQuestionController.createSurveyQuestion
 )
 
 export default router

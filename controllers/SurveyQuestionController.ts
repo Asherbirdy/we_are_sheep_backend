@@ -1,4 +1,5 @@
-import { GetSurveyQuestionController } from './SurveyQuestion'
+import { CreateSurveyQuestionController, GetSurveyQuestionController } from './SurveyQuestion'
 export const SurveyQuestionController = {
-  getSurveyQuestion: GetSurveyQuestionController
+  getSurveyQuestion: GetSurveyQuestionController,
+  createSurveyQuestion: CreateSurveyQuestionController
 }
