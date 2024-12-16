@@ -12,7 +12,7 @@ import MemberRoutes from './routes/MemberRoutes'
 import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
 import MemberNoteRoutes from './routes/MemberNoteRoute'
 import ActivityRoutes from './routes/ActivityRoutes'
-
+import SurveyQuestionRoutes from './routes/GetSurveyQuestion'
 // Plugins
 import cors from 'cors'
 import morgan from 'morgan'
@@ -69,6 +69,7 @@ class Server {
     this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
     this.app.use('/api/v1/memberNote', MemberNoteRoutes)
     this.app.use('/api/v1/activity', ActivityRoutes)
+    this.app.use('/api/v1/surveyQuestion', SurveyQuestionRoutes)
   }
 
   handleErrorAndSafety () {
