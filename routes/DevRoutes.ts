@@ -7,6 +7,8 @@ const router = Router()
 
 router.get( '/', DevController.get )
 
+router.get('/checkIp', DevController.checkIp)
+
 router.post(
   '/setDevDistrict',
   authenticateUser,
