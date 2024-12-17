@@ -15,6 +15,7 @@ export const CreateSurveyController = async (req: Req, res: Res) => {
     return
   }
 
+  // 檢查 survey 是否為陣列
   if (!Array.isArray(survey)) {
     res.status(StatusCodes.BAD_REQUEST).json({
       errorCode: 'CreateSurveyController_BAD_REQUEST',
@@ -23,6 +24,7 @@ export const CreateSurveyController = async (req: Req, res: Res) => {
     return
   }
 
+  // 檢查 survey 是否為陣列
   const isValidFormat = survey.every((item: SurveyItem) => 
     typeof item.question === 'string' && 
       typeof item.answer === 'string' &&
@@ -30,6 +32,7 @@ export const CreateSurveyController = async (req: Req, res: Res) => {
       item.answer.trim() !== ''
   )
   
+  // 檢查 survey 是否為陣列
   if (!isValidFormat) {
     res.status(StatusCodes.BAD_REQUEST).json({
       errorCode: 'CreateSurveyController_BAD_REQUEST',
@@ -37,19 +40,22 @@ export const CreateSurveyController = async (req: Req, res: Res) => {
     })
     return
   }
-  
+
+  // 取得 clientIP
   const clientIP = req.headers[ 'x-forwarded-for' ] || req.socket.remoteAddress
 
+  // 取得今天和明天的日期
   const maxAttempts = 3
   const today = dayjs().startOf('day').toDate()
   const tomorrow = dayjs().endOf('day').toDate()
-  console.log(today, tomorrow)
 
+  // 取得今天已經填過問卷的次數
   const attempts = await SurveyLog.countDocuments({
     ip: clientIP,
     createdAt: { $gte: today, $lt: tomorrow }
   })
 
+  // 如果今天已經填過問卷的次數達到 3 次，則回傳錯誤
   if (attempts >= maxAttempts) {
     res.status(StatusCodes.BAD_REQUEST).json({
       errorCode: 'CreateSurveyController_BAD_REQUEST',
@@ -58,8 +64,10 @@ export const CreateSurveyController = async (req: Req, res: Res) => {
     return
   }
 
+  // 建立 SurveyLog
   await SurveyLog.create({ ip: clientIP, createdAt: new Date() })
 
+  // 建立 Survey
   const newSurvey = await Survey.create({
     name,
     ageRange,
