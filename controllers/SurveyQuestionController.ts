@@ -1,5 +1,11 @@
-import { CreateSurveyQuestionController, GetSurveyQuestionController } from './SurveyQuestion'
+import {
+  CreateSurveyQuestionController,
+  EditSurveyByIdController,
+  GetSurveyQuestionController
+} from './SurveyQuestion'
+
 export const SurveyQuestionController = {
   getSurveyQuestion: GetSurveyQuestionController,
-  createSurveyQuestion: CreateSurveyQuestionController
+  createSurveyQuestion: CreateSurveyQuestionController,
+  editSurveyById: EditSurveyByIdController
 }

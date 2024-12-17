@@ -17,4 +17,11 @@ router.post(
   SurveyQuestionController.createSurveyQuestion
 )
 
+router.patch(
+  '/editById',
+  authenticateUser,
+  checkVerifiedEmail,
+  SurveyQuestionController.editSurveyById
+)
+
 export default router

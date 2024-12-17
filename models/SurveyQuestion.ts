@@ -4,7 +4,6 @@ import { IUser } from '../types'
 interface ISurveyQuestion {
   question: string
   active: boolean
-  order: number
   createdBy: IUser
 }
 
@@ -16,10 +15,6 @@ const SurveyQuestionSchema: Schema<ISurveyQuestion> = new mongoose.Schema({
   active: {
     type: Boolean,
     default: true
-  },
-  order: {
-    type: Number,
-    unique: true
   },
   createdBy: {
     type: Schema.Types.ObjectId,
