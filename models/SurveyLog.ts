@@ -1,8 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-interface ISurveyLog {
-  ip: string
-  createdAt: Date
-}
+import { ISurveyLog } from '../types'
 const SurveyLogSchema: Schema<ISurveyLog> = new mongoose.Schema({
   ip: {
     type: String,
