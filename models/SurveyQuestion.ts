@@ -5,6 +5,7 @@ interface ISurveyQuestion {
   question: string
   active: boolean
   createdBy: IUser
+  order: number
 }
 
 const SurveyQuestionSchema: Schema<ISurveyQuestion> = new mongoose.Schema({
@@ -20,6 +21,9 @@ const SurveyQuestionSchema: Schema<ISurveyQuestion> = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  order: {
+    type: Number,
   }
 }, { timestamps: true })
 
