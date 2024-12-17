@@ -3,7 +3,7 @@ import { SurveyQuestionController } from '../controllers'
 import { authenticateUser, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
-router.post(
+router.get(
   '/getAll',
   authenticateUser,
   checkVerifiedEmail,
