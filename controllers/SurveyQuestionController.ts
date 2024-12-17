@@ -2,12 +2,14 @@ import {
   CreateSurveyQuestionController,
   EditSurveyByIdController,
   GetSurveyQuestionController,
-  SetSurveyQuestionOrderController
+  SetSurveyQuestionOrderController,
+  GetSurveyQuestionByOrderController
 } from './SurveyQuestion'
 
 export const SurveyQuestionController = {
   getSurveyQuestion: GetSurveyQuestionController,
   createSurveyQuestion: CreateSurveyQuestionController,
   editSurveyById: EditSurveyByIdController,
-  setSurveyQuestionOrder: SetSurveyQuestionOrderController
+  setSurveyQuestionOrder: SetSurveyQuestionOrderController,
+  getSurveyQuestionByOrder: GetSurveyQuestionByOrderController
 }

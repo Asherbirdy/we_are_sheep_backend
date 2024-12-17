@@ -10,6 +10,13 @@ router.get(
   SurveyQuestionController.getSurveyQuestion
 )
 
+router.get(
+  '/getAllByOrder',
+  authenticateUser,
+  checkVerifiedEmail,
+  SurveyQuestionController.getSurveyQuestionByOrder
+)
+
 router.post(
   '/create',
   authenticateUser,

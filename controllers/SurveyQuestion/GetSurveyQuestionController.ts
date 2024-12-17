@@ -7,6 +7,7 @@ export const GetSurveyQuestionController = async (req: Req, res: Res) => {
 
   res.status(StatusCodes.OK).json({
     msg: 'GetSurveyQuestionController_GET',
-    surveyQuestions
+    count: surveyQuestions.length,
+    surveyQuestions,
   })
 }
