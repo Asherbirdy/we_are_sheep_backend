@@ -1,19 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-
-interface Answer {
-  question: string
-  answer: string
-}
-
-interface ISurvey {
-  name: string
-  ageRange: string
-  contact: string
-  userNotes: string
-  answers: Answer[]
-  createdDate: Date
-  ip: string
-}
+import { ISurvey } from '../types'
 
 const SurveySchema: Schema<ISurvey> = new mongoose.Schema({
   name: {
@@ -35,7 +21,7 @@ const SurveySchema: Schema<ISurvey> = new mongoose.Schema({
     type: String,
     required: true
   },
-  answers: {
+  survey: {
     type: [{
       question: String,
       answer: String

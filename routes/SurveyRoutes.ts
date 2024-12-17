@@ -6,8 +6,6 @@ const router = Router()
 
 router.post(
   '/create',
-  authenticateUser,
-  checkVerifiedEmail,
   SurveyController.createSurvey
 )
 
