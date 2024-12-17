@@ -12,8 +12,6 @@ router.get(
 
 router.get(
   '/getAllByOrder',
-  authenticateUser,
-  checkVerifiedEmail,
   SurveyQuestionController.getSurveyQuestionByOrder
 )
 
