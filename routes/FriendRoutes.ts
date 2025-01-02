@@ -11,4 +11,18 @@ router.post(
   FriendController.sendFriendRequest 
 )
 
+router.get(
+  '/getSendFriendRequest',
+  authenticateUser,
+  checkVerifiedEmail,
+  FriendController.getSendFriendRequest
+)
+
+router.get(
+  '/getYourFriendRequest',
+  authenticateUser,
+  checkVerifiedEmail,
+  FriendController.getYourFriendRequest
+)
+
 export default router
