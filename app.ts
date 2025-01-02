@@ -14,6 +14,7 @@ import MemberNoteRoutes from './routes/MemberNoteRoute'
 import ActivityRoutes from './routes/ActivityRoutes'
 import SurveyQuestionRoutes from './routes/SurveyQuestionRoutes'
 import SurveyRoutes from './routes/SurveyRoutes'
+import FriendRoutes from './routes/FriendRoutes'
 // Plugins
 import cors from 'cors'
 import morgan from 'morgan'
@@ -72,6 +73,7 @@ class Server {
     this.app.use('/api/v1/activity', ActivityRoutes)
     this.app.use('/api/v1/surveyQuestion', SurveyQuestionRoutes)
     this.app.use('/api/v1/survey', SurveyRoutes)
+    this.app.use('/api/v1/friend', FriendRoutes)
   }
 
   handleErrorAndSafety () {
