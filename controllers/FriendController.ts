@@ -1,4 +1,10 @@
-import { GetSendFriendRequestController, SendFriendRequestController, GetYourFriendRequestController } from './Friend'
+import {
+  GetSendFriendRequestController,
+  SendFriendRequestController,
+  GetYourFriendRequestController,
+  FriendListController,
+  DeleteFriendController,
+} from './Friend'
 
 export const FriendController = {
   // * 發送好友請求
@@ -6,6 +12,10 @@ export const FriendController = {
   // * 取得發送中的好友請求
   getSendFriendRequest: GetSendFriendRequestController,
   // * 取得你的好友請求
-  getYourFriendRequest: GetYourFriendRequestController
+  getYourFriendRequest: GetYourFriendRequestController,
+  // * 取得好友列表
+  getFriendList: FriendListController,
+  // * 刪除好友
+  deleteFriend: DeleteFriendController
 }
 

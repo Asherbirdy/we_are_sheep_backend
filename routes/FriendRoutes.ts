@@ -25,4 +25,18 @@ router.get(
   FriendController.getYourFriendRequest
 )
 
+router.get(
+  '/getFriendList',
+  authenticateUser,
+  checkVerifiedEmail,
+  FriendController.getFriendList
+)
+
+router.delete(
+  '/deleteFriend',
+  authenticateUser,
+  checkVerifiedEmail,
+  FriendController.deleteFriend
+)
+
 export default router

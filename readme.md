@@ -3,12 +3,12 @@
 ```
 cp .env.sample .env
 ```
-Docker
+Docker(抓.env)
 ```
 docker compose build
 docker compose up
 ```
-pnpm
+pnpm(抓.env.dev 和 .env.prod)
 ```
 pnpm i
 pnpm dev
