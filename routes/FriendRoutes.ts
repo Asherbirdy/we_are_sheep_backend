@@ -32,11 +32,4 @@ router.get(
   FriendController.getFriendList
 )
 
-router.delete(
-  '/deleteFriend',
-  authenticateUser,
-  checkVerifiedEmail,
-  FriendController.deleteFriend
-)
-
 export default router
