@@ -3,12 +3,12 @@
 ```
 cp .env.sample .env
 ```
-Docker
+Docker(抓.env)
 ```
 docker compose build
 docker compose up
 ```
-pnpm
+pnpm(抓.env.dev 和 .env.prod)
 ```
 pnpm i
 pnpm dev
@@ -41,3 +41,25 @@ Install MongoDB Community Edition
 
 JWT加密金鑰網址：
 可以參考這網站的 Encryption key 256:https://acte.ltd/utils/randomkeygen
+
+------------
+
+### 商業邏輯：
+**權限**：
+分為 dev(開發者)、admin(管理員)、districtLeader(區負責)、user(區成員)
+
+**開頭**：
+1. 先註冊第一個帳號 也是 dev 帳號 綁定email 和 區域
+
+**District(區)**：
+1. 只有 dev 和 admin 帳號 可以CRUD 區
+
+**User Serial Number(註冊序號)**：
+1. dev、admin 可以創建 districtLeader 和 user 帳號
+2. districtLeader 只能創建 user 帳號
+
+**Friend(好友)**：
+1. 之後寫
+
+**Shepherd(牧養名單)**：
+1. 之後寫
