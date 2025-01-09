@@ -1,0 +1,1 @@
+import{f as o,I as r,o as i,c as u,a as s,t as l,h as p}from"./C5-ExHym.js";import{u as c}from"./B9WqHi4_.js";const m={get:async()=>await c("/dev",{method:"GET"})},x=o({__name:"index",async setup(_){let e,t;const{data:n}=([e,t]=r(()=>m.get()),e=await e,t(),e);return(d,a)=>(i(),u("div",null,[a[0]||(a[0]=s("h1",null,"首頁",-1)),s("div",null,l(p(n)),1)]))}});export{x as default};
