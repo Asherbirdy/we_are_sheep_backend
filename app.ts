@@ -40,7 +40,12 @@ class Server {
     this.app.use(cors())
     this.app.use(express.json())
     this.app.use(cookieParser(config.jwt_secret))
-    this.app.use(express.static('public'))
+    
+    // 設置靜態文件夾為 public/system 用於一般網站
+    this.app.use('/system', express.static('public/system'))
+    // 設置靜態文件夾為 public/C 用於 SPA
+    this.app.use('/C', express.static('public/C'))
+    
     this.app.use(
       morgan((tokens, req, res) => [
         tokens.method(req, res),
@@ -74,6 +79,11 @@ class Server {
     this.app.use('/api/v1/surveyQuestion', SurveyQuestionRoutes)
     this.app.use('/api/v1/survey', SurveyRoutes)
     this.app.use('/api/v1/friend', FriendRoutes)
+
+    // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
+    this.app.get('/C/*', (req, res) => {
+      res.sendFile('index.html', { root: 'public/C' })
+    })
   }
 
   handleErrorAndSafety () {
