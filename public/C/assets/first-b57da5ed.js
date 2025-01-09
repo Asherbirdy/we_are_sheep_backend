@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{W as r,X as t}from"./index-a4d46aa6.js";const c={};function o(n,s){return r(),t("div",null,"第二頁")}const f=e(c,[["render",o]]);export{f as default};
