@@ -77,6 +77,11 @@ export const authorizePermission = (... roles: Role[]) => {
 }
 
 export const checkVerifiedEmail = async (req: Req, res: Response, next: NextFunction) => {
+  // 如果環境是DEV，則跳過驗證
+  if(config.environment === 'DEV') {
+    return next()
+  }
+  
   const user = await User.findById(req.user?.userId)
   if (!user?.emailVerified) {
     res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Email not verified' })
