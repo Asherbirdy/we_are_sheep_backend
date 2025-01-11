@@ -1,1 +1,0 @@
-var r=(e=>(e.Home="/",e.News="/news",e.Login="/login",e))(r||{}),i=(e=>(e.Home="/admin",e.MemberList="/admin/member/list",e.MemberSerial="/admin/member/serial",e.MemberDistrict="/admin/member/district",e.LifeBibleBlog="/admin/lifeBibleBlog",e))(i||{});export{i as A,r as P};

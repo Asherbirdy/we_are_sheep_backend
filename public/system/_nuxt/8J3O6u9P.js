@@ -1,0 +1,1 @@
+import{u as a}from"./DDfxx48F.js";const t={login:async e=>await a("/auth/login",{method:"POST",body:e,server:!1,lazy:!0,immediate:!1,watch:!1}),register:async e=>await a("/auth/userRegister",{method:"POST",body:e,server:!1,lazy:!0,immediate:!1,watch:!1}),useStatus:async()=>await a("/users/showMe",{method:"GET",server:!1,lazy:!0,watch:!1})};export{t as u};
