@@ -18,4 +18,11 @@ router.get(
   SheepController.getList
 )
 
+router.delete(
+  '/delete',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheepController.delete
+)
+
 export default router
