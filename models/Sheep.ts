@@ -1,11 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-
-interface ISheep {
-  name: string
-  ageRange: string
-  tags: string[]
-  forcusPerson: boolean
-}
+import { ISheep } from '../types'
 
 const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   name: {
