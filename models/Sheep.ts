@@ -19,7 +19,6 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   },
   tags: {
     type: [String],
-    required: true,
     validate: {
       validator: (value: string[]) => value.every((tag) => tag.length <= 5),
       message: '每個 tag 最多只能有五個字'
@@ -27,7 +26,16 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   },
   forcusPerson: {
     type: Boolean,
+    default: false
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
+  },
+  note: {
+    type: String,
+    default: ''
   }
 }, { timestamps: true })
 

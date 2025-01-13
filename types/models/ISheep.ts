@@ -7,4 +7,5 @@ export interface ISheep {
   tags: string[]
   forcusPerson: boolean
   userId: IUser
+  note: string
 }
