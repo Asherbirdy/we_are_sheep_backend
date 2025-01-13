@@ -8,8 +8,14 @@ router.post(
   '/create',
   authenticateUser,
   checkVerifiedEmail,
-  authorizePermission(... RoleList.users),
   SheepController.create
+)
+
+router.get(
+  '/list',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheepController.getList
 )
 
 export default router

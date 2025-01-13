@@ -1,5 +1,6 @@
-import { CreateSheepController } from './Sheep'
+import { CreateSheepController, GetSheepListController } from './Sheep'
 
 export const SheepController = {
-  create: CreateSheepController
+  create: CreateSheepController,
+  getList: GetSheepListController
 }

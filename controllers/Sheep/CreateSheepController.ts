@@ -28,7 +28,8 @@ export const CreateSheepController = async (req: Req, res: Res) => {
   const sheep = await Sheep.create({
     name,
     ageRange,
-    userId: req.user?.userId
+    userId: req.user?.userId,
+    focusPerson: true
   })
 
   res.status(StatusCodes.OK).json({

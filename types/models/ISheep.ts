@@ -5,7 +5,7 @@ export interface ISheep {
   name: string
   ageRange: AgeRange
   tags: string[]
-  forcusPerson: boolean
+  focusPerson: boolean
   userId: IUser
   note: string
 }

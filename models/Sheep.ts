@@ -24,7 +24,7 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
       message: '每個 tag 最多只能有五個字'
     }
   },
-  forcusPerson: {
+  focusPerson: {
     type: Boolean,
     default: false
   },
