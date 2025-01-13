@@ -6,6 +6,7 @@ const router = Router()
 
 router.post(
   '/create',
+  authenticateUser,
   checkVerifiedEmail,
   authorizePermission(... RoleList.users),
   SheepController.create
