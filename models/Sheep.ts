@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import { ISheep } from '../types'
-
+import { AgeRange } from '../enums'
 const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   name: {
     type: String,
@@ -8,6 +8,13 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   },
   ageRange: {
     type: String,
+    enum: [
+      AgeRange.teenager,
+      AgeRange.college,
+      AgeRange.youth,
+      AgeRange.middleAge,
+      AgeRange.elder
+    ],
     required: true
   },
   tags: {
