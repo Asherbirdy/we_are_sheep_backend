@@ -3,6 +3,7 @@ import {
   SendFriendRequestController,
   GetYourFriendRequestController,
   FriendListController,
+  AcceptFriendRequestController
 } from './Friend'
 
 export const FriendController = {
@@ -14,5 +15,7 @@ export const FriendController = {
   getYourFriendRequest: GetYourFriendRequestController,
   // * 取得好友列表
   getFriendList: FriendListController,
+  // * 接受好友請求
+  acceptFriendRequest: AcceptFriendRequestController  
 }
 

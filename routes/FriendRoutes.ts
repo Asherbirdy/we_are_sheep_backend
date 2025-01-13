@@ -32,4 +32,11 @@ router.get(
   FriendController.getFriendList
 )
 
+router.post(
+  '/acceptFriendRequest',
+  authenticateUser,
+  checkVerifiedEmail,
+  FriendController.acceptFriendRequest
+)
+
 export default router
