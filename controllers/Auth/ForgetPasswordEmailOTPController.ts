@@ -8,14 +8,20 @@ export const ForgetPasswordEmailOTPController = async (req: Req, res: Res) => {
 
   const user = await User.findOne({ email })
   if (!user) {
-    res.status(StatusCodes.NOT_FOUND).json({ msg: 'User not found' })
+    res.status(StatusCodes.NOT_FOUND).json({ 
+      errCode: 'USER_NOT_FOUND',
+      msg: 'User not found'
+    })
     return
   }
 
   if (user.isBlocked) {
     const currentTime = new Date()
     if (currentTime < user.blockUntil) {
-      res.status(StatusCodes.FORBIDDEN).json({ msg: 'Account blocked. Try after some time.' })
+      res.status(StatusCodes.FORBIDDEN).json({ 
+        errCode: 'ACCOUNT_BLOCKED',
+        msg: 'Account blocked. Try after some time.'
+      })
       return
     } else {
       user.isBlocked = false
@@ -28,7 +34,11 @@ export const ForgetPasswordEmailOTPController = async (req: Req, res: Res) => {
   const currentTime = new Date()
   
   if (lastOTPTime && currentTime.getTime() - lastOTPTime.getTime() < 60000) {
-    return res.status(StatusCodes.BAD_REQUEST).json({msg: 'Minimum 1-minute gap required between OTP requests'})
+    res.status(StatusCodes.BAD_REQUEST).json({ 
+      errCode: 'MINIMUM_1_MINUTE_GAP_REQUIRED',
+      msg: 'Minimum 1-minute gap required between OTP requests'
+    })
+    return
   }
   
   const OTP = generateOTP()
@@ -39,5 +49,7 @@ export const ForgetPasswordEmailOTPController = async (req: Req, res: Res) => {
   
   sendOTP(user.email, OTP)
 
-  res.status(StatusCodes.OK).json({ msg: 'Forget Password Email OTP sent successfully' })
+  res.status(StatusCodes.OK).json({ 
+    msg: 'Forget Password Email OTP sent successfully'
+  })
 }
