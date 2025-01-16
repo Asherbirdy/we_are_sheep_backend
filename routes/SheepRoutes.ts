@@ -25,4 +25,11 @@ router.delete(
   SheepController.delete
 )
 
+router.patch(
+  '/edit',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheepController.editSheep
+)
+
 export default router

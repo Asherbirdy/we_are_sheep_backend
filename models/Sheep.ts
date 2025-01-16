@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import { ISheep } from '../types'
-import { AgeRange } from '../enums'
+import { AgeRange, PersonStatus } from '../enums'
 const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   name: {
     type: String,
@@ -15,7 +15,7 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
       AgeRange.middleAge,
       AgeRange.elder
     ],
-    required: true
+    required: true,
   },
   tags: {
     type: [String],
@@ -26,12 +26,22 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   },
   focusPerson: {
     type: Boolean,
-    default: false
+    default: true
   },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  personStatus: {
+    type: String,
+    enum: [
+      PersonStatus.none,
+      PersonStatus.normal,
+      PersonStatus.longTimeNoSee,
+      PersonStatus.gospelfriend
+    ],
+    default: PersonStatus.none
   },
   note: {
     type: String,
