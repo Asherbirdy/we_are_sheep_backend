@@ -1,4 +1,4 @@
-import { AgeRange } from '../../enums'
+import { AgeRange, PersonStatus } from '../../enums'
 import { IUser } from './IUser'
 
 export interface ISheep {
@@ -7,5 +7,6 @@ export interface ISheep {
   tags: string[]
   focusPerson: boolean
   userId: IUser
+  personStatus: PersonStatus
   note: string
 }
