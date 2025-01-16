@@ -1,7 +1,8 @@
-import { CreateSheepController, GetSheepListController, DeleteSheepController } from './Sheep'
+import { CreateSheepController, GetSheepListController, DeleteSheepController, EditSheepController } from './Sheep'
 
 export const SheepController = {
   create: CreateSheepController,
   getList: GetSheepListController,
-  delete: DeleteSheepController
+  delete: DeleteSheepController,
+  editSheep: EditSheepController
 }
