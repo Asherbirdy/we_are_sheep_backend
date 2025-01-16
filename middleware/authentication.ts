@@ -50,7 +50,7 @@ export const authenticateUser = async (req: CustomRequest, res: Response, next: 
       refreshToken: payload.refreshToken,
     })
     if (!existingToken || !existingToken.isValid) {
-      res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
+      res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid(如果是postman 要記得在header 加上Authorization: Bearer <token>)' })
       return
     }
     attachCookieToResponse({
@@ -61,7 +61,7 @@ export const authenticateUser = async (req: CustomRequest, res: Response, next: 
     req.user = payload.user
     return next()
   } catch (error) {
-    res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid' })
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Authentication Invalid(如果是postman 要記得在header 加上Authorization: Bearer <token>)' })
     return
   }
 }
