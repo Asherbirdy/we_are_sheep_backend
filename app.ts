@@ -16,7 +16,6 @@ import SurveyQuestionRoutes from './routes/SurveyQuestionRoutes'
 import SurveyRoutes from './routes/SurveyRoutes'
 import FriendRoutes from './routes/FriendRoutes'
 import SheepRoutes from './routes/SheepRoutes'
-import SmallSheepRoutes from './routes/SmallSheepRoutes'
 // Plugins
 import cors from 'cors'
 import morgan from 'morgan'
@@ -82,7 +81,6 @@ class Server {
     this.app.use('/api/v1/survey', SurveyRoutes)
     this.app.use('/api/v1/friend', FriendRoutes)
     this.app.use('/api/v1/sheep', SheepRoutes)
-    this.app.use('/api/v1/smallSheep', SmallSheepRoutes)
 
     // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
     this.app.get('/C/*', (req, res) => {
