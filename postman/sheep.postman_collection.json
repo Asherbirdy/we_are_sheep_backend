@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"districtId\":\"673594eaee3860b7fbd7e9ad\"\n}",
+							"raw": "{\n    \"districtId\":\"6752a05ce1491d9da0373931\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userId\": \"67223f793682faa2f4496d30\"\n}",
+							"raw": "{\n    \"userId\": \"6785cf07f0e7dcc922a033f0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,6 +96,24 @@
 							"path": [
 								"dev",
 								"deleteNonVerifiedEmailAccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check ip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/dev/checkIp",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"dev",
+								"checkIp"
 							]
 						}
 					},
@@ -213,7 +231,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"birdym\",\n    \"email\":\"birdym.tw@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"95984698-1da0-4008-84f3-1af346000910\"\n}",
+							"raw": "{\n    \"name\":\"bym\",\n    \"email\":\"bm.tw@gmail.com\",\n    \"password\":\"password\",\n    \"serialNumber\":\"d6a8029c-24c6-4987-87f3-15874d20e5c2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -324,7 +342,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"OTP\":\"d03766\"\n}",
+							"raw": "{\n    \"OTP\":\"d630e3\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -603,7 +621,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"role\": \"user\",\n    \"districtId\": \"\",\n    \"notes\": \"周偉銘小雞雞\"\n}",
+							"raw": "{\n    \"role\": \"user\",\n    \"districtId\": \"6752a05ce1491d9da0373931\",\n    \"notes\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -648,14 +666,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/userSerialNumber/delete/asdsad",
+							"raw": "{{URL}}/userSerialNumber/delete/677f687396468f02587e32bd",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"userSerialNumber",
 								"delete",
-								"asdsad"
+								"677f687396468f02587e32bd"
 							]
 						}
 					},
@@ -735,7 +753,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"四區\"\n}",
+							"raw": "{\n    \"name\":\"台北市召會二十八會所[四區]\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -771,7 +789,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"newName\":\"aaaaaas\",\n    \"districtId\":\"6718601443a655505783c426\"\n}",
+							"raw": "{\n    \"newName\":\"台北市召會二十八會所 四區\",\n    \"districtId\":\"6752a05ce1491d9da0373931\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -785,6 +803,271 @@
 							],
 							"path": [
 								"district"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sheep",
+			"item": [
+				{
+					"name": "Create Sheep",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"tes3\",\n    \"ageRange\":\"middleAge\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sheep/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sheep",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit sheep",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ageRange\":\"middleAge\",\n    \"focusPerson\": false,\n    \"note\":\"asdsad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sheep/edit?sheepId=67889e6e11337cb35dca6312",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sheep",
+								"edit"
+							],
+							"query": [
+								{
+									"key": "sheepId",
+									"value": "67889e6e11337cb35dca6312"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sheep List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test\",\n    \"ageRange\":\"teenager\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sheep/list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sheep",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete sheep",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test\",\n    \"ageRange\":\"teenager\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sheep/delete?sheepId=6784a9d38cc1bdb97956812c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sheep",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "sheepId",
+									"value": "6784a9d38cc1bdb97956812c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friend",
+			"item": [
+				{
+					"name": "Friend Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"friendUserId\":\"67765c0dd401e52838d3adc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/friend/request",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"friend",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Friend Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"friendRequestId\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/friend/acceptFriendRequest",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"friend",
+								"acceptFriendRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "You add Friend List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"friendUserId\":\"67765c0dd401e52838d3adc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/friend/getSendFriendRequest",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"friend",
+								"getSendFriendRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friend Add You Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"friendUserId\":\"67765c0dd401e52838d3adc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/friend/getYourFriendRequest",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"friend",
+								"getYourFriendRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFriendList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/friend/getFriendList",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"friend",
+								"getFriendList"
 							]
 						}
 					},
@@ -1389,6 +1672,181 @@
 								"activity",
 								"delete",
 								"675a9e38e422063deb204040"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Survey",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Asheddd sssr\",\n    \"ageRange\": \"18-35\",\n    \"contact\":\"adssssasas\",\n    \"userNotes\":\"asdas\",\n    \"survey\":[\n        {\n            \"question\":\"請問？\",\n            \"answer\":\"ssss\"\n        },\n        {\n            \"question\":\"請問2222？\",\n            \"answer\":\"ssssadassassss\"\n        }           \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/survey/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"survey",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SurveyQuestion",
+			"item": [
+				{
+					"name": "Get All Question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/surveyQuestion/getAll",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"surveyQuestion",
+								"getAll"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Survey Question By Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/surveyQuestion/getAllByOrder",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"surveyQuestion",
+								"getAllByOrder"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\":\"請問2222？\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/surveyQuestion/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"surveyQuestion",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit By Id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\":\"asdsas\",\n    \"surveyQuestionId\":\"67612d384a080941faab109c\",\n    \"active\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/surveyQuestion/editById",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"surveyQuestion",
+								"editById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Survey Question Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyQuestionIdArr\": [\n        \"67612d384a080941faab109c\",\n        \"6760df4ae39d01aa59f5d9d5\",\n        \"6760df49e39d01aa59f5d9d2\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/surveyQuestion/setOrder",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"surveyQuestion",
+								"setOrder"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
