@@ -847,7 +847,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ageRange\":\"middleAge\",\n    \"focusPerson\": false,\n    \"note\":\"asdsad\"\n}",
+							"raw": "{\n    \"ageRange\":\"middleAge\",\n    \"tags\":[\"test\",\"test2\"],\n    \"focusPerson\": false,\n    \"personStatus\":\"normal\",\n    \"note\":\"asdsad\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
