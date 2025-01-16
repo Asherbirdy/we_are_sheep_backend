@@ -4,7 +4,8 @@ import { Req, Res } from '../../types'
 import { checkPersmission, getUserIdByString } from '../../utils/checkPersmission'
 
 export const EditSheepController = async (req: Req, res: Res) => {
-  const { sheepId, ageRange, tags, focusPerson ,personStatus, note} = req.body
+  const { sheepId } = req.query
+  const { ageRange, tags, focusPerson ,personStatus, note} = req.body
 
   if(!sheepId || !ageRange) {
     res.status(StatusCodes.BAD_REQUEST).json({
