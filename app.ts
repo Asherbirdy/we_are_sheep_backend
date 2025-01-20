@@ -83,9 +83,9 @@ class Server {
     this.app.use('/api/v1/sheep', SheepRoutes)
 
     // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
-    this.app.get('/C/*', (req, res) => {
-      res.sendFile('index.html', { root: 'public/C' })
-    })
+    // this.app.get('/C/*', (req, res) => {
+    //   res.sendFile('index.html', { root: 'public/C' })
+    // })
     this.app.get('/weSheep/*', (req, res) => {
       res.sendFile('index.html', { root: 'public/weSheep' })
     })
