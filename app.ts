@@ -86,7 +86,7 @@ class Server {
     this.app.get('/C/*', (req, res) => {
       res.sendFile('index.html', { root: 'public/C' })
     })
-    this.app.get('/weSheep', (req, res) => {
+    this.app.get('/weSheep/*', (req, res) => {
       res.sendFile('index.html', { root: 'public/weSheep' })
     })
   }
