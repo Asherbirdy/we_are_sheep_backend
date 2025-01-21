@@ -1,4 +1,4 @@
-import { StatusCodes } from '../../enums'
+import { FocusPerson, StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
 
@@ -29,7 +29,7 @@ export const CreateSheepController = async (req: Req, res: Res) => {
     name,
     ageRange,
     userId: req.user?.userId,
-    focusPerson: true
+    focusPerson: FocusPerson.isFocus
   })
 
   res.status(StatusCodes.OK).json({
