@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import { ISheep } from '../types'
-import { AgeRange, PersonStatus } from '../enums'
+import { AgeRange, PersonStatus, FocusPerson } from '../enums'
 const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   name: {
     type: String,
@@ -25,8 +25,12 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     }
   },
   focusPerson: {
-    type: Boolean,
-    default: true
+    type: String,
+    enum: [
+      FocusPerson.isFocus,
+      FocusPerson.notFocus
+    ],
+    default: FocusPerson.notFocus
   },
   userId: {
     type: Schema.Types.ObjectId,

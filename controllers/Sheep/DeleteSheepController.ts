@@ -1,12 +1,22 @@
 import { StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
-import { checkPersmission, getUserIdByString } from '../../utils'
 
 export const DeleteSheepController = async (req: Req, res: Res) => {
   const { sheepId } = req.query
-  
-  checkPersmission(req.user, getUserIdByString(sheepId))
+
+  // 先檢查權限
+  const sheep = await Sheep.find({
+    userId: req.user?.userId,
+    _id: sheepId
+  })
+  if (!sheep) {
+    res.status(StatusCodes.BAD_REQUEST).json({
+      errorCode: 'SHEEP_NOT_FOUND',
+      msg: '不存在'
+    })
+    return
+  }
 
   await Sheep.findByIdAndDelete(sheepId)
   res.status(StatusCodes.OK).json({

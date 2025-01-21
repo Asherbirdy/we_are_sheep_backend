@@ -1,4 +1,4 @@
-import { StatusCodes } from '../../enums'
+import { FocusPerson, StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
 
@@ -7,10 +7,10 @@ export const GetSheepListController = async (req: Req, res: Res) => {
     userId: req.user?.userId
   })
 
-  const nonFocusPersonList = sheep.filter((sheep) => !sheep.focusPerson)
-  const focusPersonList = sheep.filter((sheep) => sheep.focusPerson)
+  const nonFocusPersonList = sheep.filter((sheep) => sheep.focusPerson === FocusPerson.notFocus)
+  const focusPersonList = sheep.filter((sheep) => sheep.focusPerson === FocusPerson.isFocus)
 
-  const list ={
+  const list = {
     focusPersonList: focusPersonList,
     nonFocusPersonList: nonFocusPersonList
   }
