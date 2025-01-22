@@ -1,1 +1,1 @@
-export * from './FriendListController'
+export * from './GetFriendListController'
