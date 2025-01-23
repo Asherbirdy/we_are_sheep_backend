@@ -29,7 +29,8 @@ export const CreateSheepController = async (req: Req, res: Res) => {
     name,
     ageRange,
     userId: req.user?.userId,
-    focusPerson: FocusPerson.isFocus
+    focusPerson: FocusPerson.isFocus,
+    district: req.user?.districtId
   })
 
   res.status(StatusCodes.OK).json({

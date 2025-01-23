@@ -47,6 +47,11 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     ],
     default: PersonStatus.none
   },
+  district: {
+    type: Schema.Types.ObjectId,
+    ref: 'District',
+    required: true
+  },
   note: {
     type: String,
     default: ''
