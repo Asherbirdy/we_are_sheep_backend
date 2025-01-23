@@ -15,10 +15,6 @@ const FriendListSchema: Schema<IFriendList> = new mongoose.Schema({
   favorite: {
     type: Boolean,
     default: false
-  },
-  relativeListId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'FriendList',
   }
 }, { timestamps: true })
 
