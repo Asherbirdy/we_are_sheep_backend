@@ -32,4 +32,11 @@ router.patch(
   SheepController.editSheep
 )
 
+router.get(
+  '/user-district-sheep',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheepController.getUserDistrictSheep
+)
+
 export default router
