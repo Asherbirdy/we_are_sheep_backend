@@ -17,7 +17,7 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     ],
     required: true,
   },
-  tags: {
+  weekInviteTag: {
     type: [String],
     validate: {
       validator: (value: string[]) => value.every((tag) => tag.length <= 5),

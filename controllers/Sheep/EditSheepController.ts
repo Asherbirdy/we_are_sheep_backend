@@ -5,7 +5,7 @@ import { checkPersmission, getUserIdByString } from '../../utils/checkPersmissio
 
 export const EditSheepController = async (req: Req, res: Res) => {
   const { sheepId } = req.query
-  const { ageRange, tags, focusPerson ,personStatus, note} = req.body
+  const { ageRange, weekInviteTag, focusPerson ,personStatus, note} = req.body
 
   if(!sheepId || !ageRange) {
     res.status(StatusCodes.BAD_REQUEST).json({
@@ -29,7 +29,7 @@ export const EditSheepController = async (req: Req, res: Res) => {
 
   // 更新羊
   sheep.ageRange = ageRange
-  sheep.tags = tags
+  sheep.weekInviteTag = weekInviteTag
   sheep.focusPerson = focusPerson
   sheep.personStatus = personStatus
   sheep.note = note
