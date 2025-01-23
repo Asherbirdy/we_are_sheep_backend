@@ -5,7 +5,7 @@ import { IUser } from './IUser'
 export interface ISheep {
   name: string
   ageRange: AgeRange
-  tags: string[]
+  weekInviteTag: string[]
   district: IDistrict
   focusPerson: FocusPerson
   userId: IUser
