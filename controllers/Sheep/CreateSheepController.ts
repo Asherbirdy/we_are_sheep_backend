@@ -5,6 +5,7 @@ import { Req, Res } from '../../types'
 export const CreateSheepController = async (req: Req, res: Res) => {
   const { name, ageRange, identity } = req.body
 
+  // 檢查資料是否完整
   if (!name || !ageRange || !identity) {
     res.status(StatusCodes.BAD_REQUEST).json({ 
       errorCode: 'CreateSheepController_BAD_REQUEST',
@@ -13,18 +14,40 @@ export const CreateSheepController = async (req: Req, res: Res) => {
     return
   }
 
+  // 檢查是否已達到 30 隻羊
   const findIfthritySheep = await Sheep.find({
     userId: req.user?.userId,
   }).countDocuments()
   
   if(findIfthritySheep >= 30) {
     res.status(StatusCodes.BAD_REQUEST).json({ 
-      errorCode: 'CreateSheepController_BAD_REQUEST_MAX_SHEEP',
+      errorCode: 'BAD_REQUEST_MAX_SHEEP',
       msg: '最多只能創建30隻羊' 
     })
     return
   }
 
+  // 檢查是否已經有同樣的羊
+  const findSameSheep = await Sheep.findOne({
+    name,
+    district: req.user?.districtId
+  }).populate({
+    path: 'userId',
+    select: '_id name'
+  })
+
+  if(findSameSheep) {
+    res.status(StatusCodes.BAD_REQUEST).json({ 
+      errorCode: 'BAD_REQUEST_SAME_SHEEP',
+      msg: `你區內的成員${ findSameSheep.userId.name }已經創建過這隻羊`,
+      data: {
+        msg: '有這隻羊的區內成員資訊',
+        districtmember: findSameSheep.userId
+      }
+    })
+    return
+  }
+  
   const sheep = await Sheep.create({
     name,
     ageRange,
