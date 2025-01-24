@@ -18,3 +18,8 @@ export enum FocusPerson {
   'isFocus' = 'isFocus',
   'notFocus' = 'notFocus'
 }
+
+export enum Gender {
+  'male' = 'male',
+  'female' = 'female'
+}
