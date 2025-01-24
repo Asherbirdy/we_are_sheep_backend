@@ -5,12 +5,12 @@ import { checkPersmission, getUserIdByString } from '../../utils/checkPersmissio
 
 export const EditSheepController = async (req: Req, res: Res) => {
   const { sheepId } = req.query
-  const { ageRange, weekInviteTag, focusPerson ,personStatus, note} = req.body
+  const { ageRange, gender, weekInviteTag, focusPerson ,personStatus, note} = req.body
 
-  if(!sheepId || !ageRange) {
+  if(!sheepId || !ageRange || !gender) {
     res.status(StatusCodes.BAD_REQUEST).json({
       errorCode: 'SHEEP_ID_OR_AGE_RANGE',
-      msg: 'sheepId 或 ageRange 不能為空'
+      msg: 'sheepId 或 ageRange 或 gender 不能為空'
     })
     return
   }
@@ -29,6 +29,7 @@ export const EditSheepController = async (req: Req, res: Res) => {
 
   // 更新羊
   sheep.ageRange = ageRange
+  sheep.gender = gender
   sheep.weekInviteTag = weekInviteTag
   sheep.focusPerson = focusPerson
   sheep.personStatus = personStatus

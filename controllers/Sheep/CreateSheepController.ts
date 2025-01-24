@@ -3,13 +3,13 @@ import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
 
 export const CreateSheepController = async (req: Req, res: Res) => {
-  const { name, ageRange } = req.body
+  const { name, ageRange, gender } = req.body
 
-  if (!name || !ageRange) {
+  if (!name || !ageRange || !gender) {
     res.status(StatusCodes.BAD_REQUEST).json({ 
       errorCode: 'CreateSheepController_BAD_REQUEST',
-      msg: '請填寫完整資料' 
-    })
+      msg: '請填寫完整資料 name, ageRange, gender' 
+    })  
     return
   }
 
@@ -28,6 +28,7 @@ export const CreateSheepController = async (req: Req, res: Res) => {
   const sheep = await Sheep.create({
     name,
     ageRange,
+    gender,
     userId: req.user?.userId,
     focusPerson: FocusPerson.isFocus,
     district: req.user?.districtId
