@@ -1,5 +1,5 @@
 import { Req, Res } from '../../types'
-import { StatusCodes } from '../../enums'
+import { FocusPerson, Identity, StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 
 export const GetUserDistrictSheepController = async (req: Req, res: Res) => {
@@ -11,13 +11,18 @@ export const GetUserDistrictSheepController = async (req: Req, res: Res) => {
     select: '_id name'
   })
 
-  const districtList = {
-    male: findSheep.filter((sheep) => sheep.gender === 'male'),
-    female: findSheep.filter((sheep) => sheep.gender === 'female')
+  const data = {
+    male: findSheep
+      .filter((sheep) => (sheep.identity === Identity.Male || sheep.identity === Identity.Brother))
+      .filter((sheep) => sheep.focusPerson === FocusPerson.isFocus)
+    ,
+    female: findSheep
+      .filter((sheep) => (sheep.identity === Identity.Female || sheep.identity === Identity.Sister))
+      .filter((sheep) => sheep.focusPerson === FocusPerson.isFocus)
   }
 
   res.status(StatusCodes.OK).json({
     msg: 'GetUserDistrictSheepController',
-    districtList
+    data
   })
 }

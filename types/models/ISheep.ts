@@ -1,10 +1,10 @@
-import { AgeRange, PersonStatus, FocusPerson, Gender } from '../../enums'
+import { AgeRange, PersonStatus, FocusPerson, Identity } from '../../enums'
 import { IDistrict } from './IDistrict'
 import { IUser } from './IUser'
 
 export interface ISheep {
   name: string
-  gender: Gender
+  identity: Identity
   ageRange: AgeRange
   weekInviteTag: string[]
   district: IDistrict

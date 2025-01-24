@@ -1,16 +1,18 @@
 import mongoose, { Schema } from 'mongoose'
 import { ISheep } from '../types'
-import { AgeRange, PersonStatus, FocusPerson, Gender } from '../enums'
+import { AgeRange, PersonStatus, FocusPerson, Identity } from '../enums'
 const SheepSchema: Schema<ISheep> = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  gender: {
+  identity: {
     type: String,
     enum: [
-      Gender.male,
-      Gender.female
+      Identity.Male,
+      Identity.Female,
+      Identity.Brother,
+      Identity.Sister
     ],
     required: true
   },

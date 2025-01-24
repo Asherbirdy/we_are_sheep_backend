@@ -11,14 +11,6 @@ export const RoleList = {
   "users": [Role.dev, Role.admin, Role.districtLeader, Role.user],
 }
 
-
-export enum Identity {
-  "Male" = 'M',
-  "Female" = 'F',
-  "Brother" = 'B',
-  "Sister" = 'S'
-}
-
 export enum MeetingStatus {
   "A_member" = 'A',
   "B_member" = 'B',

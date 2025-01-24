@@ -5,7 +5,6 @@ export enum PersonStatus {
   'gospelfriend' = 'gospelfriend',
 }
 
-
 export enum AgeRange {
   'teenager' = 'teenager',
   'college' = 'college',
@@ -19,7 +18,9 @@ export enum FocusPerson {
   'notFocus' = 'notFocus'
 }
 
-export enum Gender {
-  'male' = 'male',
-  'female' = 'female'
+export enum Identity {
+  "Male" = 'M',
+  "Female" = 'F',
+  "Brother" = 'B',
+  "Sister" = 'S'
 }
