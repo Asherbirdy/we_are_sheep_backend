@@ -11,8 +11,13 @@ export const GetUserDistrictSheepController = async (req: Req, res: Res) => {
     select: '_id name'
   })
 
+  const districtList = {
+    male: findSheep.filter((sheep) => sheep.gender === 'male'),
+    female: findSheep.filter((sheep) => sheep.gender === 'female')
+  }
+
   res.status(StatusCodes.OK).json({
     msg: 'GetUserDistrictSheepController',
-    data: findSheep
+    districtList
   })
 }
