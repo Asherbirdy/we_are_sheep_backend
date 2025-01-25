@@ -14,5 +14,5 @@ router.post('/bindOTPEmail', authenticateUser, AuthController.bindOTPEmail)
 router.post('/forgetPasswordEmailOTP', AuthController.forgetPasswordEmailOTP)
 router.post('/changePasswordWithOTP', AuthController.changePasswordWithOTP)
 
-router.get('/checkValidToken', AuthController.checkValidToken)
+router.get('/checkValidToken',authenticateUser, AuthController.checkValidToken)
 export default router
