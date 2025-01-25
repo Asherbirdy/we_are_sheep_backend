@@ -11,3 +11,9 @@ export interface Req extends Request {
 }
 
 export type Res = Response
+
+// TODO: 有一天把全部 API 的 Response 都改成這樣
+// export interface Res extends Response {
+//   msg: string
+//   json: (body: { msg: string; [key: string]: any }) => this
+// }

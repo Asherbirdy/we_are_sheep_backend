@@ -7,7 +7,8 @@ import {
   SendOTPController,
   bindOTPEmailController,
   ForgetPasswordEmailOTPController,
-  ChangePasswordWithOTPController
+  ChangePasswordWithOTPController,
+  CheckValidTokenController
 } from './Auth'
 
 export const AuthController = {
@@ -35,5 +36,9 @@ export const AuthController = {
   /*
     * Change Password With OTP
   */
-  changePasswordWithOTP: ChangePasswordWithOTPController
+  changePasswordWithOTP: ChangePasswordWithOTPController,
+  /*
+    * Check Valid
+  */
+  checkValidToken: CheckValidTokenController
 }
