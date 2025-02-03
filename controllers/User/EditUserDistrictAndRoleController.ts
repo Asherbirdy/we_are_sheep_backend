@@ -2,6 +2,10 @@ import { Role, StatusCodes } from '../../enums'
 import { Req, Res } from '../../types'
 import User from '../../models/User'
 
+/*
+  ! 之後可以刪掉
+
+*/
 export const EditUserDistrictAndRoleController = async (req: Req, res: Res) => {
   const { userId, districtId, role } = req.body
   if ( !userId || !districtId || !role ) {

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { UserController } from '../controllers'
-import { Role } from '../enums'
+import { Role, RoleList } from '../enums'
 import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
@@ -27,7 +27,7 @@ router.get(
 router.put(
   '/editUserInfo',
   authenticateUser,
-  authorizePermission(Role.dev),
+  authorizePermission(... RoleList.users),
   UserController.editUserInfo
 )
 

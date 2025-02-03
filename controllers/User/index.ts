@@ -1,4 +1,5 @@
 export * from './EditUserDistrictAndRoleController'
+export * from './EditUserInfoController'
 export * from './ShowCurrentUserController'
 export * from './UpdatePasswordController'
 export * from './GetAllUsersController'

@@ -1,13 +1,13 @@
 import {
-  EditUserDistrictAndRoleController,
   ShowCurrentUserController,
   UpdatePasswordController,
-  GetAllUsersController
+  GetAllUsersController,
+  EditUserInfoController
 } from './User/index'
 
 export const UserController = {
   showCurrentUser: ShowCurrentUserController,
   updatePassword: UpdatePasswordController,
   getAllUsers: GetAllUsersController,
-  editUserInfo: EditUserDistrictAndRoleController
+  editUserInfo: EditUserInfoController
 }
