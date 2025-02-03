@@ -2,7 +2,8 @@ import {
   GetDevEnvController,
   SetDevDistrictController,
   DeleteNonVerifiedEmailAccountController,
-  CheckIpController
+  CheckIpController,
+  DeleteUserController
 } from './Dev/index'
 
 export const DevController = {
@@ -13,5 +14,7 @@ export const DevController = {
   // **
   deleteNonVerifiedEmailAccount: DeleteNonVerifiedEmailAccountController,
   // **
-  checkIp: CheckIpController
+  checkIp: CheckIpController,
+  // **
+  deleteUser: DeleteUserController
 }

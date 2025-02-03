@@ -23,4 +23,11 @@ router.delete(
   DevController.deleteNonVerifiedEmailAccount
 )
 
+router.delete(
+  '/deleteUser',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  DevController.deleteUser
+)
+
 export default router
