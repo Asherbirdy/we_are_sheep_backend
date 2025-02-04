@@ -5,7 +5,6 @@ import { Sheep } from '../../models/Sheep'
 export const GetUserDistrictSheepController = async (req: Req, res: Res) => {
   const findSheep = await Sheep.find({
     district: req.user?.districtId,
-    focusPerson: 'isFocus'
   }).populate({
     path: 'userId',
     select: '_id name'
@@ -19,6 +18,9 @@ export const GetUserDistrictSheepController = async (req: Req, res: Res) => {
     female: findSheep
       .filter((sheep) => (sheep.identity === Identity.Female || sheep.identity === Identity.Sister))
       .filter((sheep) => sheep.focusPerson === FocusPerson.isFocus)
+    ,
+    noFocus: findSheep
+      .filter((sheep) => sheep.focusPerson === FocusPerson.notFocus)
   }
 
   res.status(StatusCodes.OK).json({
