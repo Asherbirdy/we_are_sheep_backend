@@ -1,17 +1,14 @@
 import { FocusPerson, StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
+import { BadRequestError } from '../../errors'
 
 export const CreateSheepController = async (req: Req, res: Res) => {
   const { name, ageRange, identity } = req.body
 
   // 檢查資料是否完整
   if (!name || !ageRange || !identity) {
-    res.status(StatusCodes.BAD_REQUEST).json({ 
-      errorCode: 'CreateSheepController_BAD_REQUEST',
-      msg: '請填寫完整資料 name, ageRange, identity' 
-    })  
-    return
+    throw new BadRequestError('REQUEST_BODY_NOT_COMPLETE')
   }
 
   // 檢查是否已達到 30 隻羊
