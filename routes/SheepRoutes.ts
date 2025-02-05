@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import { SheepController } from '../controllers'
-import { RoleList } from '../enums'
-import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
+import { authenticateUser, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
 router.post(
