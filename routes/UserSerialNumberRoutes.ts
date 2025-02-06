@@ -27,4 +27,12 @@ router.delete(
   UserSerialNumberController.delete
 )
 
+router.post(
+  '/districtLeaderCreateUserSerial',
+  authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
+  checkVerifiedEmail,
+  UserSerialNumberController.districtLeaderCreate
+)
+
 export default router
