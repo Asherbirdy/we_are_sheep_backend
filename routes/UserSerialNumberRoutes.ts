@@ -22,7 +22,7 @@ router.get(
 router.delete(
   '/delete/:id',
   authenticateUser,
-  authorizePermission(... RoleList.admins),
+  authorizePermission(... RoleList.districtLeaders),
   checkVerifiedEmail,
   UserSerialNumberController.delete
 )
