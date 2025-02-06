@@ -11,6 +11,15 @@ export const DistrictLeaderCreateUserSerialController = async (req: Req, res: Re
     throw new BadRequestError('FIELD_REQUIRED')
   }
 
+  // 只能產生 10 個
+  const findAllSerialNumber = await UserSerialNumber.find({
+    createByUser: req.user?.userId
+  })
+
+  if (findAllSerialNumber.length >= 10) {
+    throw new BadRequestError('CAN_ONLY_CREATE_10_SERIAL_NUMBER')
+  }
+
   const serialNumber = await UserSerialNumber.create({
     serialNumber: uuidv4(),
     role: Role.user,

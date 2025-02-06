@@ -2,7 +2,8 @@ import {
   CreateSerialNumberController,
   GetAllSerialNumberController,
   DeleteSerialNumberController,
-  DistrictLeaderCreateUserSerialController
+  DistrictLeaderCreateUserSerialController,
+  GetLeaderSerialNumberController
 } from './UserSerialNumber/index'
 
 /*
@@ -15,5 +16,6 @@ export const UserSerialNumberController = {
   create: CreateSerialNumberController,
   getAll: GetAllSerialNumberController,
   delete: DeleteSerialNumberController,
-  districtLeaderCreate: DistrictLeaderCreateUserSerialController
+  districtLeaderCreate: DistrictLeaderCreateUserSerialController,
+  getLeaderSerialNumber: GetLeaderSerialNumberController
 }

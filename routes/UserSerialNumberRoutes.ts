@@ -35,4 +35,12 @@ router.post(
   UserSerialNumberController.districtLeaderCreate
 )
 
+router.get(
+  '/getLeaderSerialNumber',
+  authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
+  checkVerifiedEmail,
+  UserSerialNumberController.getLeaderSerialNumber
+)
+
 export default router
