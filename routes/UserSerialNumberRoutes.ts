@@ -22,9 +22,25 @@ router.get(
 router.delete(
   '/delete/:id',
   authenticateUser,
-  authorizePermission(... RoleList.admins),
+  authorizePermission(... RoleList.districtLeaders),
   checkVerifiedEmail,
   UserSerialNumberController.delete
+)
+
+router.post(
+  '/districtLeaderCreateUserSerial',
+  authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
+  checkVerifiedEmail,
+  UserSerialNumberController.districtLeaderCreate
+)
+
+router.get(
+  '/getLeaderSerialNumber',
+  authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
+  checkVerifiedEmail,
+  UserSerialNumberController.getLeaderSerialNumber
 )
 
 export default router
