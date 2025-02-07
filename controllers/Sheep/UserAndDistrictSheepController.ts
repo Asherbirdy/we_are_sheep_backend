@@ -12,7 +12,7 @@ export const UserAndDistrictSheepController = async (req: Req, res: Res) => {
 
   const data = {
     personal: findSheep.filter((sheep) => String(sheep.userId._id) === String(req.user?.userId)),
-    district: findSheep.filter((sheep) => String(sheep.userId._id) !== String(req.user?.userId)),
+    district: findSheep
   }
 
   res.status(StatusCodes.OK).json({
