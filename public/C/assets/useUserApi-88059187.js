@@ -1,0 +1,1 @@
+import{aD as a}from"./index-aad35c44.js";const r={showMe:{api:async()=>await a.get({url:"/users/showMe"}),queryKey:"/users/showMe"},updatePassword:{api:async s=>await a.patch({url:"/users/updateUserPassword",data:s})},editUserInfo:{api:async s=>await a.put({url:"/users/editUserInfo",data:s})}};export{r as u};
