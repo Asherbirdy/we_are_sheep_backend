@@ -8,15 +8,10 @@ import DevRouter from './routes/DevRoutes'
 import AuthRoutes from './routes/AuthRoutes'
 import UserRoutes from './routes/UserRoutes'
 import DistrictRoutes from './routes/DistrictRoutes'
-import MemberRoutes from './routes/MemberRoutes'
 import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
-import MemberNoteRoutes from './routes/MemberNoteRoute'
 import ActivityRoutes from './routes/ActivityRoutes'
-import SurveyQuestionRoutes from './routes/SurveyQuestionRoutes'
-import SurveyRoutes from './routes/SurveyRoutes'
-import FriendRoutes from './routes/FriendRoutes'
 import SheepRoutes from './routes/SheepRoutes'
-import FriendListRoutes from './routes/FriendListRoutes'
+
 // Plugins
 import cors from 'cors'
 import morgan from 'morgan'
@@ -74,15 +69,9 @@ class Server {
     this.app.use('/api/v1/auth', AuthRoutes)
     this.app.use('/api/v1/users', UserRoutes)
     this.app.use('/api/v1/district', DistrictRoutes)
-    this.app.use('/api/v1/member', MemberRoutes)
     this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
-    this.app.use('/api/v1/memberNote', MemberNoteRoutes)
     this.app.use('/api/v1/activity', ActivityRoutes)
-    this.app.use('/api/v1/surveyQuestion', SurveyQuestionRoutes)
-    this.app.use('/api/v1/survey', SurveyRoutes)
-    this.app.use('/api/v1/friend', FriendRoutes)
     this.app.use('/api/v1/sheep', SheepRoutes)
-    this.app.use('/api/v1/friendList', FriendListRoutes)
     
     // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
     this.app.get('/C/*', (req, res) => {
