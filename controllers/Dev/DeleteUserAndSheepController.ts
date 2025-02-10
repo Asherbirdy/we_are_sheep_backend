@@ -1,3 +1,4 @@
+import config from '../../config'
 import { Role, StatusCodes } from '../../enums'
 import { BadRequestError, NotFoundError } from '../../errors'
 import { Sheep } from '../../models/Sheep'
@@ -6,6 +7,9 @@ import { Req, Res } from '../../types'
 
 export const DeleteUserAndSheepController = async (req: Req, res: Res) => {
   const { userId } = req.query
+  if(config.environment === 'PROD') {
+    throw new BadRequestError('This feature is only available in development mode')
+  }
 
   if(!userId) {
     throw new BadRequestError('User ID is required')
