@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { SheepController } from '../controllers'
-import { authenticateUser, checkVerifiedEmail } from '../middleware'
+import { RoleList } from '../enums'
+import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 const router = Router()
 
 router.post(
@@ -48,6 +49,7 @@ router.get(
 router.get(
   '/district-member',
   authenticateUser,
+  authorizePermission(... RoleList.districtLeaders),
   checkVerifiedEmail,
   SheepController.getDistrictMember
 )
