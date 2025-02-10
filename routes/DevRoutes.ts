@@ -24,10 +24,10 @@ router.delete(
 )
 
 router.delete(
-  '/deleteUser',
+  '/deleteUserAndSheep',
   authenticateUser,
   authorizePermission(Role.dev),
-  DevController.deleteUser
+  DevController.deleteUserAndSheep
 )
 
 export default router
