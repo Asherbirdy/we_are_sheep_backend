@@ -45,4 +45,10 @@ router.get(
   SheepController.userAndDistrictSheep
 )
 
+router.get(
+  '/district-member',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheepController.getDistrictMember
+)
 export default router
