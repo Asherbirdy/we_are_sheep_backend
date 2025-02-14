@@ -2,7 +2,7 @@ import { StatusCodes } from '../../enums'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
 
-export const GetDistrictMemberController = async (req: Req, res: Res) => {
+export const GetDistrictMemberByDistrictIdController = async (req: Req, res: Res) => {
   const { district } = req.query
   
   if (!district) {
@@ -12,7 +12,7 @@ export const GetDistrictMemberController = async (req: Req, res: Res) => {
     return
   }
 
-  const sheep = await Sheep.find({ district })
+  const sheep = await Sheep.find({ district }).select('_id')
   res.status(StatusCodes.OK).json({
     msg: 'Get District Member',
     data: sheep

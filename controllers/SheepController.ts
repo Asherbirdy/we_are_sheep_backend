@@ -5,7 +5,7 @@ import {
   EditSheepController,
   GetUserDistrictSheepController,
   UserAndDistrictSheepController,
-  GetDistrictMemberController 
+  GetDistrictMemberByDistrictIdController 
 } from './Sheep'
   
 export const SheepController = {
@@ -15,5 +15,5 @@ export const SheepController = {
   editSheep: EditSheepController,
   getUserDistrictSheep: GetUserDistrictSheepController,
   userAndDistrictSheep: UserAndDistrictSheepController,
-  getDistrictMember: GetDistrictMemberController
+  getDistrictMemberByDistrictId: GetDistrictMemberByDistrictIdController
 }
