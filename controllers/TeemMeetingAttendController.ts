@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { StatusCodes } from '../enums'
 import { TeemMeetingAttend ,AgeRange} from '../models/TeemMeetingAttend'
 import { Req, Res } from '../types'
-
+import { UnauthenticatedError } from '../errors/unauthenticated'
 export const TeemMeetingAttendController = {
   create: async (req: Req, res: Res) => {
     const { data } = req.body
@@ -20,6 +20,10 @@ export const TeemMeetingAttendController = {
     })
   },
   get: async (req: Req, res: Res) => {
+    const { password } = req.body
+    if (password !== '0329') {
+      throw new UnauthenticatedError('WRONG_PASSWORD')
+    }
     const data = await TeemMeetingAttend.find({})
 
     const ageRangeData = {
