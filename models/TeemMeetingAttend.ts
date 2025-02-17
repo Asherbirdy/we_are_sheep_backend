@@ -11,15 +11,54 @@ interface ITeemMeetingAttend {
   participation: string
 }
 
+export enum AgeRange {
+  'none' = '未選擇',
+  'youth' = '青職',
+  'college' = '大專',
+  'teenager' = '青少年',
+  'other' = '其他',
+  'child1' = '兒童-幼兒園',
+  'child2' = '兒童-低年級',
+  'child3' = '兒童-高年級',
+}
+
+export enum Gender {
+  'none' = '未選擇',
+  'male' = '男',
+  'female' = '女',
+}
+export enum Participation {
+  'none' = '未選擇',
+  'both' = '兩天都參加',
+  'only329' = '只參加3/29特會',
+  'only330' = '只參加3/30主日',
+}
+
+export enum MeetingStatus {
+  'none' = '未選擇',
+  'has' = '已有聚會',
+  'long' = '久不聚會',
+  'gospel' = '福音朋友',
+}
+
+
+export enum District {
+  'none' = '未選擇',
+  'one' = '一區',
+  'two' = '二區',
+  'three' = '三區',
+  'four' = '四區',
+}
+
 const TeemMeetingAttendSchema: Schema<ITeemMeetingAttend> = new Schema({
   district: {
     type: String,
     enum: [
-      '未選擇',
-      '一區',
-      '二區',
-      '三區',
-      '四區',
+      District.none,
+      District.one,
+      District.two,
+      District.three,
+      District.four,
     ],
     required: true
   },
@@ -30,42 +69,43 @@ const TeemMeetingAttendSchema: Schema<ITeemMeetingAttend> = new Schema({
   ageRange: {
     type: String,
     enum: [
-      '未選擇',
-      '青職',
-      '大專',
-      '青少年',
-      '其他',
-      '兒童-幼兒園',
-      '兒童-低年級',
-      '兒童-高年級',
+      AgeRange.none,
+      AgeRange.youth,
+      AgeRange.college,
+      AgeRange.teenager,
+      AgeRange.other,
+      AgeRange.child1,
+      AgeRange.child2,
+      AgeRange.child3,
     ],
     required: true
   },
   gender: {
     type: String,
     enum: [
-      '未選擇',
-      '男',
-      '女',
+      Gender.none,
+      Gender.male,
+      Gender.female,
     ],
     required: true
   },
   participation: {
     type: String,
     enum: [
-      '未選擇',
-      '兩天都參加',
-      '只參加3/30主日',
+      Participation.none,
+      Participation.both,
+      Participation.only329,
+      Participation.only330,
     ],
     required: true
   },
   meetingStatus: {
     type: String,
     enum: [
-      '未選擇',
-      '已有聚會',
-      '久不聚會',
-      '福音朋友',
+      MeetingStatus.none,
+      MeetingStatus.has,
+      MeetingStatus.long,
+      MeetingStatus.gospel,
     ],
     required: true
   },
