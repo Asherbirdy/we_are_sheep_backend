@@ -12,6 +12,8 @@ import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
 import ActivityRoutes from './routes/ActivityRoutes'
 import SheepRoutes from './routes/SheepRoutes'
 
+// 特別專案
+import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
 // Plugins
 import cors from 'cors'
 import morgan from 'morgan'
@@ -73,6 +75,9 @@ class Server {
     this.app.use('/api/v1/activity', ActivityRoutes)
     this.app.use('/api/v1/sheep', SheepRoutes)
     
+    // 特別專案
+    this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)
+
     // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
     this.app.get('/C/*', (req, res) => {
       res.sendFile('index.html', { root: 'public/C' })

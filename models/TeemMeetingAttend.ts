@@ -8,6 +8,7 @@ interface ITeemMeetingAttend {
   meetingStatus: string
   sheepherd: string
   inviteList: string
+  participation: string
 }
 
 const TeemMeetingAttendSchema: Schema<ITeemMeetingAttend> = new Schema({
@@ -46,6 +47,15 @@ const TeemMeetingAttendSchema: Schema<ITeemMeetingAttend> = new Schema({
       '未選擇',
       '男',
       '女',
+    ],
+    required: true
+  },
+  participation: {
+    type: String,
+    enum: [
+      '未選擇',
+      '兩天都參加',
+      '只參加3/30主日',
     ],
     required: true
   },
