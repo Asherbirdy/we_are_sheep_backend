@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { StatusCodes } from '../enums'
-import { TeemMeetingAttend ,AgeRange} from '../models/TeemMeetingAttend'
+import { TeemMeetingAttend, AgeRange } from '../models/TeemMeetingAttend'
 import { Req, Res } from '../types'
 import { UnauthenticatedError } from '../errors/unauthenticated'
 export const TeemMeetingAttendController = {
@@ -42,6 +42,10 @@ export const TeemMeetingAttendController = {
       youth: {
         count: data.filter((item: any) => item.ageRange === AgeRange.youth).length,
         data: data.filter((item: any) => item.ageRange === AgeRange.youth),
+      },
+      other: {
+        count: data.filter((item: any) => item.ageRange === AgeRange.other).length,
+        data: data.filter((item: any) => item.ageRange === AgeRange.other),
       },
       child1: {
         count: data.filter((item: any) => item.ageRange === AgeRange.child1).length,
