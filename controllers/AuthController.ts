@@ -13,7 +13,7 @@ import {
 
 export const AuthController = {
   register: RegisterController,
-  /*
+  /* 
     * User Register
   */
   userRegister: UserRegisterController,
@@ -22,7 +22,7 @@ export const AuthController = {
   refreshToken: RefreshTokenController,
   /*
     * Send OTP
-  */  
+  */
   sendOTP: SendOTPController,
   /*
     * Bind OTP Email
