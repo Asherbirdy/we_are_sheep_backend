@@ -27,13 +27,6 @@ ${new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', da
 福音朋友：${gospel.length}位
 久未聚會：${data.filter((item) => item.participation === '久未聚會').length}位
 
-專項報名情形：
-青職：${data.filter((item) => item.ageRange === '青職').length} 位 / 會所：28
-大專：${data.filter((item) => item.ageRange === '大專').length} 位 / 會所目標：
-青少年：由港湖另外計算
-其他：${data.filter((item) => item.ageRange === '其他').length} 位
-
-
 會參加的福音朋友：
 ${gospel.map((item) => `${item.name}${item.sheepherd ? `（邀約者：${item.sheepherd}「${item.ageRange}」）` : ''}`).join('\n')}
 
@@ -51,3 +44,8 @@ console.log(finalStr)
 // 二區：${data.filter((item) => item.district === '二區').length}位
 // 三區：${data.filter((item) => item.district === '三區').length}位
 // 四區：${data.filter((item) => item.district === '四區').length}位
+// 專項報名情形：
+// 青職：${data.filter((item) => item.ageRange === '青職').length} 位 / 會所目標：28
+// 大專：${data.filter((item) => item.ageRange === '大專').length} 位
+// 青少年：${data.filter((item) => item.ageRange === '青少年').length} 位
+// 其他：${data.filter((item) => item.ageRange === '其他').length} 位
