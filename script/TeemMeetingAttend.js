@@ -1,6 +1,6 @@
 /* eslint-disable template-curly-spacing */
 /* eslint-disable no-undef */
-const str = `
+const str = `	
 `
 
 const data = str.trim().split('\n').map((line) => {
@@ -28,7 +28,7 @@ ${new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', da
 久未聚會：${data.filter((item) => item.participation === '久未聚會').length}位
 
 會參加的福音朋友：
-${gospel.map((item) => `${item.name}${item.sheepherd ? `（邀約者：${item.sheepherd}「${item.ageRange}」）` : ''}`).join('\n')}
+${gospel.map((item) => `${item.name}(${item.ageRange},${item.sheepherd ? `${item.sheepherd}邀` : ''})`).join('\n')}
 
 久未聚會：
 ${data.filter((item) => item.participation === '久未聚會').map((item) => `${item.name}「${item.ageRange}」`).join('\n')}
