@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable template-curly-spacing */
 /* eslint-disable no-undef */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -24,14 +25,40 @@ const finalStr = `
 ${new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })}
 青年聚會會所報名情形
 報名總數：${result}位
-福音朋友：${gospel.length}位
-久未聚會：${data.filter((item) => item.participation === '久未聚會').length}位
 
-會參加的福音朋友：
+會參加的福音朋友${gospel.length}位：
 ${gospel.map((item) => `${item.name}(${item.ageRange},${item.sheepherd ? `${item.sheepherd}邀` : ''})`).join('\n')}
 
-久未聚會：
+久未聚會${data.filter((item) => item.participation === '久未聚會').length}位：
 ${data.filter((item) => item.participation === '久未聚會').map((item) => `${item.name}「${item.ageRange}」`).join('\n')}
+
+一區代禱名單：
+${data.filter((item) => item.district === '一區')
+    .filter((item) => item.inviteList !== '無')
+    .map((item) => `${item.name}：${item.inviteList}`).join('\n')
+  }
+  }
+
+二區代禱名單：
+${data.filter((item) => item.district === '二區')
+    .filter((item) => item.inviteList !== '無')
+    .map((item) => `${item.name}：${item.inviteList}`).join('\n')
+  }
+
+三區代禱名單：
+${data.filter((item) => item.district === '三區')
+    .filter((item) => item.inviteList !== '無')
+    .map((item) => `${item.name}：${item.inviteList}`).join('\n')
+  }
+
+四區代禱名單：
+${data.filter((item) => item.district === '四區')
+    .filter((item) => item.inviteList !== '無')
+    .map((item) => `${item.name}：${item.inviteList}`).join('\n')
+  }
+
+線上名單填寫連結：
+https://docs.google.com/spreadsheets/d/1lwRtv_CYgy7x17WGbva5tkPCayEzFM47lh97FKCraIY
 `
 
 // eslint-disable-next-line no-console
