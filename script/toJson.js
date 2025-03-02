@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-const str = `
-`
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const str = require('./str.js')
 
 const data = str.trim().split('\n').map((line) => {
     const [district, name, ageRange, gender, meetingStatus, participation, sheepherd, inviteList] = line.split('\t')
