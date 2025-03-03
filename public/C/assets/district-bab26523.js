@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{a0 as n,L as r,Z as s,P as a,O as c,T as _}from"./index-5f428e13.js";const i={};function l(d,t){const e=n("n-button");return r(),s("div",null,[a(e,null,{default:c(()=>t[0]||(t[0]=[_(" District頁面 ")])),_:1})])}const u=o(i,[["render",l]]);export{u as default};
