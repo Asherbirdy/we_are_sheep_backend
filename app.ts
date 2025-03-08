@@ -51,6 +51,7 @@ class Server {
         tokens.url(req, res),
         tokens.status(req, res),
         `${ new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }) }`,
+        `ip: ${ req.ip }`,
         'payload:', JSON.stringify(req.body),
       ].join(' ')))
 
