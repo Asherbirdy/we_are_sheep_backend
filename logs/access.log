@@ -1,0 +1,7 @@
+Server up and running at port: 3000
+Server up and running at port: 3000
+GET /favicon.png 404 2025/3/11 下午3:45:52 ips:  payload: {}
+GET /api/v1/auth/checkValidToken 401 2025/3/11 下午3:45:52 ips:  payload: {}
+Server up and running at port: 3000
+Server up and running at port: 3000
+GET /api/v1/auth/checkValidToken 401 2025/3/11 下午3:49:06 ips:  payload: {}
