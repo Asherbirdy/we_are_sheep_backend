@@ -12,7 +12,7 @@
 const dotenv = require('dotenv')
 const path = require('path')
 const process = require('process')
-dotenv.config({ path: path.resolve(process.cwd(), `.env.${ process.env.NODE_ENV || 'prod' }`) })
+dotenv.config({ path: path.resolve(process.cwd(), '.env.dev') })
 
 module.exports = {
   apps: [
