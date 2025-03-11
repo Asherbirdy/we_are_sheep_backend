@@ -29,6 +29,12 @@ pnpm 部署：
 ```
 pnpm build
 ```
+
+pm2 部署：
+```
+npm install pm2 -g
+pnpm deploy:prod
+```
 ###### 將dist檔案副上，並在平台上設定.env
 ------------
 
