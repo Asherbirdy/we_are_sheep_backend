@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * @description pm2 configuration file.
  * @example
@@ -5,6 +7,13 @@
  *  development mode :: pm2 start ecosystem.config.js --only dev
  */
 // eslint-disable-next-line no-undef
+
+// eslint-disable-next-line no-undef
+const dotenv = require('dotenv')
+const path = require('path')
+const process = require('process')
+dotenv.config({ path: path.resolve(process.cwd(), `.env.${ process.env.NODE_ENV || 'prod' }`) })
+
 module.exports = {
   apps: [
     {
@@ -21,8 +30,15 @@ module.exports = {
       output: `./logs/access/access-${ new Date().toISOString().split('T')[ 0 ] }.log`, 
       error: `./logs/error/error-${ new Date().toISOString().split('T')[ 0 ] }.log`, 
       env: {
-        PORT: 1207,
-        NODE_ENV: 'production',
+        PORT: process.env.PORT,
+        ENVIRONMENT: process.env.ENVIRONMENT,
+        MONGO_URL: process.env.MONGO_URL,
+        MONGO_DB_POSITION: process.env.MONGO_DB_POSITION,
+        MONGO_DB_NAME: process.env.MONGO_DB_NAME,
+        JWT_SECRET: process.env.JWT_SECRET,
+        AUTH_TOKEN: process.env.AUTH_TOKEN,
+        EMAIL_SERVICE_USER: process.env.EMAIL_SERVICE_USER,
+        EMAIL_SERVICE_PASS: process.env.EMAIL_SERVICE_PASS,
       },
     },
   ],

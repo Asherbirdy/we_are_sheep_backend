@@ -9,3 +9,4 @@ access.log
 error.log
 logs/access/access-*.log
 logs/error/error-*.log
+ecosystem.config.js
