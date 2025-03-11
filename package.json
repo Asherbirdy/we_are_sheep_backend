@@ -9,7 +9,8 @@
     "dev-fe": "tsc-watch --onsuccess \"node -r dotenv/config dist/app.js dotenv_config_path=.env.dev_fe\"",
     "copy-package": "copyfiles package.json pnpm-lock.yaml Dockerfile docker-compose.yml .dockerignore dist",
     "build": "tsc && npm run copy-package",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod"
   },
   "keywords": [],
   "author": "",
