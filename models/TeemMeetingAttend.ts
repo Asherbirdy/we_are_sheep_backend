@@ -32,6 +32,7 @@ export enum Participation {
   'both' = '兩天都參加',
   'only329' = '只參加3/29特會',
   'only330' = '只參加3/30主日',
+  'notAttend' = '不參加',
 }
 
 export enum MeetingStatus {
@@ -96,6 +97,7 @@ const TeemMeetingAttendSchema: Schema<ITeemMeetingAttend> = new Schema({
       Participation.both,
       Participation.only329,
       Participation.only330,
+      Participation.notAttend,
     ],
     required: true
   },
