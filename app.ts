@@ -11,7 +11,7 @@ import DistrictRoutes from './routes/DistrictRoutes'
 import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
 import ActivityRoutes from './routes/ActivityRoutes'
 import SheepRoutes from './routes/SheepRoutes'
-
+import SheetRoutes from './routes/SheetRoutes'
 // 特別專案
 import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
 // Plugins
@@ -75,7 +75,7 @@ class Server {
     this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
     this.app.use('/api/v1/activity', ActivityRoutes)
     this.app.use('/api/v1/sheep', SheepRoutes)
-    
+    this.app.use('/api/v1/sheet', SheetRoutes)
     // 特別專案
     this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)
 
