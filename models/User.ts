@@ -57,7 +57,12 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     ref: 'District',
   },
   // 加入的群組ids
-  groupsIds: {
+  groups: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Group',
+  },
+  // 擔任群組領袖的ids
+  leaderOfGroupIds: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Group',
   }

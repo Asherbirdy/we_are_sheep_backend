@@ -1,3 +1,5 @@
 export * from './CreateGroupController'
 export * from './SetGroupLeaderController'
 export * from './GetAllGroupsController'
+export * from './SetUserIntoGroupController'
+export * from './EditGroupController'

@@ -14,7 +14,8 @@ export interface IUser extends Document {
   password: string
   role: Role
   district: IDistrict
-  groupsIds: Types.ObjectId[]
+  groups: Types.ObjectId[]
+  leaderOfGroupIds: Types.ObjectId[]
   // eslint-disable-next-line no-unused-vars
   comparePassword(candidatePassword: string): Promise<boolean>;
 }

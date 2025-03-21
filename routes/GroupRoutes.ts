@@ -27,4 +27,21 @@ router.get(
   authorizePermission(... RoleList.users),
   GroupController.getAllGroups
 )
+
+router.post(
+  '/setUserIntoGroup',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  checkVerifiedEmail,
+  GroupController.setUserIntoGroup
+)
+
+router.post(
+  '/editGroup',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  checkVerifiedEmail,
+  GroupController.editGroup
+)
+
 export default router
