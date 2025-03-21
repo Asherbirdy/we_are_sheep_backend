@@ -51,9 +51,15 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     enum: Object.values(Role),
     default: Role.user,
   },
+  // 所屬會所和區域
   district: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'District',
+  },
+  // 加入的群組ids
+  groupsIds: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Group',
   }
   // member: {
   //   type: mongoose.Schema.Types.ObjectId,
