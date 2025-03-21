@@ -60,13 +60,16 @@ JWT加密金鑰網址：
 
 **District(區)**：
 1. 只有 dev 和 admin 帳號 可以CRUD 區
+2. 一個人只能屬於一個Distict
 
 **User Serial Number(註冊序號)**：
-1. dev、admin 可以創建 districtLeader 和 user 帳號
+1. dev、admin, districtLeader 可以創建 districtLeader 和 user 帳號
 2. districtLeader 只能創建 user 帳號
 
-**Friend(好友)**：
-1. 之後寫
+**Group**：
+1. 一位使用者可以有個 Group 例如：小名弟兄有自己會所的群 / 也有青職的群
+2. 只有 dev/admin 才可以建立 group 並指定 group 的 groupLeader
+3. 只有 dev/admin 可以設定誰為 group Leader
+4. 在一個 group 裡面有各式各樣的表單分析，只有 groupLeader 可以為這 group 創建表單分析
+5. User 要申請 group才能看到group裡的表單分析
 
-**Shepherd(牧養名單)**：
-1. 之後寫
