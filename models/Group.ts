@@ -10,10 +10,6 @@ const GroupSchema: Schema<IGroup> = new mongoose.Schema({
     type: String,
     default: '無'
   },
-  groupLeaderIds: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'User',
-  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

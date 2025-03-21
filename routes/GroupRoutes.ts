@@ -13,4 +13,18 @@ router.post(
   GroupController.create
 )
 
+router.post(
+  '/setGroupLeader',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  checkVerifiedEmail,
+  GroupController.setGroupLeader
+)
+
+router.get(
+  '/getAllGroups',
+  authenticateUser,
+  authorizePermission(... RoleList.users),
+  GroupController.getAllGroups
+)
 export default router

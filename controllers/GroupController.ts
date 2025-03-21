@@ -1,5 +1,7 @@
-import { CreateGroupController } from './Group'
+import { CreateGroupController, SetGroupLeaderController, GetAllGroupsController } from './Group'
 
 export const GroupController = {
-  create: CreateGroupController
+  create: CreateGroupController,
+  setGroupLeader: SetGroupLeaderController,
+  getAllGroups: GetAllGroupsController
 }
