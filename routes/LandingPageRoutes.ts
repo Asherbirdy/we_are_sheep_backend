@@ -10,7 +10,6 @@ router.post(
   authenticateUser,
   authorizePermission(... RoleList.admins),
   checkVerifiedEmail,
-
   LandingPageController.createLandingPage
 )
 
