@@ -14,7 +14,7 @@ export const CreateLandingPageController = async (req: Req, res: Res) => {
 
   const findExist = await LandingPage.findOne({ title })
   if (findExist) {
-    throw new BadRequestError('Landing Page already exists')
+    throw new BadRequestError('LANDING_PAGE_ALREADY_EXISTS')
   }
   const create = await LandingPage.create({
     title,

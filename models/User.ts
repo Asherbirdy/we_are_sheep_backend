@@ -56,6 +56,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'District',
   },
+  landingPageAccess: {
+    type: Boolean,
+    default: false,
+  },
   // 加入的群組ids
   groups: {
     type: [mongoose.Schema.Types.ObjectId],
