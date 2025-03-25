@@ -30,4 +30,11 @@ router.delete(
   DevController.deleteUserAndSheep
 )
 
+router.post(
+  '/setUserLandingPageAccess',
+  authenticateUser,
+  authorizePermission(Role.dev),
+  DevController.setUserLandingPageAccess
+)
+
 export default router
