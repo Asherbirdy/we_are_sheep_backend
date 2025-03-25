@@ -21,7 +21,6 @@ const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
   // 網址 怎麼樣都不能改變或刪掉
   urlPathId: {
     type: String,
-    required: true,
     unique: true
   },
   // 抓 urlPathId 去 顯示對應的 html
