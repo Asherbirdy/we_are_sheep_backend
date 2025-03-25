@@ -1,5 +1,6 @@
-import { CreateLandingPageController } from './LandingPage'
+import { CreateLandingPageController, GetAllLandingPageController } from './LandingPage'
 
 export const LandingPageController = {
-  createLandingPage: CreateLandingPageController
+  createLandingPage: CreateLandingPageController,
+  getAllLandingPage: GetAllLandingPageController
 }

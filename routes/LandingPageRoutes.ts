@@ -13,4 +13,9 @@ router.post(
   LandingPageController.createLandingPage
 )
 
+router.get(
+  '/all',
+  LandingPageController.getAllLandingPage
+)
+
 export default router
