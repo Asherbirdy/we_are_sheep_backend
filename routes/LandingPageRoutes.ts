@@ -18,4 +18,10 @@ router.get(
   LandingPageController.getAllLandingPage
 )
 
+router.put(
+  '/editPageInfoById',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  LandingPageController.editLandingPageInfoById
+)
 export default router

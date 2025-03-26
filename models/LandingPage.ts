@@ -5,6 +5,7 @@ interface ILandingPage {
   description: string
   urlPathId: string
   isCustom: boolean
+  isCustomId: string
   isActive: boolean
   html: string
   updatedBy: mongoose.Schema.Types.ObjectId
@@ -30,6 +31,11 @@ const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
   isCustom: {
     type: Boolean,
     default: false
+  },
+  // 自定義 id
+  isCustomId: {
+    type: String,
+    default: ''
   },
   isActive: {
     type: Boolean,
