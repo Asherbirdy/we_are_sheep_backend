@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import { IUser } from '../types'
-import { Role } from '../enums'
+import { LandingPageAccess, Role } from '../enums'
 
 const UserSchema: Schema<IUser> = new mongoose.Schema({
   name: {
@@ -57,8 +57,9 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     ref: 'District',
   },
   landingPageAccess: {
-    type: Boolean,
-    default: false,
+    type: String,
+    enum: Object.values(LandingPageAccess),
+    default: LandingPageAccess.noAccess,
   },
   // 加入的群組ids
   groups: {

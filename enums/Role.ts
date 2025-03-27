@@ -18,3 +18,9 @@ export enum MeetingStatus {
   "D_member" = 'D',
   "E_member" = 'E'
 }
+
+export enum LandingPageAccess {
+  "edit_create" = "edit_create",
+  "edit" = "edit", 
+  "noAccess" = "noAccess"
+}
