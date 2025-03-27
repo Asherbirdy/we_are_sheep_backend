@@ -1,12 +1,13 @@
 
 import { Request, Response } from 'express'
-import { Role } from '../../enums'
+import { LandingPageAccess, Role } from '../../enums'
 
 export interface Req extends Request {
   user?: {
     userId: string
     role: Role
     districtId: string
+    landingPageAccess: LandingPageAccess
   }
 }
 
