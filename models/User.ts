@@ -58,7 +58,7 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
   },
   landingPageAccess: {
     type: String,
-    enum: Object.values(LandingPageAccess),
+    enum: [LandingPageAccess.noAccess, LandingPageAccess.edit_create, LandingPageAccess.edit],
     default: LandingPageAccess.noAccess,
   },
   // 加入的群組ids
