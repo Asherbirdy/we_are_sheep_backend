@@ -1,6 +1,7 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
 import { LandingPage } from '../../models/LandingPage'
+import User from '../../models/User'
 import { Req, Res } from '../../types'
 
 export const EditLandingPageInfoByIdController = async (req: Req, res: Res) => {
@@ -17,6 +18,8 @@ export const EditLandingPageInfoByIdController = async (req: Req, res: Res) => {
     throw new BadRequestError('LANDING_PAGE_ID_REQUIRED')
   }
 
+  const user = await User.findById(req.user?.userId)
+
   const update = await LandingPage.findByIdAndUpdate(
     landingPageId, 
     { 
@@ -25,7 +28,7 @@ export const EditLandingPageInfoByIdController = async (req: Req, res: Res) => {
       isCustom,
       html,
       isCustomId,
-      updatedBy: req.user?.userId,
+      updatedBy: user?.name?.toString() || '',
     }, 
     { new: true },
   )

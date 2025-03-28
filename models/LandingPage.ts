@@ -8,9 +8,9 @@ interface ILandingPage {
   isCustomId: string
   isActive: boolean
   html: string
-  updatedBy: mongoose.Schema.Types.ObjectId
+  updatedBy: string
   lastEditVisited: Date
-  lastEditVisitedUser: mongoose.Schema.Types.ObjectId
+  lastEditVisitedUser: string
 }
 
 const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
@@ -46,16 +46,16 @@ const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
     default: ''
   },
   updatedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
+    default: ''
   },
   lastEditVisited: {
     type: Date,
     default: null
   },
   lastEditVisitedUser: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
+    default: ''
   }
 }, { timestamps: true })
 
