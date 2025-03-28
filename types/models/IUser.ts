@@ -16,7 +16,7 @@ export interface IUser extends Document {
   district: IDistrict
   groups: Types.ObjectId[]
   leaderOfGroupIds: Types.ObjectId[]
-  landingPageAccess: LandingPageAccess
+  landingPageAccess: LandingPageAccess[]
   // eslint-disable-next-line no-unused-vars
   comparePassword(candidatePassword: string): Promise<boolean>;
 }

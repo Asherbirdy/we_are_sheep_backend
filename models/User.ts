@@ -57,9 +57,8 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
     ref: 'District',
   },
   landingPageAccess: {
-    type: String,
-    enum: [LandingPageAccess.noAccess, LandingPageAccess.edit_create, LandingPageAccess.edit],
-    default: LandingPageAccess.noAccess,
+    type: [String],
+    enum: [LandingPageAccess.create, LandingPageAccess.edit_post],
   },
   // 加入的群組ids
   groups: {

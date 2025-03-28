@@ -20,7 +20,6 @@ export enum MeetingStatus {
 }
 
 export enum LandingPageAccess {
-  "edit_create" = "edit_create",
-  "edit" = "edit", 
-  "noAccess" = "noAccess"
+  "create" = "create", // 允許新增
+  "edit_post" = "edit_post", // 允許編輯
 }
