@@ -102,21 +102,15 @@ export const checkVerifiedEmail = async (req: Req, res: Response, next: NextFunc
   next()
 }
 
-export const landingPageAccessRole = (... roles: LandingPageAccess[]) => {
+export const landingPagePermission = (landingPageAccess: LandingPageAccess) => {
   return (req: Req, res: Response, next: NextFunction) => {
+    if (!req.user?.landingPageAccess.includes(landingPageAccess)) {
+      res.status(StatusCodes.UNAUTHORIZED).json({ 
+        errCode: 'LANDING_PAGE_ACCESS_INVALID',
+        msg: 'Landing page access invalid' 
+      })
+      return
+    }
     next()
   }
 }
-
-// export const authorizePermission = (... roles: Role[]) => {
-//   return (req: Req, res: Response, next: NextFunction) => {
-//     if (!req.user || !roles.includes(req.user.role as Role)) {
-//       res.status(StatusCodes.UNAUTHORIZED).json({ 
-//         errCode: 'AUTHENTICATION_INVALID',
-//         msg: 'Authentication Invalid' 
-//       })
-//       return
-//     }
-//     next()
-//   }
-// }
