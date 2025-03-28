@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { LandingPageController } from '../controllers'
-import { authenticateUser, authorizePermission, checkVerifiedEmail, landingPagePermission } from '../middleware'
-import { LandingPageAccess, RoleList } from '../enums'
+import { authenticateUser, checkVerifiedEmail, landingPagePermission } from '../middleware'
+import { LandingPageAccess } from '../enums'
 
 const router = Router()
 
@@ -35,6 +35,14 @@ router.get(
   checkVerifiedEmail,
   landingPagePermission(LandingPageAccess.edit_post),
   LandingPageController.getLandingPageInfoById
+)
+
+router.post(
+  '/setUrlPath',
+  authenticateUser,
+  checkVerifiedEmail,
+  landingPagePermission(LandingPageAccess.create),
+  LandingPageController.SetUrlPathController
 )
 
 export default router
