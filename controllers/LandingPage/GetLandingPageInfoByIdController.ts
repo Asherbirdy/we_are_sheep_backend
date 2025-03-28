@@ -4,8 +4,8 @@ import User from '../../models/User'
 import { Req, Res } from '../../types'
 
 export const GetLandingPageInfoByIdController = async (req: Req, res: Res) => {
-  const { id } = req.query
-  const landingPage = await LandingPage.findById(id)
+  const { landingPageId } = req.query
+  const landingPage = await LandingPage.findById(landingPageId)
 
   if (!landingPage) {
     return res.status(StatusCodes.NOT_FOUND).json({
