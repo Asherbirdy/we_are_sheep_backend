@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import User from '../../models/User'
 import { Req, Res } from '../../types'
 import { attachCookieToResponse, createTokenUser } from '../../utils'
+import { UnauthenticatedError } from '../../errors/unauthenticated'
 
 export const LoginController = async (req: Req, res: Res) => {
   const { email, password } = req.body
@@ -14,15 +15,13 @@ export const LoginController = async (req: Req, res: Res) => {
   const user = await User.findOne({ email })
 
   if (!user) {
-    res.status(StatusCodes.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
-    return
+    throw new UnauthenticatedError('WRONG_EMAIL_OR_PASSWORD')
   }
 
   const isPasswordCorrect = await user.comparePassword(password)
 
   if (!isPasswordCorrect) {
-    res.status(StatusCodes.BAD_REQUEST).json({ msg: '錯誤帳號密碼' })
-    return
+    throw new UnauthenticatedError('WRONG_EMAIL_OR_PASSWORD')
   }
 
   const tokenUser = createTokenUser(user)
@@ -31,8 +30,7 @@ export const LoginController = async (req: Req, res: Res) => {
   if (existingToken) {
     const { isValid } = existingToken
     if (!isValid) {
-      res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Invalid Credentials' })
-      return
+      throw new UnauthenticatedError('INVALID_CREDENTIALS')
     }
 
     refreshToken = existingToken.refreshToken
