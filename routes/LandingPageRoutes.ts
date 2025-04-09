@@ -31,9 +31,6 @@ router.put(
 
 router.get(
   '/getLandingPageInfoById',
-  authenticateUser,
-  checkVerifiedEmail,
-  landingPagePermission(LandingPageAccess.edit_post),
   LandingPageController.getLandingPageInfoById
 )
 
