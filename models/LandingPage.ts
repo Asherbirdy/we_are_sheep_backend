@@ -3,14 +3,11 @@ import mongoose, { Schema } from 'mongoose'
 interface ILandingPage {
   title: string
   description: string
-  urlPathId: string
   isCustom: boolean
-  isCustomId: string
-  isActive: boolean
+  customLayoutName: string
   html: string
   updatedBy: string
-  // lastEditVisited: Date
-  // lastEditVisitedUser: string
+  isActive: boolean
 }
 
 const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
@@ -22,23 +19,13 @@ const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
     type: String,
     default: ''
   },
-  // 網址 怎麼樣都不能改變或刪掉
-  urlPathId: {
-    type: String,
-  },
-  // 抓 urlPathId 去 顯示對應的 html
   isCustom: {
     type: Boolean,
     default: false
   },
-  // 自定義 id
-  isCustomId: {
+  customLayoutName: {
     type: String,
     default: ''
-  },
-  isActive: {
-    type: Boolean,
-    default: true
   },
   html: {
     type: String,
@@ -47,7 +34,11 @@ const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
   updatedBy: {
     type: String,
     default: ''
-  }
+  },
+  isActive: {
+    type: Boolean,
+    default: false
+  },
 }, { timestamps: true })
 
 export const LandingPage = mongoose.model<ILandingPage>('LandingPage', LandingPageSchema)
