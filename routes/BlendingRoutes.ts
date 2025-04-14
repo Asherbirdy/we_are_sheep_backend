@@ -8,5 +8,10 @@ router.get(
   authenticateUser,
   BlendingController.create
 )
+router.get(
+  '/getAll',
+  authenticateUser,
+  BlendingController.getAll
+)
 
 export default router
