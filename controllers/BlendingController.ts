@@ -1,5 +1,5 @@
-import { GetAllBlendingDetailController } from './Blending/GetAllBlendingDetailController'
+import { CreateBlendingFromSheetController } from './Blending/CreateBlendingFromSheetController'
 
 export const BlendingController = {
-  getAllBlendingDetail: GetAllBlendingDetailController,
+  create: CreateBlendingFromSheetController,
 }

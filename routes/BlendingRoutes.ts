@@ -4,9 +4,9 @@ import { authenticateUser } from '../middleware'
 const router = Router()
 
 router.get(
-  '/getAllBlendingDetail',
+  '/createFromSheet',
   authenticateUser,
-  BlendingController.getAllBlendingDetail
+  BlendingController.create
 )
 
 export default router

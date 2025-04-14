@@ -9,7 +9,6 @@ interface IBlending {
   identity: string
   notes: string
   inviteList: string
-  editedBy: IUser
   editedAt: Date
 }
 const BlendingSchema: Schema<IBlending> = new mongoose.Schema({
@@ -35,12 +34,9 @@ const BlendingSchema: Schema<IBlending> = new mongoose.Schema({
   inviteList: {
     type: String,
   },
-  editedBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
   editedAt: {
     type: Date,
+    required: true,
   },
 }, { timestamps: true })
 

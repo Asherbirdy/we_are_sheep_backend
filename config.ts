@@ -12,4 +12,5 @@ export default {
   auth_token: process.env.AUTH_TOKEN as 'HEADER' | 'COOKIES',
   email_service_user: process.env.EMAIL_SERVICE_USER as string,
   email_service_pass: process.env.EMAIL_SERVICE_PASS as string,
+  google_blending_api_url: process.env.GOOGLE_BLENDING_API_URL as string,
 }
