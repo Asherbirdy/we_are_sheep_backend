@@ -1,14 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-
-interface ILandingPage {
-  title: string
-  description: string
-  isCustom: boolean
-  customLayoutName: string
-  html: string
-  updatedBy: string
-  isActive: boolean
-}
+import { ILandingPage } from '../types'
 
 const LandingPageSchema: Schema<ILandingPage> = new mongoose.Schema({
   title: {
