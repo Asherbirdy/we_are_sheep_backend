@@ -14,6 +14,7 @@ import SheepRoutes from './routes/SheepRoutes'
 import GroupRoutes from './routes/GroupRoutes'
 import SheetRoutes from './routes/SheetRoutes'
 import LandingPageRoutes from './routes/LandingPageRoutes'
+import BlendingRoutes from './routes/BlendingRoutes'
 // 特別專案
 import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
 // Plugins
@@ -80,6 +81,8 @@ class Server {
     this.app.use('/api/v1/group', GroupRoutes)
     this.app.use('/api/v1/sheet', SheetRoutes)
     this.app.use('/api/v1/landingPage', LandingPageRoutes)
+    this.app.use('/api/v1/blending', BlendingRoutes)
+
     // 特別專案
     this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)
 
