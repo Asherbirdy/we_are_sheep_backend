@@ -1,5 +1,5 @@
 import { isTokenValid, attachCookieToResponse } from '../utils'
-import { StatusCodes } from '../enums'
+import { LandingPageAccess, StatusCodes } from '../enums'
 import Token from '../models/Token'
 import { Request, Response, NextFunction } from 'express'
 import { Req } from '../types'
@@ -100,4 +100,17 @@ export const checkVerifiedEmail = async (req: Req, res: Response, next: NextFunc
     return
   }
   next()
+}
+
+export const landingPagePermission = (landingPageAccess: LandingPageAccess) => {
+  return (req: Req, res: Response, next: NextFunction) => {
+    if (!req.user?.landingPageAccess.includes(landingPageAccess)) {
+      res.status(StatusCodes.UNAUTHORIZED).json({ 
+        errCode: 'LANDING_PAGE_ACCESS_INVALID',
+        msg: 'Landing page access invalid' 
+      })
+      return
+    }
+    next()
+  }
 }

@@ -3,12 +3,14 @@
 import jwt from 'jsonwebtoken'
 import { ObjectId } from 'mongoose'
 import config from '../config'
+import { LandingPageAccess } from '../enums'
 
 interface jwtPayload {
   user: {
     name: string
     userId: ObjectId
     role: string
+    landingPageAccess: LandingPageAccess
 
   }
   refreshToken?: string

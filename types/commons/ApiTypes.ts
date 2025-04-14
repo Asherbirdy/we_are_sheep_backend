@@ -1,12 +1,14 @@
 
 import { Request, Response } from 'express'
-import { Role } from '../../enums'
+import mongoose from 'mongoose'
+import { LandingPageAccess, Role } from '../../enums'
 
 export interface Req extends Request {
   user?: {
-    userId: string
+    userId: string | mongoose.Types.ObjectId
     role: Role
     districtId: string
+    landingPageAccess: LandingPageAccess
   }
 }
 
