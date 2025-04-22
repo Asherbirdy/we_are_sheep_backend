@@ -5,7 +5,6 @@ interface IBlending {
   district: string
   name: string
   ageRange: string
-  gender: string
   identity: string
   notes: string
   inviteList: string

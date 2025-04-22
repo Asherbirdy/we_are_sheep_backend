@@ -15,7 +15,6 @@ export const CreateBlendingFromSheetController = async (req: Request, res: Respo
   // }
 
   const response = await axios.get(config.google_blending_api_url)
-  console.log(response.data)
   await Blending.deleteMany({})
   const createBlending = await Promise.all(response.data.map(async (item: any) => {
     return await Blending.create({
