@@ -5,11 +5,11 @@ interface IBlending {
   district: string
   name: string
   ageRange: string
-  gender: string
   identity: string
   notes: string
   inviteList: string
   editedAt: Date
+  selectSchedule: string
 }
 const BlendingSchema: Schema<IBlending> = new mongoose.Schema({
   district: {
@@ -21,9 +21,12 @@ const BlendingSchema: Schema<IBlending> = new mongoose.Schema({
   ageRange: {
     type: String,
   },
-  gender: {
+  selectSchedule: {
     type: String,
   },
+  // gender: {
+  //   type: String,
+  // },
   identity: {
     type: String,
   },
