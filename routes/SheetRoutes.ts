@@ -11,4 +11,18 @@ router.post(
   SheetController.createSheet
 )
 
+router.get(
+  '/all',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheetController.getAllGoogleSheetApi
+)
+
+router.put(
+  '/edit',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheetController.editGoogleSheet
+)
+
 export default router
