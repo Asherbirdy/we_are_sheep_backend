@@ -25,4 +25,10 @@ router.put(
   SheetController.editGoogleSheet
 )
 
+router.delete(
+  '/delete',
+  authenticateUser,
+  checkVerifiedEmail,
+  SheetController.deleteGoogleSheet
+)
 export default router
