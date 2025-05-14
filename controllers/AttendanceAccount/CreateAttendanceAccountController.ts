@@ -28,7 +28,8 @@ export const CreateAttendanceAccountController = async (req: Req, res: Res) => {
   const attendanceAccount = await AttendanceAccount.create({
     name,
     serialNumber,
-    serialNumberExpiredDate: new Date(Date.now() + 24 * 60 * 60 * 1000)
+    serialNumberExpiredDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    active: false
   })
 
   res.status(StatusCodes.OK).json({
