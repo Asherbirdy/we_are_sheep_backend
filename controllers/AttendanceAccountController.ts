@@ -1,6 +1,7 @@
-import { GetAllAttendanceAccountController, CreateAttendanceAccountController } from './AttendanceAccount'
+import { GetAllAttendanceAccountController, CreateAttendanceAccountController, ActivateAttendanceAccountController } from './AttendanceAccount'
 
 export const AttendanceAccountController = {
   getAllAttendanceAccount: GetAllAttendanceAccountController,
-  createAttendanceAccount: CreateAttendanceAccountController
+  createAttendanceAccount: CreateAttendanceAccountController,
+  activateAttendanceAccount: ActivateAttendanceAccountController
 }

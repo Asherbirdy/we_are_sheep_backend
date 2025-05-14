@@ -20,4 +20,9 @@ router.post(
   AttendanceAccountController.createAttendanceAccount
 )
 
+router.post(
+  '/activate',
+  AttendanceAccountController.activateAttendanceAccount
+)
+
 export default router
