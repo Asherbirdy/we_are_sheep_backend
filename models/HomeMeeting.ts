@@ -10,7 +10,7 @@ const HomeMeetingSchema: Schema<IHomeMeeting> = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'AttendanceAccount',
   },
-  meetingPeopleId: {
+  meetingPeople: {
     type: [String],
     required: true
   }
