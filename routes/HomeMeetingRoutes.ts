@@ -13,4 +13,12 @@ router.post(
   HomeMeetingController.CreateHomeMeetingController
 )
 
+router.get(
+  '/getAll',
+  authenticateUser,
+  authorizePermission(... RoleList.admins),
+  checkVerifiedEmail,
+  HomeMeetingController.GetAllHomeMeetingController
+)
+
 export default router
