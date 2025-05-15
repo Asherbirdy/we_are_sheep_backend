@@ -25,4 +25,12 @@ router.post(
   AttendanceAccountController.activateAttendanceAccount
 )
 
+router.put(
+  '/edit',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(Role.dev),
+  AttendanceAccountController.editActivateAttendanceAccount
+)
+
 export default router
