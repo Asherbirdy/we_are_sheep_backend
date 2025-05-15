@@ -1,12 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-
-interface IAttendanceAccount {
-  name: string
-  serialNumber: string
-  serialNumberExpiredDate: Date
-  lineProfileId: string
-  active: boolean
-}
+import { IAttendanceAccount } from '../types'
 
 const AttendanceAccountSchema: Schema<IAttendanceAccount> = new mongoose.Schema({
   name: {
@@ -30,4 +23,6 @@ const AttendanceAccountSchema: Schema<IAttendanceAccount> = new mongoose.Schema(
   }
 }, { timestamps: true })
 
-export const AttendanceAccount = mongoose.model<IAttendanceAccount>('AttendanceAccount', AttendanceAccountSchema) 
+export const AttendanceAccount = mongoose.model<IAttendanceAccount>(
+  'AttendanceAccount', AttendanceAccountSchema
+) 

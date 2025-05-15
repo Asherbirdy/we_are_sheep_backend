@@ -1,13 +1,18 @@
 import mongoose, { Schema } from 'mongoose'
-
-interface IHomeMeeting {
-  name: string
-}
+import { IHomeMeeting } from '../types/models/IHomeMeeting'
 
 const HomeMeetingSchema: Schema<IHomeMeeting> = new mongoose.Schema({
-  name: {
+  groupName: {
     type: String,
     required: true
+  },
+  attendanceAccount: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AttendanceAccount',
+  },
+  district: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'District',
   }
 }, { timestamps: true })
 

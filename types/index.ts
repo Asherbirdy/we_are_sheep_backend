@@ -1,6 +1,7 @@
 // * Commons
 export * from './commons/ApiTypes'
 export * from './commons/UserTypes'
+
 // * Models
 export * from './models/IUser'
 export * from './models/IDistrict'
@@ -15,3 +16,4 @@ export * from './models/ISheep'
 export * from './models/ISheet'
 export * from './models/IGroup'
 export * from './models/ILandingPage'
+export * from './models/IAttendanceAccount'
