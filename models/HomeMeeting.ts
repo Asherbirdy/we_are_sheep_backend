@@ -10,9 +10,9 @@ const HomeMeetingSchema: Schema<IHomeMeeting> = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'AttendanceAccount',
   },
-  district: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'District',
+  meetingPeopleId: {
+    type: [String],
+    required: true
   }
 }, { timestamps: true })
 

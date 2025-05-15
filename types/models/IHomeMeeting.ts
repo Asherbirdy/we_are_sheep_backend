@@ -6,4 +6,5 @@ export interface IHomeMeeting {
   attendanceAccount: IAttendanceAccount
   district: IDistrict
   lastAttendanceDate: Date
+  meetingPeopleId: string[]
 }
