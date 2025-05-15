@@ -6,6 +6,16 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     type: String,
     required: true
   },
+  district: {
+    type: Schema.Types.ObjectId,
+    ref: 'District',
+    required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   identity: {
     type: String,
     enum: [
@@ -14,7 +24,6 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
       Identity.Brother,
       Identity.Sister
     ],
-    required: true
   },
   ageRange: {
     type: String,
@@ -25,7 +34,6 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
       AgeRange.middleAge,
       AgeRange.elder
     ],
-    required: true,
   },
   weekInviteTag: {
     type: [String],
@@ -42,11 +50,6 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     ],
     default: FocusPerson.notFocus
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
   personStatus: {
     type: String,
     enum: [
@@ -56,11 +59,6 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
       PersonStatus.gospelfriend
     ],
     default: PersonStatus.none
-  },
-  district: {
-    type: Schema.Types.ObjectId,
-    ref: 'District',
-    required: true
   },
   note: {
     type: String,
