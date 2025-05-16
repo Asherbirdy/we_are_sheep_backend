@@ -12,7 +12,11 @@ const HomeMeetingRecordSchema: Schema<IHomeMeetingRecord> = new mongoose.Schema(
     ref: 'Sheep',
     required: true
   },
-  recordDateId: {
+  recordId: {
+    type: String,
+    required: true
+  },
+  recordDateNote: {
     type: String,
     required: true
   },
