@@ -10,10 +10,6 @@ const HomeMeetingRecordIdSchema: Schema<IHomeMeetingRecordId> = new mongoose.Sch
     type: String,
     required: true
   },
-  createTime: {
-    type: Date,
-    default: Date.now
-  },
   createBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
