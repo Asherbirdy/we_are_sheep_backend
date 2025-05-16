@@ -2,7 +2,7 @@ import { IHomeMeeting } from './IHomeMeeting'
 
 import { ISheep } from './ISheep'
 
-export interface IHomeMeetingPending {
+export interface IHomeMeetingRecord {
   homeMeetingId: IHomeMeeting
   sheepId: ISheep
   recordDate: string

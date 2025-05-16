@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
-import { IHomeMeetingPending } from '../types'
+import { IHomeMeetingRecord } from '../types'
 
-const HomeMeetingPendingSchema: Schema<IHomeMeetingPending> = new mongoose.Schema({
+const HomeMeetingRecordSchema: Schema<IHomeMeetingRecord> = new mongoose.Schema({
   homeMeetingId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'HomeMeeting',
@@ -30,7 +30,7 @@ const HomeMeetingPendingSchema: Schema<IHomeMeetingPending> = new mongoose.Schem
   }
 }, { timestamps: true })
 
-export const HomeMeetingPending = mongoose.model<IHomeMeetingPending>(
-  'HomeMeetingPending', 
-  HomeMeetingPendingSchema
+export const HomeMeetingRecord = mongoose.model<IHomeMeetingRecord>(
+  'HomeMeetingRecord', 
+  HomeMeetingRecordSchema
 )
