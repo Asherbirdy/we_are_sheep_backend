@@ -1,5 +1,6 @@
-import { GetAllRecordIdController } from './HomeMeetingRecordId'
+import { GetAllRecordIdController, CreateRecordIdController } from './HomeMeetingRecordId'
 
 export const HomeMeetingRecordIdController = {
-  GetAllRecordIdController
+  GetAllRecordIdController,
+  CreateRecordIdController
 }
