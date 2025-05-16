@@ -12,16 +12,18 @@ const HomeMeetingRecordSchema: Schema<IHomeMeetingRecord> = new mongoose.Schema(
     ref: 'Sheep',
     required: true
   },
-  recordId: {
-    type: String,
-    required: true
-  },
-  recordDateNote: {
-    type: String,
+  homeMeetingRecordId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'HomeMeetingRecordId',
     required: true
   },
   status: {
     type: String,
+    enum: [
+      'yes',
+      'no',
+      'noReply'
+    ],
     required: true
   },
   type: {
