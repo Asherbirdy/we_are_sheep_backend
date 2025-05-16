@@ -5,4 +5,5 @@ export interface IHomeMeetingRecordId {
   info: string
   createTime: Date
   createBy: IUser
+  expiredTime: Date
 }
