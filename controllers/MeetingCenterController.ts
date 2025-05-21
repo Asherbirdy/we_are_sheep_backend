@@ -1,6 +1,7 @@
 
-import { GetAllMeetingCenterController } from './MeetingCenter'
+import { CreateMeetingCenterController, GetAllMeetingCenterController, } from './MeetingCenter'
 
 export const MeetingCenterController = {
-  getAll: GetAllMeetingCenterController
+  getAll: GetAllMeetingCenterController,
+  create: CreateMeetingCenterController
 } 
