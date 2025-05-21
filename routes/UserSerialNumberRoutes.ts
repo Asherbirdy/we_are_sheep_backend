@@ -20,7 +20,7 @@ router.get(
 )
 
 router.delete(
-  '/delete/:id',
+  '/delete',
   authenticateUser,
   authorizePermission(... RoleList.districtLeaders),
   checkVerifiedEmail,

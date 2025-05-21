@@ -16,6 +16,9 @@ import SheetRoutes from './routes/SheetRoutes'
 import LandingPageRoutes from './routes/LandingPageRoutes'
 import BlendingRoutes from './routes/BlendingRoutes'
 import AttendanceAccountRoutes from './routes/AttendanceAccountRoutes'
+import HomeMeetingRoutes from './routes/HomeMeetingRoutes'
+import HomeMeetingRecordIdRoutes from './routes/HomeMeetingRecordIdRoutes'
+
 // 特別專案
 import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
 // Plugins
@@ -84,6 +87,9 @@ class Server {
     this.app.use('/api/v1/landingPage', LandingPageRoutes)
     this.app.use('/api/v1/blending', BlendingRoutes)
     this.app.use('/api/v1/attendanceAccount', AttendanceAccountRoutes)
+    this.app.use('/api/v1/homeMeeting', HomeMeetingRoutes)
+    this.app.use('/api/v1/homeMeetingRecordId', HomeMeetingRecordIdRoutes)
+    
     // 特別專案
     this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)
 
