@@ -18,6 +18,7 @@ import BlendingRoutes from './routes/BlendingRoutes'
 import AttendanceAccountRoutes from './routes/AttendanceAccountRoutes'
 import HomeMeetingRoutes from './routes/HomeMeetingRoutes'
 import HomeMeetingRecordIdRoutes from './routes/HomeMeetingRecordIdRoutes'
+import MeetingCenterRoutes from './routes/MeetingCenterRoutes'
 
 // 特別專案
 import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
@@ -89,6 +90,7 @@ class Server {
     this.app.use('/api/v1/attendanceAccount', AttendanceAccountRoutes)
     this.app.use('/api/v1/homeMeeting', HomeMeetingRoutes)
     this.app.use('/api/v1/homeMeetingRecordId', HomeMeetingRecordIdRoutes)
+    this.app.use('/api/v1/meetingCenter', MeetingCenterRoutes)
     
     // 特別專案
     this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)

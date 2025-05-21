@@ -13,4 +13,5 @@ export default {
   email_service_user: process.env.EMAIL_SERVICE_USER as string,
   email_service_pass: process.env.EMAIL_SERVICE_PASS as string,
   google_blending_api_url: process.env.GOOGLE_BLENDING_API_URL as string,
+  google_meeting_center_api_url: process.env.GOOGLE_MEETINGCENTER_API_URL as string,
 }
