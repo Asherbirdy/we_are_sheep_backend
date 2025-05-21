@@ -5,8 +5,8 @@ interface MeetingCenter {
   name: string
   identity: string
   departure: string
-  return: string
-  note: string
+  returnRide: string
+  notes: string
 }
 
 const MeetingCenterSchema: Schema<MeetingCenter> = new mongoose.Schema({
@@ -23,10 +23,10 @@ const MeetingCenterSchema: Schema<MeetingCenter> = new mongoose.Schema({
   departure: {
     type: String,
   },
-  return: {
+  returnRide: {
     type: String,
   },
-  note: {
+  notes: {
     type: String,
   },
 }, { timestamps: true })
