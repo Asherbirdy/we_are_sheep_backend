@@ -50,4 +50,12 @@ router.delete(
   LandingPageController.deleteLandingPageById
 )
 
+router.put(
+  '/editHtmlById',
+  authenticateUser,
+  checkVerifiedEmail,
+  landingPagePermission(LandingPageAccess.edit_post),
+  LandingPageController.editLandingPageHtmlById
+)
+
 export default router
