@@ -10,8 +10,7 @@ export const EditLandingPageInfoByIdController = async (req: Req, res: Res) => {
     title,
     description,
     isCustom,
-    isCustomId,
-    html 
+    isCustomId
   } = req.body
   
   if (!landingPageId) {
@@ -26,7 +25,6 @@ export const EditLandingPageInfoByIdController = async (req: Req, res: Res) => {
       title,
       description,
       isCustom,
-      html,
       isCustomId,
       updatedBy: user?.name?.toString() || '',
     }, 

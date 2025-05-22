@@ -42,4 +42,20 @@ router.post(
   LandingPageController.SetUrlPathController
 )
 
+router.delete(
+  '/',
+  authenticateUser,
+  checkVerifiedEmail,
+  landingPagePermission(LandingPageAccess.delete),
+  LandingPageController.deleteLandingPageById
+)
+
+router.put(
+  '/editHtmlById',
+  authenticateUser,
+  checkVerifiedEmail,
+  landingPagePermission(LandingPageAccess.edit_post),
+  LandingPageController.editLandingPageHtmlById
+)
+
 export default router
