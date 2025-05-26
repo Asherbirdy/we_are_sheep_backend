@@ -75,25 +75,26 @@ class Server {
   }
 
   routes () {
+    const v1 = '/api/v1'
     // ** v1
-    this.app.use('/api/v1/dev', DevRouter)
-    this.app.use('/api/v1/auth', AuthRoutes)
-    this.app.use('/api/v1/users', UserRoutes)
-    this.app.use('/api/v1/district', DistrictRoutes)
-    this.app.use('/api/v1/userSerialNumber', UserSerialNumberRoutes)
-    this.app.use('/api/v1/activity', ActivityRoutes)
-    this.app.use('/api/v1/sheep', SheepRoutes)
-    this.app.use('/api/v1/group', GroupRoutes)
-    this.app.use('/api/v1/sheet', SheetRoutes)
-    this.app.use('/api/v1/landingPage', LandingPageRoutes)
-    this.app.use('/api/v1/blending', BlendingRoutes)
-    this.app.use('/api/v1/attendanceAccount', AttendanceAccountRoutes)
-    this.app.use('/api/v1/homeMeeting', HomeMeetingRoutes)
-    this.app.use('/api/v1/homeMeetingRecordId', HomeMeetingRecordIdRoutes)
-    this.app.use('/api/v1/meetingCenter', MeetingCenterRoutes)
+    this.app.use(`${ v1 }/dev`, DevRouter)
+    this.app.use(`${ v1 }/auth`, AuthRoutes)
+    this.app.use(`${ v1 }/users`, UserRoutes)
+    this.app.use(`${ v1 }/district`, DistrictRoutes)
+    this.app.use(`${ v1 }/userSerialNumber`, UserSerialNumberRoutes)
+    this.app.use(`${ v1 }/activity`, ActivityRoutes)
+    this.app.use(`${ v1 }/sheep`, SheepRoutes)
+    this.app.use(`${ v1 }/group`, GroupRoutes)
+    this.app.use(`${ v1 }/sheet`, SheetRoutes)
+    this.app.use(`${ v1 }/landingPage`, LandingPageRoutes)
+    this.app.use(`${ v1 }/blending`, BlendingRoutes)
+    this.app.use(`${ v1 }/attendanceAccount`, AttendanceAccountRoutes)
+    this.app.use(`${ v1 }/homeMeeting`, HomeMeetingRoutes)
+    this.app.use(`${ v1 }/homeMeetingRecordId`, HomeMeetingRecordIdRoutes)
+    this.app.use(`${ v1 }/meetingCenter`, MeetingCenterRoutes)
     
     // 特別專案
-    this.app.use('/api/v1/teemMeetingAttend', TeemMeetingAttendRoutes)
+    this.app.use(`${ v1 }/teemMeetingAttend`, TeemMeetingAttendRoutes)
 
     // 確保所有非 API 路由都指向 public/C 的 index.html (SPA專用)
     this.app.get('/C/*', (req, res) => {
