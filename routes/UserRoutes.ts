@@ -20,6 +20,7 @@ router.patch(
 router.get(
   '/getAllUsers',
   authenticateUser,
+  checkVerifiedEmail,
   authorizePermission(Role.dev),
   UserController.getAllUsers
 )
@@ -27,8 +28,17 @@ router.get(
 router.put(
   '/editUserInfo',
   authenticateUser,
+  checkVerifiedEmail,
   authorizePermission(... RoleList.users),
   UserController.editUserInfo
+)
+
+router.patch(
+  '/changeUserAccess',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(... RoleList.admins),
+  UserController.changeUserAccess
 )
 
 export default router
