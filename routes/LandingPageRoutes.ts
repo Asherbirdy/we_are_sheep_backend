@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { LandingPageController } from '../controllers'
-import { authenticateUser, checkVerifiedEmail, landingPagePermission } from '../middleware'
-import { LandingPageAccess } from '../enums'
+import { authenticateUser, authorizePermission, checkVerifiedEmail, landingPagePermission } from '../middleware'
+import { LandingPageAccess, RoleList } from '../enums'
 
 const router = Router()
 
@@ -17,7 +17,7 @@ router.get(
   '/all',
   authenticateUser,
   checkVerifiedEmail,
-  landingPagePermission(LandingPageAccess.edit_post),
+  authorizePermission(... RoleList.users),
   LandingPageController.getAllLandingPage
 )
 
