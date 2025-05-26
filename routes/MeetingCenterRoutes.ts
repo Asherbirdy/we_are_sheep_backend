@@ -9,7 +9,7 @@ router.get(
   '/',
   authenticateUser,
   checkVerifiedEmail,
-  authorizePermission(... RoleList.admins),
+  authorizePermission(... RoleList.users),
   MeetingCenterController.getAll
 )
 
@@ -17,7 +17,7 @@ router.post(
   '/',
   authenticateUser,
   checkVerifiedEmail,
-  authorizePermission(... RoleList.admins), 
+  authorizePermission(... RoleList.districtLeaders), 
   MeetingCenterController.create
 )
 export default router
