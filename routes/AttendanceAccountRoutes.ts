@@ -7,7 +7,6 @@ const router = Router()
 router.get(
   '/getAll', 
   authenticateUser,
-  authorizePermission(... RoleList.districtLeaders),
   checkVerifiedEmail,
   AttendanceAccountController.getAllAttendanceAccount
 )
