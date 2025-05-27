@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { AttendanceAccountController } from '../controllers'
 import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
-import { Role, RoleList } from '../enums'
+import { RoleList } from '../enums'
 const router = Router()
 
 router.get(
@@ -16,7 +16,7 @@ router.post(
   '/create',
   authenticateUser,
   checkVerifiedEmail,
-  authorizePermission(Role.dev),
+  authorizePermission(... RoleList.districtLeaders),
   AttendanceAccountController.createAttendanceAccount
 )
 
@@ -29,7 +29,7 @@ router.put(
   '/edit',
   authenticateUser,
   checkVerifiedEmail,
-  authorizePermission(Role.dev),
+  authorizePermission(... RoleList.districtLeaders),
   AttendanceAccountController.editActivateAttendanceAccount
 )
 
