@@ -32,4 +32,12 @@ router.put(
   AttendanceAccountController.editActivateAttendanceAccount
 )
 
+router.delete(
+  '/delete',
+  authenticateUser,
+  checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
+  AttendanceAccountController.deleteAttendanceAccount
+)
+
 export default router
