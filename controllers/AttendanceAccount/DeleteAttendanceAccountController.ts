@@ -12,6 +12,11 @@ export const DeleteAttendanceAccountController = async (req: Req, res: Res) => {
 
   const existingAttendanceAccount = await AttendanceAccount.findById(attendanceAccountId)
 
+  // Check if the attendance account is active
+  if (existingAttendanceAccount?.active) {
+    throw new BadRequestError('ACTIVE_CANNOT_BE_DELETED')
+  }
+
   if (!existingAttendanceAccount) {
     throw new NotFoundError('ATTENDANCE_ACCOUNT_NOT_FOUND')
   }
