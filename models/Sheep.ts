@@ -11,10 +11,9 @@ const SheepSchema: Schema<ISheep> = new mongoose.Schema({
     ref: 'District',
     required: true
   },
-  userId: {
+  attendanceAccount: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'AttendanceAccount',
   },
   identity: {
     type: String,
