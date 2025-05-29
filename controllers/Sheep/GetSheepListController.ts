@@ -6,6 +6,9 @@ export const GetSheepListController = async (req: Req, res: Res) => {
   const sheep = await Sheep.find().populate({
     path: 'attendanceAccount',
     select: '_id name'
+  }).populate({
+    path: 'district',
+    select: '_id name'
   })
 
   res.status(StatusCodes.OK).json({
