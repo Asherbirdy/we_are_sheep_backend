@@ -1,38 +1,25 @@
 import { StatusCodes } from '../../enums'
+import { BadRequestError } from '../../errors'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
-import { checkPersmission, getUserIdByString } from '../../utils/checkPersmission'
 
 export const EditSheepController = async (req: Req, res: Res) => {
   const { sheepId } = req.query
-  const { ageRange, identity, weekInviteTag, focusPerson ,personStatus, note} = req.body
+  const { attendanceAccount, district, note } = req.body
 
-  if(!sheepId || !ageRange || !identity) {
-    res.status(StatusCodes.BAD_REQUEST).json({
-      errorCode: 'SHEEP_ID_OR_AGE_RANGE',
-      msg: 'sheepId 或 ageRange 或 identity 不能為空'
-    })
-    return
+  if(!sheepId || !district) {
+    throw new BadRequestError('SHEEP_ID_OR_DISTRICT_REQUIRED')
   }
 
   const sheep = await Sheep.findById(sheepId)
+  
   if(!sheep) {
-    res.status(StatusCodes.BAD_REQUEST).json({
-      errorCode: 'SHEEP_NOT_FOUND',
-      msg: '不存在'
-    })
-    return
+    throw new BadRequestError('SHEEP_NOT_FOUND')
   }
 
-  // 檢查權限
-  checkPersmission(req.user, getUserIdByString(sheep))
-
   // 更新羊
-  sheep.ageRange = ageRange
-  sheep.identity = identity
-  sheep.weekInviteTag = weekInviteTag
-  sheep.focusPerson = focusPerson
-  sheep.personStatus = personStatus
+  sheep.attendanceAccount = attendanceAccount
+  sheep.district = district
   sheep.note = note
   await sheep.save()
 
