@@ -10,6 +10,14 @@ export const ActivateAttendanceAccountController = async (req: Req, res: Res) =>
     throw new BadRequestError('LINE_PROFILE_ID_AND_SERIAL_NUMBER_REQUIRED')
   }
 
+  const checkExistingLineProfileId = await AttendanceAccount.findOne({
+    lineProfileId: lineProfileId
+  })
+
+  if (checkExistingLineProfileId) {
+    throw new BadRequestError('LINE_PROFILE_ID_ALREADY_EXISTS')
+  }
+
   const attendanceAccount = await AttendanceAccount.findOne({
     serialNumber 
   })
