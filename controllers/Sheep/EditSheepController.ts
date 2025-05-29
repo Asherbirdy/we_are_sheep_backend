@@ -1,5 +1,6 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
+import { AttendanceAccount } from '../../models/AttendanceAccount'
 import { Sheep } from '../../models/Sheep'
 import { Req, Res } from '../../types'
 
