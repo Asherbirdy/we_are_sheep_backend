@@ -13,27 +13,15 @@ export const CreateSheepController = async (req: Req, res: Res) => {
 
   // 檢查是否已經有同樣的羊
   const findSameSheep = await Sheep.findOne({
-    name,
-  }).populate({
-    path: 'userId',
-    select: '_id name'
+    name: name,
   })
 
   if(findSameSheep) {
-    res.status(StatusCodes.BAD_REQUEST).json({ 
-      errorCode: 'BAD_REQUEST_SAME_SHEEP',
-      msg: `你區內的成員${ findSameSheep.userId.name }已經創建過這隻羊`,
-      data: {
-        msg: '有這隻羊的區內成員資訊',
-        districtmember: findSameSheep.userId
-      }
-    })
-    return
+    throw new BadRequestError('BAD_REQUEST_SAME_SHEEP')
   }
   
   const sheep = await Sheep.create({
     name,
-    userId: req.user?.userId,
     district
   })
 

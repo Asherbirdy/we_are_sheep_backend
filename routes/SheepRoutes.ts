@@ -1,12 +1,14 @@
 import { Router } from 'express'
 import { SheepController } from '../controllers'
-import { authenticateUser, checkVerifiedEmail } from '../middleware'
+import { RoleList } from '../enums'
+import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 const router = Router()
-
+// 
 router.post(
   '/create',
   authenticateUser,
   checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
   SheepController.create
 )
 
@@ -14,6 +16,7 @@ router.get(
   '/list',
   authenticateUser,
   checkVerifiedEmail,
+  authorizePermission(... RoleList.users),
   SheepController.getList
 )
 
@@ -21,6 +24,7 @@ router.delete(
   '/delete',
   authenticateUser,
   checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
   SheepController.delete
 )
 
@@ -28,6 +32,7 @@ router.patch(
   '/edit',
   authenticateUser,
   checkVerifiedEmail,
+  authorizePermission(... RoleList.districtLeaders),
   SheepController.editSheep
 )
 
