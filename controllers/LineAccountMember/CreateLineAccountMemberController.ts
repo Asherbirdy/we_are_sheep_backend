@@ -5,16 +5,16 @@ import { LineAccountMember } from '../../models/LineAccountMember'
 import { Req, Res } from '../../types'
 
 export const CreateLineAccountMemberController = async (req: Req, res: Res) => {
-  const { name, serialNumber, districtId } = req.body
+  const { name, districtId, lineProfileId } = req.body
 
-  if (!name || !serialNumber || !districtId) {
-    throw new BadRequestError('NAME_SERIAL_NUMBER_DISTRICT_ID_REQUIRED')
+  if (!name || !districtId || !lineProfileId) {
+    throw new BadRequestError('NAME_DISTRICT_ID_LINE_PROFILE_ID_REQUIRED')
   }
 
-  // find name exist
-  const nameExist = await LineAccountMember.findOne({ name })
-  if (nameExist) {
-    throw new BadRequestError('NAME_ALREADY_EXIST')
+  // find line profile id exist
+  const lineProfileIdExist = await LineAccountMember.findOne({ lineProfileId })
+  if (lineProfileIdExist) {
+    throw new BadRequestError('LINE_PROFILE_ID_ALREADY_EXIST')
   }
 
   const district = await District.findById(districtId)
@@ -22,16 +22,9 @@ export const CreateLineAccountMemberController = async (req: Req, res: Res) => {
     throw new BadRequestError('DISTRICT_NOT_FOUND')
   }
 
-  // find serial number exist
-  const serialNumberExist = await LineAccountMember.findOne({ serialNumber })
-  if (serialNumberExist) {
-    throw new BadRequestError('SERIAL_NUMBER_ALREADY_EXIST')
-  }
-
   const attendanceAccount = await LineAccountMember.create({
     name,
-    serialNumber,
-    serialNumberExpiredDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    lineProfileId,
     active: false,
     districtId
   })

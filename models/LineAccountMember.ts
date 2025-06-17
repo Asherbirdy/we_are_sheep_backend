@@ -6,16 +6,9 @@ const LineAccountMemberSchema: Schema<ILineAccountMember> = new mongoose.Schema(
     type: String,
     required: true
   },
-  serialNumber: {
-    type: String, 
-    required: true
-  },
-  serialNumberExpiredDate: {
-    type: Date,
-    required: true
-  },
   lineProfileId: {
     type: String,
+    required: true
   },
   districtId: {
     type: Schema.Types.ObjectId,
