@@ -19,6 +19,7 @@ import LineAccountMemberRoutes from './routes/LineAccountMemberRoutes'
 import HomeMeetingRoutes from './routes/HomeMeetingRoutes'
 import HomeMeetingRecordIdRoutes from './routes/HomeMeetingRecordIdRoutes'
 import MeetingCenterRoutes from './routes/MeetingCenterRoutes'
+import LineFellowshipReportIdRoutes from './routes/LineFellowshipReportIdRoutes'
 
 // 特別專案
 import TeemMeetingAttendRoutes from './routes/TeemMeetingAttendRoutes'
@@ -92,6 +93,7 @@ class Server {
     this.app.use(`${ v1 }/homeMeeting`, HomeMeetingRoutes)
     this.app.use(`${ v1 }/homeMeetingRecordId`, HomeMeetingRecordIdRoutes)
     this.app.use(`${ v1 }/meetingCenter`, MeetingCenterRoutes)
+    this.app.use(`${ v1 }/lineFellowshipReportId`, LineFellowshipReportIdRoutes)
     
     // 特別專案
     this.app.use(`${ v1 }/teemMeetingAttend`, TeemMeetingAttendRoutes)
