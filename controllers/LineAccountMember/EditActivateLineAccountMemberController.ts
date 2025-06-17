@@ -1,9 +1,9 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
-import { AttendanceAccount } from '../../models/AttendanceAccount'
+import { LineAccountMember } from '../../models/LineAccountMember'
 import { Req, Res } from '../../types'
 
-export const EditActivateAttendanceAccountController = async (req: Req, res: Res) => {
+export const EditActivateLineAccountMemberController = async (req: Req, res: Res) => {
 
   const { 
     id,
@@ -16,7 +16,7 @@ export const EditActivateAttendanceAccountController = async (req: Req, res: Res
     throw new BadRequestError('NAME_AND_LINE_PROFILE_ID_REQUIRED')
   }
 
-  const attendanceAccount = await AttendanceAccount.findById(id)
+  const attendanceAccount = await LineAccountMember.findById(id)
 
   if (!attendanceAccount) {
     throw new BadRequestError('ATTENDANCE_ACCOUNT_NOT_FOUND')

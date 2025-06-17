@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
-import { IAttendanceAccount } from '../types'
+import { ILineAccountMember } from '../types'
 
-const AttendanceAccountSchema: Schema<IAttendanceAccount> = new mongoose.Schema({
+const LineAccountMemberSchema: Schema<ILineAccountMember> = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -17,12 +17,17 @@ const AttendanceAccountSchema: Schema<IAttendanceAccount> = new mongoose.Schema(
   lineProfileId: {
     type: String,
   },
+  districtId: {
+    type: Schema.Types.ObjectId,
+    ref: 'District',
+    required: true
+  },
   active: {
     type: Boolean,
     required: true
   }
 }, { timestamps: true })
 
-export const AttendanceAccount = mongoose.model<IAttendanceAccount>(
-  'AttendanceAccount', AttendanceAccountSchema
+export const LineAccountMember = mongoose.model<ILineAccountMember>(
+  'LineAccountMember', LineAccountMemberSchema
 ) 

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AttendanceAccountController } from '../controllers'
+import { LineAccountMemberController } from '../controllers'
 import { authenticateUser, authorizePermission, checkVerifiedEmail } from '../middleware'
 import { RoleList } from '../enums'
 const router = Router()
@@ -8,7 +8,7 @@ router.get(
   '/getAll', 
   authenticateUser,
   checkVerifiedEmail,
-  AttendanceAccountController.getAllAttendanceAccount
+  LineAccountMemberController.getAllLineAccountMember
 )
 
 router.post(
@@ -16,12 +16,12 @@ router.post(
   authenticateUser,
   checkVerifiedEmail,
   authorizePermission(... RoleList.districtLeaders),
-  AttendanceAccountController.createAttendanceAccount
+  LineAccountMemberController.createLineAccountMember
 )
 
 router.post(
   '/activate',
-  AttendanceAccountController.activateAttendanceAccount
+  LineAccountMemberController.activateLineAccountMember
 )
 
 router.put(
@@ -29,7 +29,7 @@ router.put(
   authenticateUser,
   checkVerifiedEmail,
   authorizePermission(... RoleList.districtLeaders),
-  AttendanceAccountController.editActivateAttendanceAccount
+  LineAccountMemberController.editActivateLineAccountMember
 )
 
 router.delete(
@@ -37,7 +37,7 @@ router.delete(
   authenticateUser,
   checkVerifiedEmail,
   authorizePermission(... RoleList.districtLeaders),
-  AttendanceAccountController.deleteAttendanceAccount
+  LineAccountMemberController.deleteLineAccountMember
 )
 
 export default router

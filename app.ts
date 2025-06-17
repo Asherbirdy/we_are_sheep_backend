@@ -15,7 +15,7 @@ import GroupRoutes from './routes/GroupRoutes'
 import SheetRoutes from './routes/SheetRoutes'
 import LandingPageRoutes from './routes/LandingPageRoutes'
 import BlendingRoutes from './routes/BlendingRoutes'
-import AttendanceAccountRoutes from './routes/AttendanceAccountRoutes'
+import LineAccountMemberRoutes from './routes/LineAccountMemberRoutes'
 import HomeMeetingRoutes from './routes/HomeMeetingRoutes'
 import HomeMeetingRecordIdRoutes from './routes/HomeMeetingRecordIdRoutes'
 import MeetingCenterRoutes from './routes/MeetingCenterRoutes'
@@ -88,7 +88,7 @@ class Server {
     this.app.use(`${ v1 }/sheet`, SheetRoutes)
     this.app.use(`${ v1 }/landingPage`, LandingPageRoutes)
     this.app.use(`${ v1 }/blending`, BlendingRoutes)
-    this.app.use(`${ v1 }/attendanceAccount`, AttendanceAccountRoutes)
+    this.app.use(`${ v1 }/lineAccountMember`, LineAccountMemberRoutes)
     this.app.use(`${ v1 }/homeMeeting`, HomeMeetingRoutes)
     this.app.use(`${ v1 }/homeMeetingRecordId`, HomeMeetingRecordIdRoutes)
     this.app.use(`${ v1 }/meetingCenter`, MeetingCenterRoutes)

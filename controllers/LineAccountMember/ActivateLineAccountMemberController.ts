@@ -1,16 +1,16 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
-import { AttendanceAccount } from '../../models/AttendanceAccount'
+import { LineAccountMember } from '../../models/LineAccountMember'
 import { Req, Res } from '../../types'
 
-export const ActivateAttendanceAccountController = async (req: Req, res: Res) => {
+export const ActivateLineAccountMemberController = async (req: Req, res: Res) => {
   const { lineProfileId, serialNumber } = req.body
 
   if (!lineProfileId || !serialNumber) {
     throw new BadRequestError('LINE_PROFILE_ID_AND_SERIAL_NUMBER_REQUIRED')
   }
 
-  const checkExistingLineProfileId = await AttendanceAccount.findOne({
+  const checkExistingLineProfileId = await LineAccountMember.findOne({
     lineProfileId: lineProfileId
   })
 
@@ -18,7 +18,7 @@ export const ActivateAttendanceAccountController = async (req: Req, res: Res) =>
     throw new BadRequestError('LINE_PROFILE_ID_ALREADY_EXISTS')
   }
 
-  const attendanceAccount = await AttendanceAccount.findOne({
+  const attendanceAccount = await LineAccountMember.findOne({
     serialNumber 
   })
 

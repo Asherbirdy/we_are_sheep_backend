@@ -1,9 +1,9 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
-import { AttendanceAccount } from '../../models/AttendanceAccount'
+import { LineAccountMember } from '../../models/LineAccountMember'
 import { Req, Res } from '../../types'
 
-export const CreateAttendanceAccountController = async (req: Req, res: Res) => {
+export const CreateLineAccountMemberController = async (req: Req, res: Res) => {
   const { name, serialNumber} = req.body
 
   if (!name || !serialNumber) {
@@ -14,18 +14,18 @@ export const CreateAttendanceAccountController = async (req: Req, res: Res) => {
   }
 
   // find name exist
-  const nameExist = await AttendanceAccount.findOne({ name })
+  const nameExist = await LineAccountMember.findOne({ name })
   if (nameExist) {
     throw new BadRequestError('NAME_ALREADY_EXIST')
   }
 
   // find serial number exist
-  const serialNumberExist = await AttendanceAccount.findOne({ serialNumber })
+  const serialNumberExist = await LineAccountMember.findOne({ serialNumber })
   if (serialNumberExist) {
     throw new BadRequestError('SERIAL_NUMBER_ALREADY_EXIST')
   }
 
-  const attendanceAccount = await AttendanceAccount.create({
+  const attendanceAccount = await LineAccountMember.create({
     name,
     serialNumber,
     serialNumberExpiredDate: new Date(Date.now() + 24 * 60 * 60 * 1000),
