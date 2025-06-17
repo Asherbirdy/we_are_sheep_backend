@@ -40,4 +40,9 @@ router.delete(
   LineAccountMemberController.deleteLineAccountMember
 )
 
+router.post(
+  '/check',
+  LineAccountMemberController.checkLineAccountMember
+)
+
 export default router
