@@ -1,18 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-import { ILineAccountMember } from '../types'
-import { ILineFellowshipReportId } from './LineFellowshipReportId'
-
-export interface IFellowshipRecord {
-  lineAccountMemberId: ILineAccountMember
-  lineFellowshipReportId: ILineFellowshipReportId
-  hasMorningRevival: boolean
-  homeMeetingGroup: IHomeMeetingGroup[]
-}
-
-interface IHomeMeetingGroup {
-  name: string[]
-  info: string
-}
+import { IFellowshipRecord } from '../types'
 
 const FellowshipRecordSchema: Schema<IFellowshipRecord> = new mongoose.Schema({
   lineAccountMemberId: {
@@ -31,7 +18,10 @@ const FellowshipRecordSchema: Schema<IFellowshipRecord> = new mongoose.Schema({
     default: false
   },
   homeMeetingGroup: {
-    type: [{ name: [String], info: String }],
+    type: [{ 
+      name: [String],
+      info: String
+    }],
   }
 }, { timestamps: true })
 
