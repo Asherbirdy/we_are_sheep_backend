@@ -17,4 +17,11 @@ router.post(
   LineFellowshipReportIdController.create
 )
 
+router.put(
+  '/',
+  authenticateUser,
+  checkVerifiedEmail,
+  LineFellowshipReportIdController.edit
+)
+
 export default router
