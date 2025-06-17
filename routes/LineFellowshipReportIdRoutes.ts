@@ -10,4 +10,11 @@ router.get(
   LineFellowshipReportIdController.getAll
 )
 
+router.post(
+  '/',
+  authenticateUser,
+  checkVerifiedEmail,
+  LineFellowshipReportIdController.create
+)
+
 export default router

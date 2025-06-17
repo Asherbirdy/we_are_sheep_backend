@@ -1,5 +1,6 @@
-import { GetAllLineFellowshipReportIdController } from './LineFellowshipReportId'
+import { CreateLineFellowshipReportIdController, GetAllLineFellowshipReportIdController } from './LineFellowshipReportId'
 
 export const LineFellowshipReportIdController = {
-  getAll: GetAllLineFellowshipReportIdController
+  getAll: GetAllLineFellowshipReportIdController,
+  create: CreateLineFellowshipReportIdController
 }
