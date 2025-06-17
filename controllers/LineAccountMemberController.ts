@@ -3,7 +3,8 @@ import {
   CreateLineAccountMemberController,
   ActivateLineAccountMemberController,
   EditActivateLineAccountMemberController,
-  DeleteLineAccountMemberController 
+  DeleteLineAccountMemberController,
+  CheckLineAccountMemberController
 } from './LineAccountMember'
 
 export const LineAccountMemberController = {
@@ -11,5 +12,6 @@ export const LineAccountMemberController = {
   createLineAccountMember: CreateLineAccountMemberController,
   activateLineAccountMember: ActivateLineAccountMemberController,
   editActivateLineAccountMember: EditActivateLineAccountMemberController,
-  deleteLineAccountMember: DeleteLineAccountMemberController
+  deleteLineAccountMember: DeleteLineAccountMemberController,
+  checkLineAccountMember: CheckLineAccountMemberController
 }
