@@ -6,6 +6,7 @@ export interface ILineFellowshipReportId {
   info: string
   createBy: IUser
   expiredTime: Date
+  recordWeekSundayDate: Date
 }
 
 const LineFellowshipReportIdSchema: Schema<ILineFellowshipReportId> = new mongoose.Schema({
@@ -15,11 +16,14 @@ const LineFellowshipReportIdSchema: Schema<ILineFellowshipReportId> = new mongoo
   },
   info: {
     type: String,
-    required: true
   },
   createBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true
+  },
+  recordWeekSundayDate: {
+    type: Date,
     required: true
   },
   expiredTime: {
