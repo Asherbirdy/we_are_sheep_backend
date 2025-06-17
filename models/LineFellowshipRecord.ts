@@ -32,7 +32,6 @@ const LineFellowshipRecordSchema: Schema<ILineFellowshipRecord> = new mongoose.S
   },
   homeMeetingGroup: {
     type: [{ name: [String], info: String }],
-    required: true
   }
 }, { timestamps: true })
 
