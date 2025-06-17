@@ -11,13 +11,10 @@ import DistrictRoutes from './routes/DistrictRoutes'
 import UserSerialNumberRoutes from './routes/UserSerialNumberRoutes'
 import ActivityRoutes from './routes/ActivityRoutes'
 import SheepRoutes from './routes/SheepRoutes'
-import GroupRoutes from './routes/GroupRoutes'
 import SheetRoutes from './routes/SheetRoutes'
 import LandingPageRoutes from './routes/LandingPageRoutes'
 import BlendingRoutes from './routes/BlendingRoutes'
 import LineAccountMemberRoutes from './routes/LineAccountMemberRoutes'
-import HomeMeetingRoutes from './routes/HomeMeetingRoutes'
-import HomeMeetingRecordIdRoutes from './routes/HomeMeetingRecordIdRoutes'
 import MeetingCenterRoutes from './routes/MeetingCenterRoutes'
 import LineFellowshipReportIdRoutes from './routes/LineFellowshipReportIdRoutes'
 
@@ -85,13 +82,10 @@ class Server {
     this.app.use(`${ v1 }/userSerialNumber`, UserSerialNumberRoutes)
     this.app.use(`${ v1 }/activity`, ActivityRoutes)
     this.app.use(`${ v1 }/sheep`, SheepRoutes)
-    this.app.use(`${ v1 }/group`, GroupRoutes)
     this.app.use(`${ v1 }/sheet`, SheetRoutes)
     this.app.use(`${ v1 }/landingPage`, LandingPageRoutes)
     this.app.use(`${ v1 }/blending`, BlendingRoutes)
     this.app.use(`${ v1 }/lineAccountMember`, LineAccountMemberRoutes)
-    this.app.use(`${ v1 }/homeMeeting`, HomeMeetingRoutes)
-    this.app.use(`${ v1 }/homeMeetingRecordId`, HomeMeetingRecordIdRoutes)
     this.app.use(`${ v1 }/meetingCenter`, MeetingCenterRoutes)
     this.app.use(`${ v1 }/lineFellowshipReportId`, LineFellowshipReportIdRoutes)
     
