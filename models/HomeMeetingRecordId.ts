@@ -15,6 +15,10 @@ const HomeMeetingRecordIdSchema: Schema<IHomeMeetingRecordId> = new mongoose.Sch
     ref: 'User',
     required: true
   },
+  recordWeekDate: {
+    type: Date,
+    required: true
+  },
   expiredTime: {
     type: Date,
     required: true
