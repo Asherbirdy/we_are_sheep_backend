@@ -1,9 +1,9 @@
 import { IDistrict } from './IDistrict'
-import { IAttendanceAccount } from './IAttendanceAccount'
+import { ILineAccountMember } from './ILineAccountMember'
 import { ISheep } from './ISheep'
 export interface IHomeMeeting {
   groupName: string
-  attendanceAccount: IAttendanceAccount
+  attendanceAccount: ILineAccountMember
   district: IDistrict
   lastAttendanceDate: Date
   meetingPeople: ISheep[]
