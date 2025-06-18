@@ -5,7 +5,7 @@ import { LineFellowshipReportId } from '../../models/LineFellowshipReportId'
 import { FellowshipRecord } from '../../models/FellowshipRecord'
 import { Req, Res } from '../../types'
 
-export const CheckRecordByReportIdController = async (req: Req, res: Res) => {
+export const CheckOrCreateRecordByReportIdController = async (req: Req, res: Res) => {
   const { 
     lineAccountMemberId, // line account member _id 
     lineFellowshipReportId, // 回報群組 id

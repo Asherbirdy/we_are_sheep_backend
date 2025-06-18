@@ -6,11 +6,11 @@ import { RoleList } from '../enums'
 const router = Router()
 
 router.post(
-  '/check',
+  '/checkOrCreate',
   authenticateUser,
   authorizePermission(... RoleList.users),
   checkVerifiedEmail,
-  FellowshipRecordController.check
+  FellowshipRecordController.checkOrCreate
 )
 
 router.put(

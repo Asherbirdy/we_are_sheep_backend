@@ -1,2 +1,2 @@
-export * from './CheckRecordByReportIdController'
+export * from './CheckOrCreateRecordByReportIdController'
 export * from './EditRecordByIdController'

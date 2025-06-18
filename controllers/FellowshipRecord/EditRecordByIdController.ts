@@ -1,6 +1,7 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
 import { FellowshipRecord } from '../../models/FellowshipRecord'
+import { LineFellowshipReportId } from '../../models/LineFellowshipReportId'
 import { Req, Res } from '../../types'
 
 export const EditRecordByIdController = async (req: Req, res: Res) => {
@@ -16,6 +17,17 @@ export const EditRecordByIdController = async (req: Req, res: Res) => {
 
   if (!fellowshipRecord) {
     throw new BadRequestError('FELLOWSHIP_RECORD_NOT_FOUND')
+  }
+
+  const findLineFellowshipReportId = await LineFellowshipReportId.findById(fellowshipRecord.lineFellowshipReportId)
+
+  if (!findLineFellowshipReportId) {
+    throw new BadRequestError('LINE_FELLOWSHIP_REPORT_ID_NOT_FOUND')
+  }
+
+  const isExpired = findLineFellowshipReportId.expiredTime.getTime() < Date.now()
+  if (isExpired) {
+    throw new BadRequestError('FELLOWSHIP_RECORD_EXPIRED')
   }
 
   fellowshipRecord.hasMorningRevival = hasMorningRevival

@@ -1,6 +1,6 @@
-import { CheckRecordByReportIdController, EditRecordByIdController } from './FellowshipRecord'
+import { CheckOrCreateRecordByReportIdController, EditRecordByIdController } from './FellowshipRecord'
 
 export const FellowshipRecordController = {
-  check: CheckRecordByReportIdController,
+  checkOrCreate: CheckOrCreateRecordByReportIdController,
   edit: EditRecordByIdController
 }
