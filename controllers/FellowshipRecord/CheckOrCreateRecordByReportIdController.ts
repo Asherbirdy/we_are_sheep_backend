@@ -1,7 +1,7 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
 import { LineAccountMember } from '../../models/LineAccountMember'
-import { LineFellowshipReportId } from '../../models/LineFellowshipReportId'
+import { LineFellowshipReport } from '../../models/LineFellowshipReport'
 import { FellowshipRecord } from '../../models/FellowshipRecord'
 import { Req, Res } from '../../types'
 
@@ -39,7 +39,7 @@ export const CheckOrCreateRecordByReportIdController = async (req: Req, res: Res
   }
 
   // 確認lineFellowshipReport回報id是否存在
-  const lineFellowshipReport = await LineFellowshipReportId.findById(lineFellowshipReportId)
+  const lineFellowshipReport = await LineFellowshipReport.findById(lineFellowshipReportId)
   if (!lineFellowshipReport) {
     throw new BadRequestError('LINE_FELLOWSHIP_REPORT_NOT_FOUND')
   }

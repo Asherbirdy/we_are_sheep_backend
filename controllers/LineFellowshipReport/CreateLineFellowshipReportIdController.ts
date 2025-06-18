@@ -1,6 +1,6 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError } from '../../errors'
-import { LineFellowshipReportId } from '../../models/LineFellowshipReportId'
+import { LineFellowshipReport } from '../../models/LineFellowshipReport'
 import { Req, Res } from '../../types'
 
 export const CreateLineFellowshipReportIdController = async (req: Req, res: Res) => {
@@ -10,7 +10,7 @@ export const CreateLineFellowshipReportIdController = async (req: Req, res: Res)
     throw new BadRequestError('NAME_RECORD_WEEK_SUNDAY_DATE_REQUIRED')
   }
 
-  const lineFellowshipReportId = await LineFellowshipReportId.create({
+  const lineFellowshipReportId = await LineFellowshipReport.create({
     name,
     createBy: req.user?.userId,
     expiredTime: new Date(Date.now() + 24 * 60 * 60 * 1000 * 3),

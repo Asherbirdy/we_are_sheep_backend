@@ -1,9 +1,9 @@
-import { ILineFellowshipReportId } from '../../models/LineFellowshipReportId'
+import { ILineFellowshipReport } from '../../models/LineFellowshipReport'
 import { ILineAccountMember } from './ILineAccountMember'
 
 export interface IFellowshipRecord {
   lineAccountMemberId: ILineAccountMember
-  lineFellowshipReportId: ILineFellowshipReportId
+  lineFellowshipReportId: ILineFellowshipReport
   hasMorningRevival: boolean
   homeMeetingGroup: IHomeMeetingGroup[]
 }
