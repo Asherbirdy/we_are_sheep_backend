@@ -6,7 +6,7 @@ import { Req, Res } from '../../types'
 export const EditRecordByIdController = async (req: Req, res: Res) => {
   const { fellowshipRecordId, hasMorningRevival, homeMeetingGroup } = req.body
 
-  if(!fellowshipRecordId || !hasMorningRevival || !homeMeetingGroup) {
+  if(!fellowshipRecordId || !homeMeetingGroup) {
     throw new BadRequestError('ALL_FIELDS_ARE_REQUIRED')
   }
 
