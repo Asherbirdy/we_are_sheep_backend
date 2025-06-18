@@ -21,6 +21,7 @@ export const CheckRecordByReportIdController = async (req: Req, res: Res) => {
     lineAccountMemberId
   })
 
+  // 如果已經有紀錄，則返回紀錄
   if (checkExistingLineFellowshipRecord) {
     res.status(StatusCodes.OK).json({
       msg: '已經有紀錄',
