@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 import { IUser } from '../types'
 
-export interface ILineFellowshipReportId {
+export interface ILineFellowshipReport {
   name: string
   info: string
   createBy: IUser
@@ -9,7 +9,7 @@ export interface ILineFellowshipReportId {
   recordWeekSundayDate: Date
 }
 
-const LineFellowshipReportIdSchema: Schema<ILineFellowshipReportId> = new mongoose.Schema({
+const LineFellowshipReportSchema: Schema<ILineFellowshipReport> = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -32,6 +32,6 @@ const LineFellowshipReportIdSchema: Schema<ILineFellowshipReportId> = new mongoo
   }
 }, { timestamps: true })
 
-export const LineFellowshipReportId = mongoose.model<ILineFellowshipReportId>(
-  'LineFellowshipReportId', LineFellowshipReportIdSchema
+export const LineFellowshipReport = mongoose.model<ILineFellowshipReport>(
+  'LineFellowshipReport', LineFellowshipReportSchema
 )

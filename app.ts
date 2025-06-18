@@ -16,7 +16,7 @@ import LandingPageRoutes from './routes/LandingPageRoutes'
 import BlendingRoutes from './routes/BlendingRoutes'
 import LineAccountMemberRoutes from './routes/LineAccountMemberRoutes'
 import MeetingCenterRoutes from './routes/MeetingCenterRoutes'
-import LineFellowshipReportIdRoutes from './routes/LineFellowshipReportIdRoutes'
+import LineFellowshipReportRoutes from './routes/LineFellowshipReportRoutes'
 import FellowshipRecordRoutes from './routes/FellowshipRecordRoutes'
 
 // 特別專案
@@ -88,7 +88,7 @@ class Server {
     this.app.use(`${ v1 }/blending`, BlendingRoutes)
     this.app.use(`${ v1 }/lineAccountMember`, LineAccountMemberRoutes)
     this.app.use(`${ v1 }/meetingCenter`, MeetingCenterRoutes)
-    this.app.use(`${ v1 }/lineFellowshipReportId`, LineFellowshipReportIdRoutes)
+    this.app.use(`${ v1 }/lineFellowshipReport`, LineFellowshipReportRoutes)
     this.app.use(`${ v1 }/fellowshipRecord`, FellowshipRecordRoutes)
     
     // 特別專案

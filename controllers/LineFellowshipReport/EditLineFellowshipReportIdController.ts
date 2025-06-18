@@ -1,6 +1,6 @@
 import { StatusCodes } from '../../enums'
 import { BadRequestError, NotFoundError } from '../../errors'
-import { LineFellowshipReportId } from '../../models/LineFellowshipReportId'
+import { LineFellowshipReport } from '../../models/LineFellowshipReport'
 import { Req, Res } from '../../types'
 
 export const EditLineFellowshipReportIdController = async (req: Req, res: Res) => {
@@ -10,7 +10,7 @@ export const EditLineFellowshipReportIdController = async (req: Req, res: Res) =
     throw new BadRequestError('ALL_FIELDS_REQUIRED')
   }
 
-  const lineFellowshipReport = await LineFellowshipReportId.findById(lineFellowshipReportId)
+  const lineFellowshipReport = await LineFellowshipReport.findById(lineFellowshipReportId)
 
   if (!lineFellowshipReport) {
     throw new NotFoundError('LINE_FELLOWSHIP_REPORT_ID_NOT_FOUND')

@@ -1,27 +1,27 @@
 import { Router } from 'express'
 import { authenticateUser, checkVerifiedEmail } from '../middleware'
-import { LineFellowshipReportIdController } from '../controllers/LineFellowshipReportIdController'
+import { LineFellowshipReportController } from '../controllers/LineFellowshipReportController'
 const router = Router()
 
 router.get(
   '/', 
   authenticateUser,
   checkVerifiedEmail,
-  LineFellowshipReportIdController.getAll
+  LineFellowshipReportController.getAll
 )
 
 router.post(
   '/',
   authenticateUser,
   checkVerifiedEmail,
-  LineFellowshipReportIdController.create
+  LineFellowshipReportController.create
 )
 
 router.put(
   '/',
   authenticateUser,
   checkVerifiedEmail,
-  LineFellowshipReportIdController.edit
+  LineFellowshipReportController.edit
 )
 
 export default router
