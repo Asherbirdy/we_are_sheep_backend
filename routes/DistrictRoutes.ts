@@ -6,9 +6,6 @@ const router = Router()
 
 router.get(
   '/',
-  authenticateUser,
-  authorizePermission(... RoleList.users),
-  checkVerifiedEmail,
   DistrictController.get
 )
 

@@ -13,9 +13,6 @@ router.get(
 
 router.post(
   '/create',
-  authenticateUser,
-  checkVerifiedEmail,
-  authorizePermission(... RoleList.districtLeaders),
   LineAccountMemberController.createLineAccountMember
 )
 
